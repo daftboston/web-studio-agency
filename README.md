@@ -15,6 +15,7 @@ Target clients (Colombia, starting in Bogotá):
 ## Status
 - Planning docs: done.
 - Name: **chosen, Filmika**.
+- Packages: defined (Presencia, Profesional, Commerce). Prices pending.
 - Website: not built yet. Daniel will build it locally (see ROADMAP). This repo has no website code.
 
 ## Documents
@@ -22,8 +23,9 @@ Target clients (Colombia, starting in Bogotá):
 |---|---|
 | [docs/BRAND.md](docs/BRAND.md) | Name, tagline, tone of voice, sample Spanish copy |
 | [docs/SITE-SPEC.md](docs/SITE-SPEC.md) | Goals, sitemap, sections, copy direction, trust elements, CTA |
+| [docs/PACKAGES.md](docs/PACKAGES.md) | The 3 Filmika packages: Presencia, Profesional, Commerce |
 | [docs/PORTFOLIO.md](docs/PORTFOLIO.md) | Real projects, pending items, future niche demos |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | Phases and the ongoing prospect mockups track |
 
 ## Language
-Docs are in English. Site copy samples are in Spanish, because the site is for Colombian clients.
+Docs are in English. Site copy samples and package content are in Spanish, because the site is for Colombian clients.

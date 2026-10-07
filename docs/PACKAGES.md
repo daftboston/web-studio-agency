@@ -1,0 +1,167 @@
+# Paquetes Filmika
+
+Filmika offers 3 packages. Content below is Daniel's, kept in Spanish because it goes on the site.
+
+> **No prices in this document.** Pricing is defined by Mr market and will be added later.
+
+---
+
+## 🟢 PAQUETE 1 — PRESENCIA
+
+Para negocios pequeños que simplemente necesitan **existir profesionalmente en Internet**.
+
+### Website
+Landing page profesional.
+
+### Secciones
+- Hero
+- Empresa
+- Servicios
+- Galería
+- Ubicación
+- Contacto
+
+### Conversión
+Botón WhatsApp, por ejemplo:
+
+> 💬 Cotizar por WhatsApp
+
+Al hacer clic, abre el mensaje:
+
+```
+Hola, quiero solicitar información sobre [empresa].
+```
+
+### Incluye
+- Diseño responsive
+- Dominio
+- Hosting
+- SSL
+- Google Maps
+- WhatsApp
+- Formulario básico
+- SEO básico
+- Google Business básico
+- Analytics básico
+
+### Ideal para
+- Taller pequeño
+- Constructor independiente
+- Óptica pequeña
+
+---
+
+## 🔵 PAQUETE 2 — PROFESIONAL
+
+**Sitio corporativo completo** (no una landing).
+
+### Estructura
+- Inicio
+- Empresa
+- Servicios
+- Proyectos / Trabajos
+- Guías / Blog
+- Preguntas frecuentes
+- Contacto
+
+### Ejemplo para taller
+```
+Inicio
+├── Servicios
+│    ├── Mecánica general
+│    ├── Frenos
+│    ├── Suspensión
+│    └── Diagnóstico
+├── Nosotros
+├── Trabajos realizados
+├── Guías
+│    ├── ¿Cuándo cambiar aceite?
+│    ├── ¿Cuándo cambiar frenos?
+│    └── ...
+└── Contacto
+```
+
+### Incluye
+Todo lo del Paquete 1, más:
+- Hasta 7–8 secciones/páginas
+- Catálogo de servicios
+- Galería
+- Testimonios
+- FAQ
+- Blog / Guías
+- Formularios
+- SEO local
+- Google Business optimization
+- Analytics
+- Search Console
+- Integración de redes
+- CTA estratégicos
+- Optimización móvil
+
+### La gran diferencia
+Empieza a generar **tráfico orgánico**.
+
+Ejemplo: alguien busca en Google:
+
+> ¿Cada cuánto cambiar las pastillas de freno?
+
+Google lleva al usuario a la guía del taller, y al final de la guía aparece:
+
+> ¿Tu vehículo presenta estos síntomas? **Agenda una revisión por WhatsApp →**
+
+Eso convierte contenido en leads.
+
+---
+
+## 🟣 PAQUETE 3 — COMMERCE
+
+Se vende como **"Catálogo + Venta por WhatsApp"** (no como "Marketplace").
+
+### Ideal para
+- Ópticas
+- Talleres
+- También constructoras
+
+### Ejemplo Óptica
+```
+Inicio
+Productos
+├── Monturas
+├── Gafas de sol
+├── Lentes
+└── Accesorios
+Servicios
+Guías
+Nosotros
+Contacto
+```
+
+### Cada producto
+> ⚠️ **Example data only.** The product, reference, and price below are illustrative, not a real product or a Filmika price.
+
+```
+Ray-Ban RX123
+$650.000
+Disponible
+Descripción...
+
+[🟢 Comprar por WhatsApp]
+```
+
+El botón envía:
+
+```
+Hola, estoy interesado en la referencia RX123 de $650.000.
+```
+
+### Por qué funciona
+Es mucho más sencillo que montar:
+- Carrito
+- Checkout
+- Pasarela
+- Inventario
+- Pagos
+- Logística
+- Devoluciones
+
+Para muchas empresas locales, esto es suficiente.

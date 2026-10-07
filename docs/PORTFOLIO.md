@@ -16,8 +16,16 @@ Projects to show on the Filmika site. Only real projects with working links. No 
 - [ ] Tesla parts site URL
 - [ ] Other sites (names and URLs)
 
-## Future: niche demos (not built yet)
+## Niche demos (not built yet)
 These demos will show each target client what their site could look like. Label them as "Demo" on the site.
+
+**Demo bases:** each demo starts from its template repo (spec only for now). Daniel will build them with animations using another AI.
+
+| Demo | Template repo |
+|---|---|
+| Constructora | https://github.com/daftboston/filmika-template-constructora |
+| Taller | https://github.com/daftboston/filmika-template-taller |
+| Óptica | https://github.com/daftboston/filmika-template-optica |
 
 ### 1. Óptica
 - **Inicio**

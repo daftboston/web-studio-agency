@@ -1,42 +1,43 @@
 # Portfolio
 
-Projects to show on the agency site.
+Projects to show on the Filmika site. Only real projects with working links. No invented projects, clients, or metrics.
 
-## Existing projects
+## Real projects
 
 ### TruePhone
 - Live: https://www.truephone.shop/
-- Real project to show as a main example.
 
-### Tesla Partes CO
-- Real project to show as an example.
+### Tesla parts site (Tesla Partes CO)
+- URL: **pending from Daniel**
 
-## Niche demos (to be built)
-These demos show each target client what their site could look like. They must be labeled as demos.
+## Pending from Daniel: other sites and URLs
+> ⚠️ **Pending.** Daniel will send the list of other sites he has built and their URLs. Add them here once confirmed.
+
+- [ ] Tesla parts site URL
+- [ ] Other sites (names and URLs)
+
+## Future: niche demos (not built yet)
+These demos will show each target client what their site could look like. Label them as "Demo" on the site.
 
 ### 1. Óptica
-Pages:
 - **Inicio**
 - **Catálogo** with filters: marca, tipo, precio, género.
-- **Detalle de montura** with a WhatsApp button and a prefilled message, e.g.:
+- **Detalle de montura** with a WhatsApp button and prefilled message, e.g.:
   > Hola, me interesa la montura [Modelo] de [Marca]. ¿Está disponible?
 - **Servicios**
 - **Nosotros y contacto**
-- **Private admin panel**: add and edit frames, mark each one as available or sold out (disponible / agotado).
-
-Seed data: about 12 sample frames (placeholder data, not real inventory).
+- **Private admin panel**: add and edit frames, mark each as disponible / agotado.
+- Seed data: about 12 sample frames (placeholder data, not real inventory).
 
 ### 2. Constructora
-Pages:
 - **Inicio**
-- **Proyectos** with before/after (antes / después) images.
+- **Proyectos** with antes / después images.
 - **Servicios**
-- **Nosotros** with the work process: visita → diseño → obra → entrega.
+- **Nosotros** with the process: visita → diseño → obra → entrega.
 - **Contacto**
 
 ### 3. Taller
-Pages:
 - **Inicio** with a main button: "Agenda tu revisión".
-- **Servicios** with optional "desde" prices (shown only if the client provides them; placeholders in the demo).
+- **Servicios** with optional "desde" prices (only if the client provides them; placeholders in the demo).
 - **Nosotros**
 - **Contacto y ubicación** (map and address).

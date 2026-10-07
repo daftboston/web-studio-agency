@@ -1,23 +1,29 @@
-# Web Studio Agency
+# Filmika
+
+**Filmika – Páginas web para negocios**
 
 ## Purpose
-This repo will hold the website for our web studio agency. The site is our **business card**: we will send it to potential clients during outreach so they can see who we are, what we build, and how to contact us.
+This repo holds the planning docs for the Filmika website. The site has one job: be a **commercial page that motivates visitors to hire Filmika for their website and builds real trust**. It is also our business card for outreach.
 
-Target clients (Colombia):
+Core message: Filmika is a serious business with more than 3 years of experience building websites.
+
+Target clients (Colombia, starting in Bogotá):
 - Construction companies (constructoras)
 - Car repair shops (talleres)
 - Optical stores (ópticas)
 
 ## Status
-**Planning only.** There is no website code in this repo yet. The agency name is not chosen yet.
+- Planning docs: done.
+- Name: **chosen, Filmika**.
+- Website: not built yet. Daniel will build it locally (see ROADMAP). This repo has no website code.
 
 ## Documents
 | File | Contents |
 |---|---|
-| [docs/BRAND.md](docs/BRAND.md) | Name options, tone of voice, sample Spanish copy |
-| [docs/SITE-SPEC.md](docs/SITE-SPEC.md) | Pages and content for the agency site |
-| [docs/PORTFOLIO.md](docs/PORTFOLIO.md) | Projects to showcase, including 3 niche demos to build |
-| [docs/ROADMAP.md](docs/ROADMAP.md) | Phases from docs to deploy |
+| [docs/BRAND.md](docs/BRAND.md) | Name, tagline, tone of voice, sample Spanish copy |
+| [docs/SITE-SPEC.md](docs/SITE-SPEC.md) | Goals, sitemap, sections, copy direction, trust elements, CTA |
+| [docs/PORTFOLIO.md](docs/PORTFOLIO.md) | Real projects, pending items, future niche demos |
+| [docs/ROADMAP.md](docs/ROADMAP.md) | Phases and the ongoing prospect mockups track |
 
 ## Language
-Docs are in English. Site copy samples are in Spanish, because the site will be in Spanish for Colombian clients.
+Docs are in English. Site copy samples are in Spanish, because the site is for Colombian clients.

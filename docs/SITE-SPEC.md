@@ -2,7 +2,7 @@
 
 ## 1. Goals
 - **Primary:** convince visitors to hire Filmika for their website.
-- **Trust:** show that Filmika is a serious business with more than 3 years of experience, through real work, a clear process, real contact details, and ongoing care after launch.
+- **Trust:** show that Filmika is a serious business built on Daniel Santoyo's personal experience (more than 3 years building websites; Filmika itself started in Oct 2026), through real work, a clear process, real contact details, and ongoing care after launch.
 - **Action:** move visitors to WhatsApp (primary CTA).
 
 Base: the site is based on Daniel's web developer portfolio, rebranded as Filmika.
@@ -30,7 +30,7 @@ A floating WhatsApp button appears on every page.
 ### Inicio
 1. Hero: headline, subheadline, WhatsApp button.
 2. Who we help: constructoras, talleres, ópticas.
-3. Experience line (more than 3 years).
+3. Experience line: Daniel's more than 3 years building websites (attributed to Daniel, not to Filmika).
 4. Packages preview: the 3 package cards (short version) linking to Paquetes.
 5. Plans path: Launch → Digital Care → Growth, with "No desaparecemos después del lanzamiento".
 6. Featured work: 2–3 projects from PORTFOLIO.md.
@@ -83,7 +83,7 @@ Content source: [PLANS.md](PLANS.md).
 
 ### Nosotros
 - Who Filmika is, based on Daniel's portfolio bio, written in the company voice.
-- More than 3 years of experience.
+- Filmika started in Oct 2026; it is built on Daniel's more than 3 years building websites (TruePhone, Tesla Partes, others).
 - Focus on local businesses in Colombia.
 
 ### Capacidades (added 2026-10-08)
@@ -100,7 +100,7 @@ Content source: [PLANS.md](PLANS.md).
 ## 4. Copy direction (Spanish samples)
 **Hero**
 > Páginas web que traen clientes a su negocio.
-> En Filmika creamos sitios serios y fáciles de usar para negocios en Colombia. Más de 3 años de experiencia.
+> En Filmika creamos sitios serios y fáciles de usar para negocios en Colombia. Filmika nace de más de 3 años de experiencia de Daniel Santoyo construyendo sitios web como TruePhone y Tesla Partes.
 
 **Trust line**
 > Somos un equipo serio: trabajo real, proceso claro y atención directa por WhatsApp.
@@ -117,14 +117,14 @@ Content source: [PLANS.md](PLANS.md).
 **Final CTA**
 > ¿Listo para que su negocio tenga una página que trabaje por usted? Escríbanos y le respondemos hoy.
 
-Rules: "usted", short sentences, no jargon, no numbers other than "más de 3 años".
+Rules: "usted", short sentences, no jargon, no numbers other than "más de 3 años", always attributed to Daniel (see BRAND.md).
 
 ## 5. Trust elements
 - **Portfolio:** only real, live projects with working links.
 - **Process:** clear 4-step process so the client knows what happens next.
 - **Packages and plans:** clear options and ongoing care after launch.
 - **Real contact:** real WhatsApp number, email, and city; no generic forms only.
-- **Experience:** "más de 3 años de experiencia" shown in Inicio and Nosotros.
+- **Experience:** Daniel's "más de 3 años construyendo sitios web" shown in Inicio and Nosotros, never as Filmika's own track record.
 - No fake testimonials, logos, or metrics.
 
 ## 6. Primary CTA: WhatsApp

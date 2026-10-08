@@ -5,7 +5,7 @@
 ## Purpose
 This repo holds the Filmika marketing website (Astro + Tailwind CSS, deployed on Netlify) and its planning docs in [docs/](docs/). The site has one job: be a **commercial page that motivates visitors to hire Filmika for their website and builds real trust**. It is also our business card for outreach.
 
-Core message: Filmika is a serious business with more than 3 years of experience building websites, and **we don't disappear after launch** ("No desaparecemos después del lanzamiento").
+Core message: Filmika (started October 2026) is a serious business built on Daniel Santoyo's personal experience of more than 3 years building websites (TruePhone, Tesla Partes, and others), and **we don't disappear after launch** ("No desaparecemos después del lanzamiento").
 
 Target clients (Colombia, starting in Bogotá):
 - Construction companies (constructoras)

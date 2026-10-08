@@ -13,9 +13,13 @@ export const SITE = {
   locale: "es_CO",
   lang: "es-CO",
   defaultDescription:
-    "Filmika diseña páginas web para constructoras, talleres y ópticas en Colombia. Más de 3 años de experiencia. Hablemos por WhatsApp.",
-  /** The only number allowed in the copy (docs/BRAND.md). */
-  experience: "más de 3 años",
+    "Filmika diseña páginas web para constructoras, talleres y ópticas en Colombia. Nace de más de 3 años de experiencia de Daniel Santoyo construyendo sitios web. Hablemos por WhatsApp.",
+  /**
+   * The only number allowed in the copy (docs/BRAND.md). Filmika started in Oct 2026:
+   * the experience is Daniel's personally, never "Filmika's" or "the studio's".
+   */
+  founderExperience:
+    "Filmika nace de más de 3 años de experiencia de Daniel Santoyo construyendo sitios web como TruePhone y Tesla Partes.",
 } as const;
 
 export const CONTACT = {

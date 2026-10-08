@@ -6,9 +6,13 @@
 **Tagline:** Filmika – Páginas web para negocios
 
 ## Positioning
-Filmika builds websites that help local businesses get more customers. We are a serious business with more than 3 years of experience.
+Filmika builds websites that help local businesses get more customers. Filmika is new (started October 2026). It is built on the personal experience of its founder, Daniel Santoyo, who has more than 3 years building websites (TruePhone, the Tesla Partes site, and others).
 
-Rule: the "more than 3 years of experience" claim is the only number we use. No invented clients, metrics, or prices.
+Rule: "más de 3 años" is the only number we use, and it always belongs to **Daniel personally**, never to Filmika, "the studio", or "the team". Never write "Filmika tiene más de 3 años" or "Más de 3 años de experiencia nos respaldan". No invented clients, metrics, or prices.
+
+Approved phrasing:
+> Filmika nace de más de 3 años de experiencia de Daniel Santoyo construyendo sitios web como TruePhone y Tesla Partes.
+> Daniel Santoyo tiene más de 3 años construyendo sitios web.
 
 ## Tone of voice
 - Clear and direct. No jargon (avoid words like "stack", "framework", "SEO técnico" in client copy).
@@ -20,7 +24,7 @@ Rule: the "more than 3 years of experience" claim is the only number we use. No 
 ## Sample Spanish copy
 **Hero (Inicio)**
 > Páginas web que traen clientes a su negocio.
-> En Filmika diseñamos sitios rápidos y fáciles de usar para constructoras, talleres y ópticas. Más de 3 años de experiencia nos respaldan.
+> En Filmika diseñamos sitios rápidos y fáciles de usar para constructoras, talleres y ópticas, con la experiencia de Daniel Santoyo: más de 3 años construyendo sitios web.
 > [Hablemos por WhatsApp]
 
 **Value line**

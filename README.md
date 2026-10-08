@@ -26,7 +26,7 @@ Initial fee plus monthly fee, not a one-time page:
 ### Stack
 - [Astro](https://astro.build) 7 (static output) + [Tailwind CSS](https://tailwindcss.com) v4 via `@tailwindcss/vite`
 - Inter Variable, self-hosted with `@fontsource-variable/inter` (no Google Fonts request)
-- Design: Apple-inspired system by figma bro (accent `#3d3ad6`, WhatsApp green `#25D366` with dark `#141413` labels, warm neutrals). Tokens live in `src/styles/global.css`.
+- Design: Apple-inspired system by figma bro (accent `#3d3ad6`, WhatsApp green `#25D366` with white labels (owner's choice; fails WCAG contrast, accepted), warm neutrals). Tokens live in `src/styles/global.css`.
 - No animation libraries: IntersectionObserver reveals and image zooms (visible without JS), CSS-only headline masks and scroll-driven effects (written as longhands so the minifier cannot fold `animation-timeline` into the shorthand), native View Transitions, `prefers-reduced-motion` respected. See docs/REFERENCES.md.
 - `@astrojs/sitemap` builds `sitemap-index.xml`; `robots.txt` is generated from the site URL.
 - Contact form uses Netlify Forms (`data-netlify`, honeypot).

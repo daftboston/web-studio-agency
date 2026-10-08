@@ -39,12 +39,13 @@
   --on-accent: #ffffff;         /* [proposed] 7.57:1 on --accent */
 
   /* WhatsApp: ONLY for WhatsApp CTAs and the floating button.
-     The official, brighter WhatsApp green (owner's request, 2026-10-08). White text on it is
-     only 1.98:1, so labels and the glyph are dark: #141413 on #25D366 = 9.29:1 (AAA).
-     Never use it as a text colour on light backgrounds (1.98:1 on white). */
+     The official, brighter WhatsApp green with a WHITE label and glyph: owner's explicit
+     decision (2026-10-08), accepted knowing white on #25D366 is 1.98:1 and fails WCAG AA
+     (Lighthouse/axe will flag color-contrast on these buttons). Dark #141413 would give 9.29:1.
+     Never use the green as a text colour on light backgrounds (1.98:1 on white). */
   --whatsapp: #25d366;
-  --whatsapp-hover: #1fbe5b;    /* #141413 on it 7.53:1 */
-  --on-whatsapp: #141413;
+  --whatsapp-hover: #1fbe5b;    /* white on it 2.45:1 */
+  --on-whatsapp: #ffffff;
 
   --on-ink: #ffffff;            /* label on primary dark button: 18.43:1; hover bg #2a2a28 gives 14.38:1 */
   --ink-hover: #2a2a28;         /* [proposed] */
@@ -71,7 +72,7 @@ html:not(.js) [data-scene="dark"] {
   --on-accent: #0d0d0c;         /* [proposed] 7.96:1 on dark --accent */
   --on-ink: #0d0d0c;            /* primary button inverts to light: #0d0d0c on #f5f4f0 = 17.67:1 */
   --ink-hover: #dddbd5;         /* [proposed] */
-  /* --whatsapp stays #25D366 with a dark label (9.29:1). Button edge vs dark canvas is 9.8:1. */
+  /* --whatsapp stays #25D366 with a white label (owner's choice, 1.98:1). Button edge vs dark canvas is 9.8:1. */
   color-scheme: dark;
   background: var(--canvas);
   color: var(--ink);
@@ -218,7 +219,7 @@ html:not(.js) [data-scene="dark"] {
            active:scale-[0.98];
   }
   .btn-primary   { @apply bg-ink text-on-ink hover:bg-ink-hover; }                    /* 18.43:1 */
-  .btn-whatsapp  { @apply bg-whatsapp text-on-whatsapp hover:bg-whatsapp-hover; }     /* dark label 9.29:1, hover 7.53:1 */
+  .btn-whatsapp  { @apply bg-whatsapp text-on-whatsapp hover:bg-whatsapp-hover; }     /* white label by owner's choice: 1.98:1, hover 2.45:1 (fails AA, accepted) */
   .btn-secondary { @apply bg-transparent text-ink ring-1 ring-line-strong ring-inset hover:bg-surface; } /* 18.43:1, edge 3.79:1 */
   .btn-sm        { @apply h-9 px-4 text-[0.9375rem]; }                                /* nav-only (36px) */
 

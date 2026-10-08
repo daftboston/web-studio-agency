@@ -1,12 +1,44 @@
 # Paquetes Filmika
 
-Filmika offers 3 packages. Content below is the owner's, kept in Spanish because it goes on the site.
+Content below is the owner's, kept in Spanish because it goes on the site.
 
-> **No prices in this document.** Pricing is defined by Mr market and will be added later.
+## Precios de lanzamiento (approved by Mr market, 2026-10-08)
+
+Current entry prices for the first clients, in COP. **These are real prices, not estimates.**
+The setup price (pago inicial) **includes the domain and the first month of Digital Care**.
+
+| Paquete (on the site) | Qué es | Pago inicial | Digital Care |
+|---|---|---|---|
+| **Landing + campaña** | Una sola página hecha para recibir tráfico de anuncios | **$600.000** | **$90.000 / mes** |
+| **Página web** | 4–5 páginas, WhatsApp, Google Business | **$900.000** | **$90.000 / mes** |
+| **Catálogo en línea** | Panel de administración, productos, pedidos por WhatsApp | **$1.500.000** | **$130.000 / mes** |
+| Sitio Profesional | Sitio corporativo más grande (ver Paquete 2 abajo) | **Se cotiza** | Se cotiza |
+| Growth | SEO local, anuncios, automatización (ver PLANS.md) | **Se cotiza según el proyecto** | — |
+
+How this maps to the original packages below:
+- The site now shows the three priced offers above (Paquetes, the Inicio preview and the FAQ
+  "¿Cuánto cuesta?"). Prices live in `src/config.ts` (`PRICES`), so they change in one place.
+- **Presencia** and **Commerce** are no longer shown as packages on the site. Their content
+  lives on in *Landing + campaña* / *Página web* and in *Catálogo en línea*. The names did not
+  match the priced offers, so prices were not forced onto them.
+- **Profesional** stays as the larger corporate site ("Sitio Profesional"), with no approved
+  price: it shows **"Se cotiza"**.
+- Ad management for *Landing + campaña* is Growth (quoted); the landing price covers the page.
+
+Site copy (tú voice):
+> **Página web:** $900.000 + $90.000 al mes de Digital Care.
+> **Catálogo en línea:** $1.500.000 + $130.000 al mes.
+> **Landing + campaña:** $600.000 + $90.000 al mes.
+> El pago inicial incluye el dominio y el primer mes de Digital Care.
+> Precios de lanzamiento para los primeros clientes, en pesos colombianos (COP).
 
 ---
 
-## 🟢 PAQUETE 1 — PRESENCIA
+# Original package definitions (reference)
+
+The three packages as first defined by the owner. Kept for the content and the outreach examples.
+
+## 🟢 PAQUETE 1 — PRESENCIA (not shown on the site; see Landing + campaña / Página web)
 
 Para negocios pequeños que simplemente necesitan **existir profesionalmente en Internet**.
 
@@ -51,7 +83,7 @@ Hola, quiero solicitar información sobre [empresa].
 
 ---
 
-## 🔵 PAQUETE 2 — PROFESIONAL
+## 🔵 PAQUETE 2 — PROFESIONAL (on the site: "Sitio Profesional", **Se cotiza**)
 
 **Sitio corporativo completo** (no una landing).
 
@@ -113,7 +145,7 @@ Eso convierte contenido en leads.
 
 ---
 
-## 🟣 PAQUETE 3 — COMMERCE
+## 🟣 PAQUETE 3 — COMMERCE (on the site: "Catálogo en línea", $1.500.000 + $130.000/mes)
 
 Se vende como **"Catálogo + Venta por WhatsApp"** (no como "Marketplace").
 

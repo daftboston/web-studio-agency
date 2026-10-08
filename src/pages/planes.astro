@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta?",
-    a: "Tiene un pago inicial para construir tu página y una mensualidad para mantenerla activa y al día. Después de una llamada corta te enviamos una cotización clara con los dos valores.",
+    a: "El pago inicial va desde $600.000 (Landing + campaña) hasta $1.500.000 (Catálogo en línea), e incluye el dominio y el primer mes de Digital Care. Después, Digital Care cuesta $90.000 al mes, o $130.000 con catálogo. Growth se cotiza según el proyecto.",
   },
 ];
 ---
@@ -60,6 +60,7 @@ const faqs = [
             <div class="mt-auto pt-6">
               <p class="text-caption text-ink-tertiary">Precio: <span class="font-semibold text-ink-secondary">{plan.price}</span></p>
               {plan.id === "launch" && <p class="mt-3"><a href="/paquetes/" class="link-more">Ver paquetes</a></p>}
+              {plan.id === "digital-care" && <p class="mt-1 text-caption text-ink-secondary">$130.000 al mes con Catálogo en línea.</p>}
             </div>
             {i < PLANS.length - 1 && <span class="absolute -right-[0.95rem] top-1/2 hidden -translate-y-1/2 text-[1.5rem] text-ink-tertiary lg:block" aria-hidden="true">›</span>}
           </li>

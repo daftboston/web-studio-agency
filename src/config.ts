@@ -33,24 +33,30 @@ export const CONTACT = {
 } as const;
 
 /**
- * PLACEHOLDER prices. Pricing is defined by Mr market (docs/PACKAGES.md, docs/PLANS.md).
- * Until then every price shows "Cotiza por WhatsApp". Replace a value with e.g. "Desde $___".
+ * Launch prices approved by Mr market (2026-10-08): current entry prices for the first clients, in COP.
+ * Not estimates. The setup price includes the domain and the first month of Digital Care.
+ * Only these three offers have a price. Profesional (larger corporate site) and Growth are quoted.
  */
 export const PRICES = {
-  presencia: "Cotiza por WhatsApp",
-  profesional: "Cotiza por WhatsApp",
-  commerce: "Cotiza por WhatsApp",
-  launch: "Cotiza por WhatsApp",
-  digitalCare: "Cotiza por WhatsApp",
-  growth: "Cotiza por WhatsApp",
+  landing: { setup: "$600.000", monthly: "$90.000" },
+  paginaWeb: { setup: "$900.000", monthly: "$90.000" },
+  catalogo: { setup: "$1.500.000", monthly: "$130.000" },
+  profesional: "Se cotiza",
+  growth: "Se cotiza según el proyecto",
+  launchFrom: "Desde $600.000",
+  digitalCareFrom: "Desde $90.000 al mes",
+  /** Shown under every price list. */
+  includes: "El pago inicial incluye el dominio y el primer mes de Digital Care.",
+  note: "Precios de lanzamiento para los primeros clientes, en pesos colombianos (COP).",
 } as const;
 
 /** Prefilled WhatsApp messages, copied from docs/SITE-SPEC.md. */
 export const WA_MESSAGES = {
   default: "Hola Filmika, vi tu página y quiero información sobre una página web para mi negocio.",
-  presencia: "Hola Filmika, quiero información sobre el Paquete Presencia.",
-  profesional: "Hola Filmika, quiero información sobre el Paquete Profesional.",
-  commerce: "Hola Filmika, quiero información sobre el Paquete Commerce.",
+  landing: "Hola Filmika, quiero información sobre Landing + campaña.",
+  paginaWeb: "Hola Filmika, quiero información sobre el paquete Página web.",
+  catalogo: "Hola Filmika, quiero información sobre el Catálogo en línea.",
+  profesional: "Hola Filmika, quiero cotizar un sitio Profesional.",
   planes: "Hola Filmika, quiero saber cómo funcionan los planes mensuales.",
   servicios: "Hola Filmika, quiero saber qué servicio le sirve a mi negocio.",
 } as const;

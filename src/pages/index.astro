@@ -15,7 +15,7 @@ import { PLANS, PROCESS } from "../data/plans";
 import { PROJECTS } from "../data/portfolio";
 import { SERVICES } from "../data/services";
 import { FAQ } from "../data/faq";
-import { SITE } from "../config";
+import { SITE, PRICES } from "../config";
 ---
 <Base title="Filmika" description={SITE.defaultDescription} scenes>
   <!-- 1. Hero: statement headline rising out of masks, then a wide media panel that opens up on scroll -->
@@ -147,7 +147,8 @@ import { SITE } from "../config";
           </div>
         ))}
       </div>
-      <p class="mt-stack text-center"><a href="/paquetes/" class="link-more">Comparar paquetes</a></p>
+      <p class="mx-auto mt-stack max-w-text text-center text-caption text-ink-secondary">{PRICES.includes} {PRICES.note}</p>
+      <p class="mt-5 text-center"><a href="/paquetes/" class="link-more">Ver los paquetes</a></p>
     </div>
   </Section>
 

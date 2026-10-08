@@ -1,4 +1,4 @@
-/** Recurring plans from docs/PLANS.md. No prices (placeholders live in src/config.ts). */
+/** Recurring plans from docs/PLANS.md. Prices come from src/config.ts (launch prices, 2026-10-08). */
 import { PRICES } from "../config";
 
 export const PLANS = [
@@ -7,15 +7,15 @@ export const PLANS = [
     name: "Launch",
     label: "Pago inicial",
     short: "Tu página, con el paquete que elijas.",
-    text: "Construimos y publicamos tu página con uno de los paquetes: Presencia, Profesional o Commerce.",
-    items: ["Presencia", "Profesional", "Commerce"],
-    price: PRICES.launch,
+    text: "Construimos y publicamos tu página con uno de los paquetes: Landing + campaña, Página web o Catálogo en línea. Incluye el dominio y el primer mes de Digital Care.",
+    items: ["Landing + campaña · $600.000", "Página web · $900.000", "Catálogo en línea · $1.500.000"],
+    price: PRICES.launchFrom,
   },
   {
     id: "digital-care",
     name: "Digital Care",
     label: "Mensualidad",
-    short: "Cada mes cuidamos tu página para que siga trabajando por ti.",
+    short: "Cada mes cuidamos tu página para que siga trabajando por ti. Desde $90.000 al mes.",
     text: "Cada mes nos encargamos de tu página: cambios, fotos, productos y soporte. Tú solo nos escribes por WhatsApp.",
     items: [
       "Hosting",
@@ -30,7 +30,7 @@ export const PLANS = [
       "Google Business",
       "Reporte mensual",
     ],
-    price: PRICES.digitalCare,
+    price: PRICES.digitalCareFrom,
   },
   {
     id: "growth",

@@ -3,8 +3,8 @@ import type { Package } from "../data/packages";
 import WhatsAppButton from "./WhatsAppButton.astro";
 interface Props { pkg: Package; compact?: boolean; index?: number }
 const { pkg, compact = false, index = 0 } = Astro.props;
-const shown = compact ? [] : pkg.incluye.slice(0, 8);
-const rest = compact ? [] : pkg.incluye.slice(8);
+const shown = compact ? [] : pkg.incluye.slice(0, 10);
+const rest = compact ? [] : pkg.incluye.slice(10);
 ---
 <article
   id={compact ? undefined : pkg.id}
@@ -25,7 +25,7 @@ const rest = compact ? [] : pkg.incluye.slice(8);
   <p class="text-caption text-ink-secondary"><span class="font-semibold text-ink">Ideal para:</span> {pkg.idealPara.join(" · ")}</p>
 
   {!compact && (
-    <div>
+    <div class="pb-2">
       <p class="mb-3 text-caption font-semibold text-ink">{pkg.incluyePrefix ?? "Incluye:"}</p>
       <ul class="check-list space-y-2 text-body text-ink" role="list">
         {shown.map((item) => <li>{item}</li>)}
@@ -43,14 +43,17 @@ const rest = compact ? [] : pkg.incluye.slice(8);
     </div>
   )}
 
-  <div class="mt-auto pt-2">
-    {compact ? (
-      <a href={`/paquetes/#${pkg.id}`} class="link-more">Ver detalle</a>
-    ) : (
-      <>
-        <p class="mb-3 text-caption text-ink-tertiary">Precio: <span class="font-semibold text-ink-secondary">{pkg.price}</span></p>
-        <WhatsAppButton message={pkg.wa} label="Cotizar por WhatsApp" class="w-full" />
-      </>
-    )}
+  {!compact && pkg.note && <p class="text-caption text-ink-secondary">{pkg.note}</p>}
+  <div class="mt-auto border-t border-line pt-5">
+    <p class="text-caption text-ink-secondary">Pago inicial</p>
+    <p class="text-[clamp(1.875rem,2.4vw,2.375rem)] font-semibold leading-tight tracking-[-0.025em] text-ink tabular-nums">{pkg.price.setup}</p>
+    <p class="mt-1 text-body text-ink-secondary">+ <span class="font-semibold text-ink tabular-nums">{pkg.price.monthly}</span> al mes de Digital Care</p>
+    <div class="mt-5">
+      {compact ? (
+        <a href={`/paquetes/#${pkg.id}`} class="link-more">Ver qué incluye<span class="sr-only"> {pkg.name}</span></a>
+      ) : (
+        <WhatsAppButton message={pkg.wa} label="Pedir por WhatsApp" class="w-full" />
+      )}
+    </div>
   </div>
 </article>

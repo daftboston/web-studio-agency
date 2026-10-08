@@ -25,7 +25,7 @@
 
 ## Phase 5: Deploy (site v1 live)
 - Filmika site v1 is live at https://filmika.netlify.app (deployed from `site-v1` on 2026-10-08).
-- Still to do: replace the WhatsApp placeholder, publish the niche demos, then share the link in outreach.
+- Done 2026-10-08: real WhatsApp number and launch prices on the site. Still to do: publish the niche demos, then share the link in outreach.
 
 ## Ongoing: Digital Care and Growth
 - After each client launch, move them to Digital Care (monthly).

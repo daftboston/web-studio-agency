@@ -4,79 +4,56 @@ import PageHero from "../components/PageHero.astro";
 import Section from "../components/Section.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import PackageCard from "../components/PackageCard.astro";
-import { PACKAGES, COMPARISON } from "../data/packages";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import { PACKAGES, PROFESIONAL } from "../data/packages";
+import { PRICES } from "../config";
 const avoided = ["Carrito", "Checkout", "Pasarela", "Inventario", "Pagos", "Logística", "Devoluciones"];
 ---
 <Base
   title="Paquetes"
-  description="Tres paquetes de página web: Presencia, Profesional y Commerce (Catálogo + Venta por WhatsApp). Elige el tuyo y cotiza por WhatsApp."
+  description="Página web $900.000, Catálogo en línea $1.500.000 y Landing + campaña $600.000, más Digital Care desde $90.000 al mes. Precios de lanzamiento en COP."
 >
   <PageHero
     eyebrow="Paquetes"
     title="Elige el paquete para tu negocio."
-    lead="Cada paquete es un punto de partida distinto. Te ayudamos a decidir por WhatsApp."
+    lead="Tres puntos de partida con precio claro. Un pago inicial para construir tu página y una mensualidad para que siga trabajando."
   />
 
   <section class="bg-canvas pb-section" aria-labelledby="h-lista">
     <div class="container-content">
-      <h2 id="h-lista" class="sr-only">Los 3 paquetes</h2>
+      <h2 id="h-lista" class="sr-only">Los 3 paquetes y sus precios</h2>
       <div class="grid items-stretch gap-grid lg:grid-cols-3">
         {PACKAGES.map((p, i) => <PackageCard pkg={p} index={i} />)}
       </div>
-      <p class="mx-auto mt-stack max-w-text text-center text-caption text-ink-tertiary">Cada paquete tiene un pago inicial y una mensualidad. Te enviamos una cotización clara después de una llamada corta.</p>
+      <div class="mx-auto mt-stack max-w-text text-center">
+        <p class="text-body font-semibold text-ink">{PRICES.includes}</p>
+        <p class="mt-2 text-caption text-ink-secondary">{PRICES.note}</p>
+      </div>
     </div>
   </section>
 
-  <!-- Comparison -->
-  <Section tone="surface" labelledby="h-compare">
-    <div class="container-content">
-      <SectionHeader id="h-compare" title="Compara los paquetes." lead="El Paquete Profesional incluye todo lo del Paquete Presencia, más:" />
-
-      <div class="hidden overflow-hidden rounded-card bg-canvas lg:block" data-reveal>
-        <table class="w-full text-left text-body">
-          <caption class="sr-only">Comparación entre los paquetes Presencia y Profesional</caption>
-          <thead>
-            <tr class="border-b border-line">
-              <th scope="col" class="px-8 py-5 text-caption font-semibold text-ink-secondary">Incluye</th>
-              <th scope="col" class="w-48 px-8 py-5 text-center text-title text-ink">Presencia</th>
-              <th scope="col" class="w-48 px-8 py-5 text-center text-title text-ink">Profesional</th>
-            </tr>
-          </thead>
-          <tbody>
-            {COMPARISON.map((row) => (
-              <tr class="border-b border-line last:border-0">
-                <th scope="row" class="px-8 py-3.5 font-normal text-ink">{row.label}</th>
-                {[row.presencia, row.profesional].map((v) => (
-                  <td class="px-8 py-3.5 text-center">
-                    {v ? <span class="text-accent" aria-label="Incluido">✓</span> : <span class="text-ink-tertiary" aria-label="No incluido">—</span>}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+  <!-- Sitio Profesional: larger corporate site, quoted (no approved price) -->
+  <Section tone="surface" labelledby="profesional" class="scroll-mt-12">
+    <div class="container-content grid gap-stack lg:grid-cols-12 lg:gap-grid">
+      <div class="lg:col-span-5" data-reveal>
+        <p class="eyebrow mb-3">¿Necesitas algo más grande?</p>
+        <h2 id="profesional" class="scroll-mt-24 text-headline text-ink">{PROFESIONAL.name}</h2>
+        <p class="mt-4 text-lead text-ink-secondary">{PROFESIONAL.promise}</p>
+        <p class="mt-6 text-caption text-ink-secondary">Precio</p>
+        <p class="text-title text-ink">{PROFESIONAL.price}</p>
+        <div class="mt-6"><WhatsAppButton message={PROFESIONAL.wa} label="Cotizar por WhatsApp" class="w-full sm:w-auto" /></div>
       </div>
-
-      <div class="divide-y divide-line rounded-card bg-canvas px-6 lg:hidden">
-        {PACKAGES.map((p) => (
-          <details class="details-row">
-            <summary>{p.name}</summary>
-            <div class="pb-6">
-              <p class="mb-3 text-caption font-semibold text-ink">{p.incluyePrefix ?? "Incluye:"}</p>
-              <ul class="check-list space-y-2 text-body text-ink" role="list">{p.incluye.map((i) => <li>{i}</li>)}</ul>
-            </div>
-          </details>
-        ))}
-      </div>
-      <p class="mx-auto mt-6 max-w-text text-center text-caption text-ink-tertiary">El Paquete Commerce se arma según tu catálogo. Te explicamos qué incluye por WhatsApp.</p>
+      <ul class="check-list grid content-start gap-3 rounded-card bg-canvas p-7 text-body text-ink sm:grid-cols-2 md:p-8 lg:col-span-6 lg:col-start-7" role="list" aria-label={`Qué incluye ${PROFESIONAL.name}`} data-reveal style="--reveal-i:1">
+        {PROFESIONAL.incluye.map((x) => <li>{x}</li>)}
+      </ul>
     </div>
   </Section>
 
-  <!-- La gran diferencia (Profesional) -->
+  <!-- La gran diferencia (Sitio Profesional) -->
   <Section labelledby="h-diferencia">
     <div class="container-content grid items-center gap-stack lg:grid-cols-2 lg:gap-16">
       <div data-reveal>
-        <p class="eyebrow mb-3">Paquete Profesional</p>
+        <p class="eyebrow mb-3">Sitio Profesional</p>
         <h2 id="h-diferencia" class="text-headline text-ink">La gran diferencia: tráfico orgánico.</h2>
         <p class="mt-4 text-lead text-ink-secondary">Con guías útiles en tu página, Google puede traerte clientes que ya están buscando lo que ofreces. Así el contenido se convierte en clientes.</p>
       </div>
@@ -95,15 +72,15 @@ const avoided = ["Carrito", "Checkout", "Pasarela", "Inventario", "Pagos", "Log�
     </div>
   </Section>
 
-  <!-- Por qué funciona (Commerce) — dark band -->
+  <!-- Por qué funciona (Catálogo en línea) — dark band -->
   <Section tone="dark" labelledby="h-funciona">
     <div class="container-content grid items-center gap-stack lg:grid-cols-2 lg:gap-16">
       <div data-reveal>
-        <p class="eyebrow mb-3">Paquete Commerce</p>
+        <p class="eyebrow mb-3">Catálogo en línea</p>
         <h2 id="h-funciona" class="text-headline text-ink">Catálogo + Venta por WhatsApp.</h2>
         <p class="mt-4 text-lead text-ink-secondary">Es mucho más sencillo que montar una tienda en línea completa. Para muchos negocios, esto es suficiente.</p>
         <ul class="mt-6 flex flex-wrap gap-2" role="list" aria-label="Lo que no necesitas montar">
-          {avoided.map((a) => <li class="chip text-ink-tertiary line-through">{a}</li>)}
+          {avoided.map((a) => <li class="chip text-ink-secondary line-through">{a}</li>)}
         </ul>
       </div>
       <figure class="rounded-card bg-surface p-7 md:p-8" data-reveal style="--reveal-i:1">

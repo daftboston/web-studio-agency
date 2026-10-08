@@ -46,16 +46,18 @@ The site speaks to **any business**. No copy targets constructoras, talleres, ó
 
 ### Paquetes
 Content source: [PACKAGES.md](PACKAGES.md).
-- One card per package:
-  - 🟢 **Presencia**: landing page profesional para existir en Internet.
-  - 🔵 **Profesional**: sitio corporativo completo que genera tráfico orgánico.
-  - 🟣 **Commerce**: Catálogo + Venta por WhatsApp.
-- Each card shows: who it is for ("Ideal para"), the main sections, and the "Incluye" list.
-- Each card has its own WhatsApp CTA with a prefilled message naming the package, for example:
-  > Hola Filmika, quiero información sobre el Paquete Presencia.
-  > Hola Filmika, quiero información sobre el Paquete Profesional.
-  > Hola Filmika, quiero información sobre el Paquete Commerce.
-- **No prices on the site for now** (pricing is defined by Mr market).
+- One card per priced package (launch prices, 2026-10-08):
+  - **Landing + campaña**: una página hecha para recibir a quien llega desde tus anuncios. $600.000 + $90.000 al mes.
+  - **Página web** (recomendado): 4–5 páginas, WhatsApp y Google Business. $900.000 + $90.000 al mes.
+  - **Catálogo en línea**: panel para subir productos, pedidos por WhatsApp. $1.500.000 + $130.000 al mes.
+- Below the cards: "El pago inicial incluye el dominio y el primer mes de Digital Care." and the COP / launch-price note.
+- **Sitio Profesional** (larger corporate site, from the original Paquete 2): its own block, price "Se cotiza".
+- Each card shows "Ideal para", the "Incluye" list and the price, plus its own WhatsApp CTA with a prefilled message:
+  > Hola Filmika, quiero información sobre Landing + campaña.
+  > Hola Filmika, quiero información sobre el paquete Página web.
+  > Hola Filmika, quiero información sobre el Catálogo en línea.
+  > Hola Filmika, quiero cotizar un sitio Profesional.
+- **Prices on the site** (launch prices approved by Mr market, 2026-10-08): Landing + campaña $600.000, Página web $900.000, Catálogo en línea $1.500.000, each + Digital Care ($90.000 / $130.000 al mes). Sitio Profesional and Growth: "Se cotiza". All from `PRICES` in `src/config.ts`.
 
 ### Planes (planes y servicios)
 Content source: [PLANS.md](PLANS.md).
@@ -70,7 +72,7 @@ Content source: [PLANS.md](PLANS.md).
   > No desaparecemos después del lanzamiento.
 - WhatsApp CTA:
   > Hola Filmika, quiero saber cómo funcionan los planes mensuales.
-- **No prices on the site for now** (placeholders only, defined by Mr market).
+- **Prices:** shown on Paquetes, the Inicio preview, Planes and the FAQ, from `PRICES` in `src/config.ts`.
 
 ### Portafolio
 - One immersive case study per real project: full-bleed panel with a large browser frame and a real phone screenshot, then name, outcome headline, tags, "El reto" and "Lo que construimos", and the live link (or "Enlace disponible pronto").

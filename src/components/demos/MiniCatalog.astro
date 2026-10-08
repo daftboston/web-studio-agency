@@ -1,6 +1,6 @@
 ---
 /**
- * Demo interactiva (óptica / Paquete Commerce): filterable catalog where each product's
+ * Demo interactiva (óptica / Catálogo en línea): filterable catalog where each product's
  * "Comprar por WhatsApp" link is rebuilt live from the chosen color.
  * Products, references and prices are illustrative example data.
  */
@@ -61,7 +61,7 @@ const msg = (p: (typeof products)[number], color: string) =>
               </label>
             ))}
           </fieldset>
-          <span class:list={["text-caption font-medium", p.stock ? "text-whatsapp" : "text-ink-tertiary"]}>{p.stock ? "Disponible" : "Agotado"}</span>
+          <span class:list={["text-caption font-medium", p.stock ? "text-ink" : "text-ink-tertiary"]}>{p.stock ? "Disponible" : "Agotado"}</span>
         </div>
         <a href={waLink(msg(p, p.colors[0][0]))} target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm mt-3 w-full" data-wa-inline data-buy>
           <WaIcon size={18} /><span>{p.stock ? "Comprar por WhatsApp" : "Avisarme por WhatsApp"}</span>

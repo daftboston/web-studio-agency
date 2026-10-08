@@ -2,7 +2,7 @@
 export const FAQ = [
   {
     q: "¿Cuánto cuesta?",
-    a: "Tiene un pago inicial para construir tu página y una mensualidad para mantenerla activa y al día. Después de una llamada corta te enviamos una cotización clara con los dos valores.",
+    a: "Un pago inicial y una mensualidad. Página web: $900.000 + $90.000 al mes. Catálogo en línea: $1.500.000 + $130.000 al mes. Landing + campaña: $600.000 + $90.000 al mes. El pago inicial incluye el dominio y el primer mes de Digital Care. Son precios de lanzamiento para los primeros clientes, en pesos colombianos. Un sitio más grande o Growth se cotiza según el proyecto.",
   },
   {
     q: "¿En cuánto tiempo está lista?",

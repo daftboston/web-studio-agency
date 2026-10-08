@@ -11,13 +11,13 @@ The site speaks to **any business** (copy direction, 2026-10-08). Outreach niche
 
 ## Business model
 Initial fee plus monthly fee, not a one-time page:
-**Launch** (one of the 3 packages) → **Digital Care** (monthly) → **Growth** (add-ons). See [docs/PLANS.md](docs/PLANS.md). Prices are placeholders.
+**Launch** (one of the 3 packages) → **Digital Care** (monthly) → **Growth** (add-ons). See [docs/PLANS.md](docs/PLANS.md). Launch prices approved 2026-10-08.
 
 ## Status
 - Planning docs: done.
 - Name: **chosen, Filmika**.
-- Packages: defined (Presencia, Profesional, Commerce). Prices pending.
-- Plans: defined (Launch, Digital Care, Growth). Prices pending.
+- Packages: Landing + campaña ($600.000), Página web ($900.000), Catálogo en línea ($1.500.000), each + Digital Care ($90.000 or $130.000 / mes). Sitio Profesional: se cotiza.
+- Plans: Launch (desde $600.000, incluye dominio y primer mes de Digital Care) → Digital Care (desde $90.000 / mes) → Growth (se cotiza según el proyecto).
 - Niche template repos: created, spec only (see below).
 - Website: **v1 live at https://filmika.netlify.app** (Astro + Tailwind v4, static, Netlify), deployed from branch `site-v1` on 2026-10-08. Placeholders listed below are still live and must be replaced.
 
@@ -26,7 +26,7 @@ Initial fee plus monthly fee, not a one-time page:
 ### Stack
 - [Astro](https://astro.build) 7 (static output) + [Tailwind CSS](https://tailwindcss.com) v4 via `@tailwindcss/vite`
 - Inter Variable, self-hosted with `@fontsource-variable/inter` (no Google Fonts request)
-- Design: Apple-inspired system by figma bro (accent `#3d3ad6`, WhatsApp green `#1a7f45`, warm neutrals). Tokens live in `src/styles/global.css`.
+- Design: Apple-inspired system by figma bro (accent `#3d3ad6`, WhatsApp green `#25D366` with dark `#141413` labels, warm neutrals). Tokens live in `src/styles/global.css`.
 - No animation libraries: IntersectionObserver reveals and image zooms (visible without JS), CSS-only headline masks and scroll-driven effects (written as longhands so the minifier cannot fold `animation-timeline` into the shorthand), native View Transitions, `prefers-reduced-motion` respected. See docs/REFERENCES.md.
 - `@astrojs/sitemap` builds `sitemap-index.xml`; `robots.txt` is generated from the site URL.
 - Contact form uses Netlify Forms (`data-netlify`, honeypot).
@@ -76,7 +76,7 @@ Notes:
 | What | File |
 |---|---|
 | WhatsApp number, email, city, prices, WhatsApp messages, site URL | `src/config.ts` (the only place) |
-| Packages (Presencia, Profesional, Commerce) | `src/data/packages.ts` (from docs/PACKAGES.md) |
+| Packages (Landing + campaña, Página web, Catálogo en línea; Sitio Profesional quoted) | `src/data/packages.ts` (from docs/PACKAGES.md) |
 | Plans (Launch, Digital Care, Growth) and the 4-step process | `src/data/plans.ts` (from docs/PLANS.md, SITE-SPEC.md) |
 | Portfolio projects and demos | `src/data/portfolio.ts` + images in `src/assets/portfolio/` |
 | Colors, type, spacing, motion | `src/styles/global.css` |
@@ -87,12 +87,12 @@ Every `wa.me` link is built by `waLink()` in `src/config.ts`, so changing the nu
 
 ### Already set
 - Email: `dsantoyop@gmail.com` (`CONTACT.email`)
+- Prices: launch prices in `PRICES` (approved by Mr market, 2026-10-08; see docs/PACKAGES.md)
 - WhatsApp: `573214527399`, shown as `+57 321 452 7399` (`CONTACT.whatsappNumber` / `CONTACT.whatsappDisplay`)
 - Site URL: `https://filmika.netlify.app` (`SITE.url`; change it when a custom domain exists)
 
 ### Placeholders to replace (the site is live, so these are visible now)
 - `CONTACT.city` = `Colombia` (country only; confirm)
-- `PRICES.*` = "Cotiza por WhatsApp" (prices pending from Mr market)
 - Tesla Partes live URL (`url: null` in `src/data/portfolio.ts`; the tile shows "Enlace disponible pronto")
 - Niche demos (constructora, taller, óptica) are shown as "Próximamente"
 - Logo: text wordmark + simple "F" favicon until a real logo exists
@@ -103,7 +103,7 @@ Every `wa.me` link is built by `waLink()` in `src/config.ts`, so changing the nu
 |---|---|
 | [docs/BRAND.md](docs/BRAND.md) | Name, tagline, tone of voice, sample Spanish copy |
 | [docs/SITE-SPEC.md](docs/SITE-SPEC.md) | Goals, sitemap, sections, copy direction, trust elements, CTA |
-| [docs/PACKAGES.md](docs/PACKAGES.md) | The 3 Filmika packages: Presencia, Profesional, Commerce |
+| [docs/PACKAGES.md](docs/PACKAGES.md) | Launch prices and the Filmika packages |
 | [docs/PLANS.md](docs/PLANS.md) | Recurring model: Launch → Digital Care → Growth |
 | [docs/PORTFOLIO.md](docs/PORTFOLIO.md) | Real projects, pending items, niche demos |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | Phases and the ongoing prospect mockups track |

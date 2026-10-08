@@ -87,11 +87,11 @@ Every `wa.me` link is built by `waLink()` in `src/config.ts`, so changing the nu
 
 ### Already set
 - Email: `dsantoyop@gmail.com` (`CONTACT.email`)
+- WhatsApp: `573214527399`, shown as `+57 321 452 7399` (`CONTACT.whatsappNumber` / `CONTACT.whatsappDisplay`)
 - Site URL: `https://filmika.netlify.app` (`SITE.url`; change it when a custom domain exists)
 
 ### Placeholders to replace (the site is live, so these are visible now)
-- `CONTACT.whatsappNumber` = `57XXXXXXXXXX` and `CONTACT.whatsappDisplay`
-- `CONTACT.city` = `Bogotá, Colombia` (confirm)
+- `CONTACT.city` = `Colombia` (country only; confirm)
 - `PRICES.*` = "Cotiza por WhatsApp" (prices pending from Mr market)
 - Tesla Partes live URL (`url: null` in `src/data/portfolio.ts`; the tile shows "Enlace disponible pronto")
 - Niche demos (constructora, taller, óptica) are shown as "Próximamente"

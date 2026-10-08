@@ -22,10 +22,10 @@ export const SITE = {
 } as const;
 
 export const CONTACT = {
-  /** PLACEHOLDER: WhatsApp number in international format, digits only (57 + 10 digits). */
-  whatsappNumber: "57XXXXXXXXXX",
-  /** PLACEHOLDER: how the number is shown on the page. */
-  whatsappDisplay: "+57 XXX XXX XXXX",
+  /** WhatsApp number in international format, digits only (57 + 10 digits). Confirmed 2026-10-08. */
+  whatsappNumber: "573214527399",
+  /** How the number is shown on the page. */
+  whatsappDisplay: "+57 321 452 7399",
   /** Contact email (confirmed by the owner, 2026-10-08). */
   email: "dsantoyop@gmail.com",
   /** Shown on Contacto and in the footer. Country only: the site speaks to any business (copy direction, 2026-10-08). */

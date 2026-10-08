@@ -5,17 +5,20 @@ interface Props {
   id?: string;
   class?: string;
   labelledby?: string;
+  /** Scroll-driven background scene. When set, the section is transparent and the page colour changes. */
+  scene?: "light" | "warm" | "dark" | "accent";
 }
-const { tone = "canvas", tight = false, id, class: cls = "", labelledby } = Astro.props;
+const { tone = "canvas", tight = false, id, class: cls = "", labelledby, scene } = Astro.props;
 ---
 <section
   id={id}
   aria-labelledby={labelledby}
+  data-scene={scene}
   class:list={[
     tight ? "py-section-tight" : "py-section",
-    tone === "surface" && "bg-surface",
-    tone === "canvas" && "bg-canvas",
-    tone === "dark" && "theme-dark",
+    !scene && tone === "surface" && "bg-surface",
+    !scene && tone === "canvas" && "bg-canvas",
+    !scene && tone === "dark" && "theme-dark",
     cls,
   ]}
 >

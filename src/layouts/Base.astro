@@ -17,6 +17,8 @@ interface Props {
   hideFinalCta?: boolean;
   finalCtaMessage?: string;
   noindex?: boolean;
+  /** Scroll-driven page background: sections carry data-scene, see global.css. */
+  scenes?: boolean;
 }
 const {
   title,
@@ -26,6 +28,7 @@ const {
   hideFinalCta = false,
   finalCtaMessage,
   noindex = false,
+  scenes = false,
 } = Astro.props;
 const fullTitle = title === SITE.name ? SITE.tagline : `${title} · ${SITE.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -64,14 +67,14 @@ const ogUrl = new URL(ogImage, Astro.site).href;
     <meta name="twitter:image" content={ogUrl} />
     <slot name="head" />
   </head>
-  <body class="min-h-dvh bg-canvas text-ink">
+  <body class:list={["min-h-dvh text-ink", scenes ? "bg-page" : "bg-canvas"]} data-scenes={scenes ? "" : undefined}>
     <a href="#main" class="sr-only z-[60] rounded-full bg-ink px-4 py-2 text-on-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-2">Saltar al contenido</a>
     <Nav />
     <main id="main" data-main>
       <slot />
-      {!hideFinalCta && <FinalCta message={finalCtaMessage} />}
+      {!hideFinalCta && <FinalCta message={finalCtaMessage} scene={scenes ? "light" : undefined} />}
     </main>
-    <Footer />
+    <Footer scene={scenes ? "light" : undefined} />
     {!hideFab && <FloatingWhatsApp />}
 
     <script>
@@ -88,6 +91,28 @@ const ogUrl = new URL(ogImage, Astro.site).href;
         { rootMargin: "0px 0px -10% 0px", threshold: 0.15 },
       );
       document.querySelectorAll("[data-reveal], [data-zoom]").forEach((el) => reveal.observe(el));
+
+      // 1b) Scroll-driven page background: the [data-scene] element crossing the middle of the
+      //     viewport sets <html data-scene>. Colours transition in CSS (global.css).
+      if (document.body.hasAttribute("data-scenes")) {
+        const root = document.documentElement;
+        const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+        const pageColor: Record<string, string> = { light: "#ffffff", warm: "#f5f4f1", dark: "#0d0d0c", accent: "#3d3ad6" };
+        const scenes = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (!e.isIntersecting) continue;
+              const scene = (e.target as HTMLElement).dataset.scene || "light";
+              if (root.dataset.scene !== scene) {
+                root.dataset.scene = scene;
+                meta?.setAttribute("content", pageColor[scene] ?? "#ffffff");
+              }
+            }
+          },
+          { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
+        );
+        document.querySelectorAll("[data-scene]").forEach((el) => scenes.observe(el));
+      }
 
       // 2) Floating WhatsApp: hide while an inline WhatsApp CTA is on screen or the menu is open
       const fab = document.querySelector<HTMLElement>("[data-fab]");

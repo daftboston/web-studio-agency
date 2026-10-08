@@ -1,10 +1,10 @@
 ---
 import WhatsAppButton from "./WhatsAppButton.astro";
 import { CONTACT } from "../config";
-interface Props { message?: string }
-const { message = "default" } = Astro.props;
+interface Props { message?: string; scene?: string }
+const { message = "default", scene } = Astro.props;
 ---
-<section class="bg-canvas pb-section pt-section-tight" aria-labelledby="cta-final">
+<section class:list={["pb-section pt-section-tight", !scene && "bg-canvas"]} data-scene={scene} aria-labelledby="cta-final">
   <div class="container-wide">
     <div class="theme-dark panel-bleed !mx-0" data-band>
       <div class="grid gap-10 px-6 py-section md:px-12 lg:grid-cols-12 lg:items-end lg:px-16">

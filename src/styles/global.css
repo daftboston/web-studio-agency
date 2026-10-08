@@ -53,7 +53,9 @@
 
 /* Scoped dark BAND (one or two dramatic sections per page, apple.com-style).
    Full site-wide dark mode is intentionally NOT shipped in v1 (see spec §2). */
-.theme-dark {
+.theme-dark,
+html[data-scene="dark"],
+html:not(.js) [data-scene="dark"] {
   --canvas: #0d0d0c;            /* [proposed] */
   --surface: #1a1a18;           /* [proposed] */
   --surface-2: #262624;         /* [proposed] */
@@ -375,7 +377,9 @@ html[data-menu-open] .nav-bar { background: var(--canvas); }
 /* ───────────── v1.1: editorial layer (Instrument-inspired energy on figma bro's tokens) ───────────── */
 
 /* Accent band: full indigo, used once per page for the capability showcase. */
-.theme-accent {
+.theme-accent,
+html[data-scene="accent"],
+html:not(.js) [data-scene="accent"] {
   --canvas: #3d3ad6;
   --surface: #322fb8;
   --surface-2: #2f2cb0;
@@ -409,7 +413,8 @@ html[data-menu-open] .nav-bar { background: var(--canvas); }
   .panel-bleed { @apply mx-2 overflow-hidden rounded-[1.75rem] md:mx-4 md:rounded-[2.5rem]; }
 
   .chip-demo { @apply inline-flex h-7 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-accent-tint px-3 text-micro text-accent; }
-  .theme-accent .chip-demo, .theme-dark .chip-demo { @apply bg-surface-2 text-ink; }
+  .theme-accent .chip-demo, .theme-dark .chip-demo,
+  html[data-scene="accent"] .chip-demo, html[data-scene="dark"] .chip-demo { @apply bg-surface-2 text-ink; }
   .chip-demo::before { content: ""; @apply size-1.5 rounded-full bg-current; }
 
   /* Toggle chips (filters, radio chips). 44px hit area. */
@@ -516,3 +521,53 @@ html:not(.js) [data-js-only] { display: none !important; }
   .word-mask > span { animation-duration: 0.75s; animation-delay: calc(var(--line, 0) * 50ms); }
   .rise-in { animation-duration: 0.7s; animation-delay: calc(var(--d, 0) * 0.4ms); }
 }
+
+
+/* ───────────── Scroll-driven page background (Clay-style) ─────────────
+   Pages that opt in (Base `scenes`) mark sections with data-scene="light | warm | dark | accent".
+   One IntersectionObserver (Base.astro) copies the scene of the section crossing the middle of the
+   viewport onto <html data-scene>. Each scene is a complete, contrast-checked palette (the same
+   values as the light root, .theme-dark and .theme-accent), so text, cards and the page colour
+   always change together. The palette variables are registered with @property so they can
+   transition: ~800ms, cubic-bezier(0.22, 1, 0.36, 1). Reduced motion makes the swap instant
+   (global rule). Without JS no scene is set and each section paints its own band instead. */
+@property --page        { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+@property --canvas      { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+@property --surface     { syntax: "<color>"; inherits: true; initial-value: #f6f5f3; }
+@property --surface-2   { syntax: "<color>"; inherits: true; initial-value: #e9e7e2; }
+@property --ink         { syntax: "<color>"; inherits: true; initial-value: #141413; }
+@property --ink-secondary { syntax: "<color>"; inherits: true; initial-value: #55534e; }
+@property --ink-tertiary  { syntax: "<color>"; inherits: true; initial-value: #6e6c66; }
+@property --line        { syntax: "<color>"; inherits: true; initial-value: #e3e1dc; }
+@property --line-strong { syntax: "<color>"; inherits: true; initial-value: #85837c; }
+@property --accent      { syntax: "<color>"; inherits: true; initial-value: #3d3ad6; }
+@property --accent-tint { syntax: "<color>"; inherits: true; initial-value: #ecebfb; }
+@property --on-ink      { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+
+:root { --page: #ffffff; --ease-scene: cubic-bezier(0.22, 1, 0.36, 1); --duration-scene: 800ms; }
+html[data-scene="warm"]   { --page: #f5f4f1; }  /* ink 16.9:1, ink-secondary 7.1:1, ink-tertiary 4.85:1, accent 6.9:1; white cards on it */
+html[data-scene="dark"]   { --page: #0d0d0c; }
+html[data-scene="accent"] { --page: #3d3ad6; }
+
+html {
+  background: var(--page);
+  transition:
+    --page var(--duration-scene) var(--ease-scene),
+    --canvas var(--duration-scene) var(--ease-scene),
+    --surface var(--duration-scene) var(--ease-scene),
+    --surface-2 var(--duration-scene) var(--ease-scene),
+    --ink var(--duration-scene) var(--ease-scene),
+    --ink-secondary var(--duration-scene) var(--ease-scene),
+    --ink-tertiary var(--duration-scene) var(--ease-scene),
+    --line var(--duration-scene) var(--ease-scene),
+    --line-strong var(--duration-scene) var(--ease-scene),
+    --accent var(--duration-scene) var(--ease-scene),
+    --accent-tint var(--duration-scene) var(--ease-scene),
+    --on-ink var(--duration-scene) var(--ease-scene);
+}
+body.bg-page { background: var(--page); }
+
+/* No JS: sections fall back to painting their own band */
+html:not(.js) [data-scene="warm"] { background: #f5f4f1; }
+/* Reduced motion: the page colour swaps instantly, no transition at all */
+@media (prefers-reduced-motion: reduce) { html { transition: none !important; } }

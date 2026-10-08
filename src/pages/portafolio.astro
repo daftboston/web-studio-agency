@@ -8,12 +8,15 @@ import PhoneFrame from "../components/PhoneFrame.astro";
 import DemoTile from "../components/DemoTile.astro";
 import { PROJECTS, DEMOS } from "../data/portfolio";
 const tones = ["theme-dark", "bg-surface-2"] as const;
+/** Page background per case: TruePhone on near-black, Tesla Partes back on light. */
+const scenesByCase = ["dark", "light"] as const;
 ---
 <Base
   title="Portafolio"
+  scenes
   description="Casos reales de Filmika: TruePhone, marketplace de iPhones usados con revisión de cada anuncio, y Tesla Partes, e-commerce de partes compatibles con Tesla en Colombia."
 >
-  <section class="overflow-x-clip bg-canvas pb-section-tight pt-section" aria-labelledby="h-port">
+  <section class="overflow-x-clip pb-section-tight pt-section" data-scene="light" aria-labelledby="h-port">
     <div class="container-wide">
       <p class="eyebrow rise-in mb-6">Portafolio</p>
       <MaskTitle id="h-port" class="text-display text-ink" lines={["Sitios que ya", "están trabajando."]} />
@@ -30,7 +33,7 @@ const tones = ["theme-dark", "bg-surface-2"] as const;
   </section>
 
   {PROJECTS.map((p, i) => (
-    <article class="bg-canvas pb-section" aria-labelledby={p.id}>
+    <article class="pb-section pt-section-tight" data-scene={scenesByCase[i % 2]} aria-labelledby={p.id}>
       <!-- Big media: full-bleed panel, browser frame settles flat, phone drifts on its own layer -->
       <div class:list={["panel-bleed relative", tones[i % 2]]} data-band>
         <div class="container-wide relative px-gutter pb-[16%] pt-section-tight md:pb-[10%] md:pt-section">
@@ -74,7 +77,7 @@ const tones = ["theme-dark", "bg-surface-2"] as const;
     </article>
   ))}
 
-  <Section tone="surface" labelledby="h-demos" id="ejemplos" class="scroll-mt-12">
+  <Section scene="warm" labelledby="h-demos" id="ejemplos" class="scroll-mt-12">
     <div class="container-content">
       <SectionHeader id="h-demos" eyebrow="Próximamente" title="Ejemplos para distintos tipos de negocio." lead="Así podría verse la página de tu negocio. Estamos preparando un ejemplo para cada forma de vender." />
       <div class="grid gap-grid md:grid-cols-3">

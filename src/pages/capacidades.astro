@@ -20,11 +20,12 @@ const index = [
 ---
 <Base
   title="Lo que podemos hacer"
+  scenes
   description="Demos interactivas de lo que Filmika puede construir para tu negocio: catálogo con pedidos por WhatsApp, antes y después de un trabajo, agenda de citas y páginas rápidas. Ejemplos para distintos tipos de negocio."
 >
   <!-- Editorial hero -->
-  <section class="overflow-x-clip bg-canvas pt-section-tight md:pt-section" aria-labelledby="h-cap">
-    <div class="container-wide">
+  <section class="overflow-x-clip pt-section-tight md:pt-section" aria-labelledby="h-cap">
+    <div class="container-wide" data-scene="light">
       <p class="label-rule"><span>Capacidades</span><span>Ejemplos para distintos tipos de negocio</span></p>
       <h1 id="h-cap" class="mt-6 text-mega text-ink md:mt-10">Lo que podemos hacer.</h1>
       <div class="mt-8 grid gap-6 lg:grid-cols-12 lg:gap-grid">
@@ -38,7 +39,7 @@ const index = [
     </div>
 
     <!-- 01: full-bleed accent panel with the phone cycler -->
-    <div class="theme-accent panel-bleed mt-section-tight" id="demo-celular-panel">
+    <div class="theme-accent panel-bleed mt-section-tight" id="demo-celular-panel" data-scene="accent">
       <div class="container-wide grid items-center gap-12 py-section lg:grid-cols-12">
         <div class="lg:col-span-6" data-reveal>
           <p class="label-rule"><span>01 — Ejemplos para distintos tipos de negocio</span></p>
@@ -54,7 +55,7 @@ const index = [
   </section>
 
   <!-- 02: Before / after -->
-  <Section labelledby="demo-antes-despues" class="scroll-mt-12">
+  <Section scene="light" labelledby="demo-antes-despues" class="scroll-mt-12">
     <div class="container-wide">
       <DemoIntro
         n="02"
@@ -70,7 +71,7 @@ const index = [
   </Section>
 
   <!-- 03: Catalog -->
-  <Section tone="surface" labelledby="demo-catalogo">
+  <Section scene="warm" labelledby="demo-catalogo">
     <div class="container-wide">
       <DemoIntro
         n="03"
@@ -86,7 +87,7 @@ const index = [
   </Section>
 
   <!-- 04: Agenda -->
-  <Section labelledby="demo-agenda">
+  <Section scene="light" labelledby="demo-agenda">
     <div class="container-wide">
       <DemoIntro
         n="04"
@@ -101,7 +102,7 @@ const index = [
   </Section>
 
   <!-- 05: Scroll-driven sample -->
-  <section class="overflow-x-clip bg-canvas pb-section" aria-labelledby="demo-movimiento">
+  <section class="overflow-x-clip pb-section pt-section-tight" data-scene="dark" aria-labelledby="demo-movimiento">
     <div class="container-wide">
       <DemoIntro
         n="05"
@@ -115,7 +116,7 @@ const index = [
   </section>
 
   <!-- 06: Speed -->
-  <Section tone="surface" labelledby="demo-velocidad">
+  <Section scene="warm" labelledby="demo-velocidad">
     <div class="container-wide">
       <DemoIntro
         n="06"

@@ -88,3 +88,22 @@ Filmika keeps figma bro's Apple-inspired tokens (accent `#3d3ad6`, warm neutrals
 - Content is visible by default. Masks, reveals and zooms only run under `prefers-reduced-motion: no-preference`, and the CSS-only parts (word masks, expand, settle, parallax) play without JavaScript.
 - Headlines never animate opacity — only transform — so contrast is never reduced.
 - One IntersectionObserver (already in `Base.astro`) drives both `[data-reveal]` and `[data-zoom]`. No animation libraries.
+
+## Addendum (2026-10-08): scroll-driven page background
+
+Clay changes the whole page colour as you move between chapters. Filmika now does the same on
+Inicio, Portafolio and Capacidades:
+
+- Each section carries `data-scene="light | warm | dark | accent"` (white, warm #f5f4f1,
+  near-black #0d0d0c, Filmika indigo #3d3ad6). Pages opt in with `<Base scenes>`.
+- One IntersectionObserver in `Base.astro` watches a line across the middle of the viewport
+  (`rootMargin: -50% 0px -50% 0px`) and copies the scene of the section on it to `<html data-scene>`;
+  it also updates `<meta name="theme-color">`.
+- `global.css` registers the palette variables with `@property` (`<color>`), so the page
+  background and all text, card, line and accent colours interpolate together:
+  800ms, `cubic-bezier(0.22, 1, 0.36, 1)`. Each scene is a full palette already checked for
+  contrast (light root, `.theme-dark`, `.theme-accent`), so text never sits on the wrong ground.
+- Reduced motion: `transition: none`, the colours swap instantly.
+- Without JS no scene is set and each section paints its own band (`html:not(.js) [data-scene]`).
+- Checked with axe-core at every 250px scroll position on desktop 1440 and phone 390: 0 on-screen
+  contrast issues in any scene. Lighthouse is unchanged.

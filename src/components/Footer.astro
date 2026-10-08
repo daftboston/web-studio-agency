@@ -2,8 +2,10 @@
 import { CONTACT, NAV_LINKS, SITE, waLink } from "../config";
 import Wordmark from "./Wordmark.astro";
 const year = new Date().getFullYear();
+interface Props { scene?: string }
+const { scene } = Astro.props;
 ---
-<footer class="bg-surface pt-section-tight pb-24 lg:pb-section-tight">
+<footer class="bg-surface pt-section-tight pb-24 lg:pb-section-tight" data-scene={scene}>
   <div class="container-content">
     <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
       <div>

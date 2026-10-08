@@ -9,12 +9,12 @@ const avoided = ["Carrito", "Checkout", "Pasarela", "Inventario", "Pagos", "Log�
 ---
 <Base
   title="Paquetes"
-  description="Tres paquetes de página web: Presencia, Profesional y Commerce (Catálogo + Venta por WhatsApp). Elija el suyo y cotice por WhatsApp."
+  description="Tres paquetes de página web: Presencia, Profesional y Commerce (Catálogo + Venta por WhatsApp). Elige el tuyo y cotiza por WhatsApp."
 >
   <PageHero
     eyebrow="Paquetes"
-    title="Elija el paquete para su negocio."
-    lead="Elija el paquete que mejor se adapta a su negocio. Le ayudamos a decidir por WhatsApp."
+    title="Elige el paquete para tu negocio."
+    lead="Cada paquete es un punto de partida distinto. Te ayudamos a decidir por WhatsApp."
   />
 
   <section class="bg-canvas pb-section" aria-labelledby="h-lista">
@@ -23,14 +23,14 @@ const avoided = ["Carrito", "Checkout", "Pasarela", "Inventario", "Pagos", "Log�
       <div class="grid items-stretch gap-grid lg:grid-cols-3">
         {PACKAGES.map((p, i) => <PackageCard pkg={p} index={i} />)}
       </div>
-      <p class="mx-auto mt-stack max-w-text text-center text-caption text-ink-tertiary">Los precios se definen según su negocio. Pregúntenos por WhatsApp.</p>
+      <p class="mx-auto mt-stack max-w-text text-center text-caption text-ink-tertiary">Cada paquete tiene un pago inicial y una mensualidad. Te enviamos una cotización clara después de una llamada corta.</p>
     </div>
   </section>
 
   <!-- Comparison -->
   <Section tone="surface" labelledby="h-compare">
     <div class="container-content">
-      <SectionHeader id="h-compare" title="Compare los paquetes." lead="El Paquete Profesional incluye todo lo del Paquete Presencia, más:" />
+      <SectionHeader id="h-compare" title="Compara los paquetes." lead="El Paquete Profesional incluye todo lo del Paquete Presencia, más:" />
 
       <div class="hidden overflow-hidden rounded-card bg-canvas lg:block" data-reveal>
         <table class="w-full text-left text-body">
@@ -68,7 +68,7 @@ const avoided = ["Carrito", "Checkout", "Pasarela", "Inventario", "Pagos", "Log�
           </details>
         ))}
       </div>
-      <p class="mx-auto mt-6 max-w-text text-center text-caption text-ink-tertiary">El Paquete Commerce se arma según su catálogo. Le explicamos qué incluye por WhatsApp.</p>
+      <p class="mx-auto mt-6 max-w-text text-center text-caption text-ink-tertiary">El Paquete Commerce se arma según tu catálogo. Te explicamos qué incluye por WhatsApp.</p>
     </div>
   </Section>
 
@@ -78,17 +78,17 @@ const avoided = ["Carrito", "Checkout", "Pasarela", "Inventario", "Pagos", "Log�
       <div data-reveal>
         <p class="eyebrow mb-3">Paquete Profesional</p>
         <h2 id="h-diferencia" class="text-headline text-ink">La gran diferencia: tráfico orgánico.</h2>
-        <p class="mt-4 text-lead text-ink-secondary">Con guías útiles en su página, Google puede llevarle clientes que están buscando lo que usted ofrece. Eso convierte contenido en clientes.</p>
+        <p class="mt-4 text-lead text-ink-secondary">Con guías útiles en tu página, Google puede traerte clientes que ya están buscando lo que ofreces. Así el contenido se convierte en clientes.</p>
       </div>
       <div class="space-y-4" data-reveal style="--reveal-i:1">
         <div class="rounded-card bg-surface p-6">
           <p class="text-caption text-ink-tertiary">Alguien busca en Google:</p>
-          <p class="mt-2 text-title text-ink">«¿Cada cuánto cambiar las pastillas de freno?»</p>
+          <p class="mt-2 text-title text-ink">«¿Cómo elegir el servicio correcto para mi caso?»</p>
         </div>
         <div class="rounded-card bg-surface p-6">
-          <p class="text-caption text-ink-tertiary">Google lo lleva a la guía del taller. Al final aparece:</p>
-          <p class="mt-2 text-body text-ink">¿Tu vehículo presenta estos síntomas?</p>
-          <p class="mt-1 font-semibold text-accent">Agenda una revisión por WhatsApp →</p>
+          <p class="text-caption text-ink-tertiary">Google lo lleva a una guía en tu página. Al final aparece:</p>
+          <p class="mt-2 text-body text-ink">¿Quieres que te ayudemos a elegir?</p>
+          <p class="mt-1 font-semibold text-accent">Escríbenos por WhatsApp →</p>
         </div>
         <p class="text-caption text-ink-tertiary">Ejemplo ilustrativo.</p>
       </div>
@@ -101,20 +101,20 @@ const avoided = ["Carrito", "Checkout", "Pasarela", "Inventario", "Pagos", "Log�
       <div data-reveal>
         <p class="eyebrow mb-3">Paquete Commerce</p>
         <h2 id="h-funciona" class="text-headline text-ink">Catálogo + Venta por WhatsApp.</h2>
-        <p class="mt-4 text-lead text-ink-secondary">Es mucho más sencillo que montar una tienda en línea completa. Para muchas empresas locales, esto es suficiente.</p>
-        <ul class="mt-6 flex flex-wrap gap-2" role="list" aria-label="Lo que no necesita montar">
+        <p class="mt-4 text-lead text-ink-secondary">Es mucho más sencillo que montar una tienda en línea completa. Para muchos negocios, esto es suficiente.</p>
+        <ul class="mt-6 flex flex-wrap gap-2" role="list" aria-label="Lo que no necesitas montar">
           {avoided.map((a) => <li class="chip text-ink-tertiary line-through">{a}</li>)}
         </ul>
       </div>
       <figure class="rounded-card bg-surface p-7 md:p-8" data-reveal style="--reveal-i:1">
         <figcaption class="mb-4"><span class="chip chip-outline">Ejemplo ilustrativo</span></figcaption>
-        <p class="text-caption text-ink-tertiary">Óptica · Monturas</p>
-        <p class="mt-1 text-title text-ink">Montura RX-000</p>
+        <p class="text-caption text-ink-tertiary">Tu catálogo · Categoría</p>
+        <p class="mt-1 text-title text-ink">Producto REF-000</p>
         <p class="mt-1 text-body text-ink-secondary">$ ___ · Disponible</p>
-        <p class="mt-3 text-body text-ink-secondary">Descripción de la montura…</p>
+        <p class="mt-3 text-body text-ink-secondary">Descripción del producto…</p>
         <p class="mt-5 inline-flex h-10 items-center rounded-full bg-whatsapp px-4 text-[0.9375rem] font-semibold text-on-whatsapp" aria-hidden="true">Comprar por WhatsApp</p>
         <p class="mt-5 text-caption text-ink-tertiary">WhatsApp recibe automáticamente:</p>
-        <p class="mt-1 rounded-field bg-surface-2 p-3 text-caption text-ink">«Hola, estoy interesado en la referencia RX-000 de $ ___.»</p>
+        <p class="mt-1 rounded-field bg-surface-2 p-3 text-caption text-ink">«Hola, estoy interesado en la referencia REF-000 de $ ___.»</p>
       </figure>
     </div>
   </Section>

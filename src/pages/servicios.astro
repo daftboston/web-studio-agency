@@ -1,72 +1,137 @@
 ---
 import Base from "../layouts/Base.astro";
-import PageHero from "../components/PageHero.astro";
+import MaskTitle from "../components/MaskTitle.astro";
 import Section from "../components/Section.astro";
 import BrowserFrame from "../components/BrowserFrame.astro";
+import PhoneFrame from "../components/PhoneFrame.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
 import { PROJECTS } from "../data/portfolio";
-
-const services = [
-  {
-    id: "pagina-web",
-    eyebrow: "Página web",
-    title: "Página web para su negocio.",
-    lead: "Diseñamos y publicamos una página clara, rápida y fácil de usar en el celular.",
-    bullets: ["Diseño a la medida de su negocio", "Textos claros que explican lo que usted hace", "Dominio, hosting y SSL", "Botón de WhatsApp y Google Maps"],
-    link: { href: "/paquetes/", label: "Ver paquetes" },
-    image: PROJECTS[0],
-    tone: "canvas",
-  },
-  {
-    id: "catalogo",
-    eyebrow: "Catálogo en línea",
-    title: "Sus productos o servicios, en línea.",
-    lead: "Un catálogo con fotos, referencias y un botón para pedir por WhatsApp. Sin carrito ni pasarela de pagos.",
-    bullets: ["Categorías y ficha por producto", "Disponibilidad visible", "Mensaje automático con la referencia", "Fácil de actualizar"],
-    link: { href: "/capacidades/#demo-catalogo", label: "Probar la demo de catálogo" },
-    image: PROJECTS[1],
-    tone: "surface",
-  },
-] as const;
+import { SERVICES } from "../data/services";
+const [web, google, catalogo, care, growth] = SERVICES;
 ---
 <Base
   title="Servicios"
-  description="Diseño, contenido, publicación y soporte de páginas web para negocios en Colombia. Página web, catálogo en línea y mantenimiento mensual."
+  description="Tu página web, Google Business, catálogo en línea, Digital Care y Growth. Diseñamos páginas web claras, rápidas y conectadas a tu WhatsApp."
+  finalCtaMessage="servicios"
 >
-  <PageHero
-    eyebrow="Servicios"
-    title="Nos encargamos de todo."
-    lead="Nos encargamos de todo: diseño, contenido, publicación y soporte. Usted se concentra en su negocio."
-  />
-
-  {services.map((s, i) => (
-    <Section tone={s.tone} labelledby={`h-${s.id}`}>
-      <div class="container-content grid items-center gap-stack lg:grid-cols-2 lg:gap-16">
-        <div class:list={["order-1", i % 2 === 1 ? "lg:order-2" : "lg:order-1"]} data-reveal>
-          <BrowserFrame src={s.image.image} alt={s.image.alt} sizes="(min-width: 1024px) 520px, 100vw" />
-        </div>
-        <div class:list={["order-2", i % 2 === 1 ? "lg:order-1" : "lg:order-2"]} data-reveal style="--reveal-i:1">
-          <p class="eyebrow mb-3">{s.eyebrow}</p>
-          <h2 id={`h-${s.id}`} class="text-headline text-ink">{s.title}</h2>
-          <p class="mt-4 text-lead text-ink-secondary">{s.lead}</p>
-          <ul class="check-list mt-6 space-y-2 text-body text-ink" role="list">
-            {s.bullets.map((b) => <li>{b}</li>)}
+  <!-- Hero: one claim + method (Clay services pattern) -->
+  <section class="overflow-x-clip bg-canvas pb-section-tight pt-section" aria-labelledby="h-serv">
+    <div class="container-wide">
+      <p class="eyebrow rise-in mb-6">Servicios</p>
+      <MaskTitle id="h-serv" class="text-display text-ink" lines={["Todo lo que tu página", "necesita, en un solo lugar."]} />
+      <div class="mt-8 grid gap-6 lg:grid-cols-12 lg:gap-grid">
+        <p class="rise-in max-w-text text-lead text-ink-secondary lg:col-span-6" style="--d:250">Diseño, textos, publicación y soporte. Tú nos cuentas de tu negocio; nosotros nos encargamos del resto.</p>
+        <nav class="rise-in lg:col-span-5 lg:col-start-8" style="--d:350" aria-label="Servicios en esta página">
+          <ul class="flex flex-wrap gap-2" role="list">
+            {SERVICES.map((s) => <li><a href={`#${s.id}`} class="chip-toggle">{s.name}</a></li>)}
           </ul>
-          <p class="mt-6"><a href={s.link.href} class="link-more">{s.link.label}</a></p>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 Tu página web -->
+  <Section labelledby={web.id} class="scroll-mt-12">
+    <div class="container-wide grid items-center gap-stack lg:grid-cols-12 lg:gap-grid">
+      <div class="lg:col-span-5" data-reveal>
+        <p class="label-rule"><span>{web.n} — {web.name}</span></p>
+        <h2 id={web.id} class="mt-6 scroll-mt-24 text-headline text-ink">{web.title}</h2>
+        <p class="mt-4 text-lead text-ink-secondary">{web.text}</p>
+        <ul class="check-list mt-6 space-y-2 text-body text-ink" role="list">{web.includes.map((b) => <li>{b}</li>)}</ul>
+        <p class="mt-6"><a href={web.link.href} class="link-more">{web.link.label}</a></p>
+      </div>
+      <div class="lg:col-span-7" data-settle>
+        <BrowserFrame src={PROJECTS[0].image} alt={PROJECTS[0].alt} widths={[640, 960, 1280]} sizes="(min-width: 1024px) 760px, 100vw" class="shadow-lift" />
+      </div>
+    </div>
+  </Section>
+
+  <!-- 02 Google Business -->
+  <Section tone="surface" labelledby={google.id} class="scroll-mt-12">
+    <div class="container-wide grid items-center gap-stack lg:grid-cols-12 lg:gap-grid">
+      <div class="order-2 lg:order-1 lg:col-span-6" data-settle>
+        <figure class="mx-auto max-w-[30rem]">
+          <div class="rounded-tile bg-canvas p-6 shadow-lift md:p-8" aria-hidden="true">
+            <div class="flex items-center gap-3 rounded-full bg-surface px-4 py-3 text-caption text-ink-tertiary">
+              <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              lo que ofreces, cerca de mí
+            </div>
+            <div class="mt-5 overflow-hidden rounded-card ring-1 ring-line">
+              <div class="relative h-32 bg-[linear-gradient(135deg,#e9e7e1,#f4f3ef)]">
+                <span class="absolute left-[30%] top-[38%] size-3 rounded-full bg-accent ring-4 ring-accent/20"></span>
+                <span class="absolute left-[62%] top-[58%] size-2 rounded-full bg-line-strong"></span>
+                <span class="absolute left-[18%] top-[70%] size-2 rounded-full bg-line-strong"></span>
+              </div>
+              <div class="p-5">
+                <p class="text-title text-ink">Tu negocio</p>
+                <p class="mt-1 text-caption text-ink-secondary">Abierto ahora · A pocos minutos</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="chip">Cómo llegar</span><span class="chip">Sitio web</span><span class="chip">Llamar</span><span class="chip">WhatsApp</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption class="mt-3 text-center text-caption text-ink-tertiary">Ilustración de una ficha de Google.</figcaption>
+        </figure>
+      </div>
+      <div class="order-1 lg:order-2 lg:col-span-5 lg:col-start-8" data-reveal>
+        <p class="label-rule"><span>{google.n} — {google.name}</span></p>
+        <h2 id={google.id} class="mt-6 scroll-mt-24 text-headline text-ink">{google.title}</h2>
+        <p class="mt-4 text-lead text-ink-secondary">{google.text}</p>
+        <ul class="check-list mt-6 space-y-2 text-body text-ink" role="list">{google.includes.map((b) => <li>{b}</li>)}</ul>
+        <p class="mt-6"><a href={google.link.href} class="link-more">{google.link.label}</a></p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- 03 Catálogo en línea -->
+  <Section labelledby={catalogo.id} class="scroll-mt-12">
+    <div class="container-wide grid items-center gap-stack lg:grid-cols-12 lg:gap-grid">
+      <div class="lg:col-span-5" data-reveal>
+        <p class="label-rule"><span>{catalogo.n} — {catalogo.name}</span></p>
+        <h2 id={catalogo.id} class="mt-6 scroll-mt-24 text-headline text-ink">{catalogo.title}</h2>
+        <p class="mt-4 text-lead text-ink-secondary">{catalogo.text}</p>
+        <ul class="check-list mt-6 space-y-2 text-body text-ink" role="list">{catalogo.includes.map((b) => <li>{b}</li>)}</ul>
+        <p class="mt-6"><a href={catalogo.link.href} class="link-more">{catalogo.link.label}</a></p>
+      </div>
+      <div class="lg:col-span-6 lg:col-start-7">
+        <div class="relative mx-auto flex max-w-[34rem] items-end justify-center rounded-tile bg-surface-2 px-8 pt-12 md:pt-16" data-settle>
+          <PhoneFrame src={PROJECTS[1].phone.src} alt={PROJECTS[1].phone.alt} class="w-[62%] translate-y-[8%] max-w-[18rem]" sizes="(min-width: 1024px) 288px, 60vw" />
+        </div>
+        <p class="mt-3 text-center text-caption text-ink-tertiary">Catálogo real: Tesla Partes en el celular.</p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- 04 Digital Care -->
+  <Section tone="dark" labelledby={care.id} class="scroll-mt-12">
+    <div class="container-wide grid items-center gap-stack lg:grid-cols-12 lg:gap-grid">
+      <div class="lg:col-span-6" data-reveal>
+        <p class="label-rule"><span>{care.n} — {care.name}</span></p>
+        <h2 id={care.id} class="mt-6 scroll-mt-24 text-display text-ink">{care.title}</h2>
+        <p class="mt-5 max-w-text text-lead text-ink-secondary">{care.text}</p>
+        <p class="mt-6"><a href={care.link.href} class="link-more">{care.link.label}</a></p>
+      </div>
+      <ul class="check-list grid gap-3 rounded-card bg-surface p-7 text-body text-ink sm:grid-cols-2 md:p-8 lg:col-span-5 lg:col-start-8" role="list" data-reveal style="--reveal-i:1">
+        {care.includes.map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+  </Section>
+
+  <!-- 05 Growth -->
+  <Section labelledby={growth.id} class="scroll-mt-12">
+    <div class="container-wide grid gap-stack lg:grid-cols-12 lg:gap-grid">
+      <div class="lg:col-span-6" data-reveal>
+        <p class="label-rule"><span>{growth.n} — {growth.name}</span></p>
+        <h2 id={growth.id} class="mt-6 scroll-mt-24 text-headline text-ink">{growth.title}</h2>
+        <p class="mt-4 max-w-text text-lead text-ink-secondary">{growth.text}</p>
+        <div class="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
+          <WhatsAppButton message="servicios" label="Pregunta qué te sirve" class="w-full sm:w-auto" />
+          <a href={growth.link.href} class="link-more">{growth.link.label}</a>
         </div>
       </div>
-    </Section>
-  ))}
-
-  <Section tone="dark" labelledby="h-care">
-    <div class="container-content grid items-center gap-stack lg:grid-cols-2 lg:gap-16">
-      <div data-reveal>
-        <p class="eyebrow mb-3">Mantenimiento · Digital Care</p>
-        <h2 id="h-care" class="text-headline text-ink">Mantenimiento y actualizaciones, cada mes.</h2>
-        <p class="mt-4 text-lead text-ink-secondary">Nosotros nos encargamos de su página cada mes: cambios, fotos, productos y soporte. Usted solo nos escribe por WhatsApp.</p>
-        <p class="mt-6"><a href="/planes/" class="link-more">Ver planes</a></p>
-      </div>
-      <ul class="check-list grid gap-3 rounded-card bg-surface p-7 text-body text-ink sm:grid-cols-2 md:p-8" role="list" data-reveal style="--reveal-i:1">
-        {["Hosting y dominio", "Actualizaciones", "Cambios de contenido", "Nuevas fotografías", "Productos", "Soporte", "Analytics", "Reporte mensual"].map((b) => <li>{b}</li>)}
+      <ul class="flex flex-wrap content-start gap-2 lg:col-span-5 lg:col-start-8 lg:pt-14" role="list" aria-label="Qué incluye Growth" data-reveal style="--reveal-i:1">
+        {growth.includes.map((x) => <li class="chip h-9 px-4 text-[0.9375rem]">{x}</li>)}
       </ul>
     </div>
   </Section>

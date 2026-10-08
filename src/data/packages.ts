@@ -1,4 +1,4 @@
-/** Package content from docs/PACKAGES.md (Spanish, as written by the owner). No prices. */
+/** Package content from docs/PACKAGES.md (Spanish). "Ideal para" kept generic: the site speaks to any business. No prices. */
 import { PRICES, type WaMessageKey } from "../config";
 
 export interface Package {
@@ -23,7 +23,7 @@ export const PACKAGES: Package[] = [
     name: "Presencia",
     promise: "Landing page profesional para existir en Internet.",
     summary: "Para negocios pequeños que simplemente necesitan existir profesionalmente en Internet.",
-    idealPara: ["Taller pequeño", "Constructor independiente", "Óptica pequeña"],
+    idealPara: ["Negocios pequeños", "Independientes", "Negocios que recién llegan a internet"],
     secciones: ["Hero", "Empresa", "Servicios", "Galería", "Ubicación", "Contacto"],
     incluye: [
       "Diseño responsive",
@@ -74,8 +74,8 @@ export const PACKAGES: Package[] = [
     step: "Paquete 3",
     name: "Commerce",
     promise: "Catálogo + Venta por WhatsApp.",
-    summary: "Sus productos en línea y cada pedido directo a su WhatsApp, sin montar una tienda complicada.",
-    idealPara: ["Ópticas", "Talleres", "También constructoras"],
+    summary: "Tus productos en línea y cada pedido directo a tu WhatsApp, sin montar una tienda complicada.",
+    idealPara: ["Negocios que venden productos", "Tiendas con catálogo", "Negocios con referencias y repuestos"],
     secciones: ["Inicio", "Productos", "Servicios", "Guías", "Nosotros", "Contacto"],
     incluyePrefix: "Catálogo de productos con:",
     incluye: [

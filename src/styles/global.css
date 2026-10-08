@@ -280,8 +280,7 @@
      scroll-driven animation, only where supported; otherwise static. */
   @supports (animation-timeline: view()) {
     [data-hero-media] {
-      animation: hero-media-scale linear both;
-      animation-timeline: view();
+      animation-name: hero-media-scale; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: view();
       animation-range: entry 0% cover 45%;
     }
     @keyframes hero-media-scale {
@@ -432,14 +431,88 @@ html:not(.js) [data-js-only] { display: none !important; }
    Scroll-driven editorial moments (CSS only; static where unsupported or with reduced motion). */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
-    [data-scroll-words] > span { display: inline-block; animation: words-in linear both; animation-timeline: view(); animation-range: entry 10% cover 40%; }
+    [data-scroll-words] > span { display: inline-block; animation-name: words-in; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: view(); animation-range: entry 10% cover 40%; }
     [data-scroll-words] > span:nth-child(even) { --from: 18vw; }
     @keyframes words-in { from { transform: translateX(var(--from, -18vw)); } to { transform: none; } }
 
-    [data-parallax] { animation: parallax linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+    [data-parallax] { animation-name: parallax; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
     @keyframes parallax { from { transform: translateY(calc(var(--depth, 0) * 1px)); } to { transform: translateY(calc(var(--depth, 0) * -1px)); } }
 
-    [data-scroll-scale] { animation: scroll-scale linear both; animation-timeline: view(); animation-range: entry 0% cover 50%; }
+    [data-scroll-scale] { animation-name: scroll-scale; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: view(); animation-range: entry 0% cover 50%; }
     @keyframes scroll-scale { from { transform: scale(0.82); } to { transform: none; } }
   }
+}
+
+/* ───────────── Cinematic motion (Clay reference, docs/REFERENCES.md) ─────────────
+   Expo-out easing, long durations, media that zooms out as it arrives, a hero
+   headline that rises out of a mask line by line, and a hero panel that widens
+   toward full-bleed as you scroll. Transform only on text, never opacity, so
+   contrast is never reduced. Everything is static with reduced motion, and the
+   CSS-only parts run without JavaScript. */
+@theme {
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-expo-strong: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@layer components {
+  /* Headline lines: each line is a mask, the inner span rises into it. */
+  .word-mask { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+  .word-mask > span { display: inline-block; }
+
+  /* Phone frame for real mobile screenshots */
+  .phone-frame { @apply relative rounded-[2.4rem] bg-[#141413] p-[0.55rem] shadow-lift ring-1 ring-black/20 md:rounded-[2.9rem] md:p-[0.65rem]; }
+  .phone-frame .pf-screen { @apply relative overflow-hidden rounded-[1.9rem] bg-white md:rounded-[2.3rem]; }
+  .phone-frame .pf-notch { @apply absolute left-1/2 top-2 z-10 h-[1.35rem] w-[32%] -translate-x-1/2 rounded-full bg-[#141413]; }
+
+  /* Case media wrapper: clips the zoom */
+  .media-clip { @apply overflow-hidden; }
+
+  /* Tag list on cards */
+  .tag { @apply inline-flex h-7 items-center rounded-full px-3 text-micro text-ink-secondary ring-1 ring-line-strong ring-inset; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: line-by-line rise. CSS animation, so it plays (and ends visible) without JS. */
+  .word-mask > span { animation: line-rise 1.15s var(--ease-expo) both; animation-delay: calc(var(--line, 0) * 90ms + 60ms); }
+  @keyframes line-rise { from { transform: translateY(105%); } to { transform: none; } }
+
+  .rise-in { animation: rise-in 1.1s var(--ease-expo) both; animation-delay: calc(var(--d, 0) * 1ms); }
+  @keyframes rise-in { from { transform: translateY(28px); } to { transform: none; } }
+
+  /* Reveal timing follows Clay's expo-out instead of the default soft ease */
+  html.js [data-reveal] {
+    transform: translateY(40px);
+    transition-duration: 1s, 1.2s;
+    transition-timing-function: var(--ease-expo), var(--ease-expo);
+  }
+
+  /* Media zoom-out on arrival (JS adds .is-in through the reveal observer). */
+  html.js [data-zoom] img { transform: scale(1.1); transition: transform 1.6s var(--ease-expo); }
+  html.js [data-zoom].is-in img { transform: none; }
+
+  /* Hover on case cards: slow zoom of the image, arrow nudges */
+  .case-card [data-zoom] img { transition: transform 1.6s var(--ease-expo), scale 0.9s var(--ease-expo); }
+  .case-card:hover [data-zoom] img, .case-card:focus-visible [data-zoom] img { scale: 1.035; }
+  .case-card .case-arrow { transition: transform 0.6s var(--ease-expo); }
+  .case-card:hover .case-arrow { transform: translateX(6px); }
+
+  @supports (animation-timeline: view()) {
+    /* Hero media panel widens toward full-bleed as it scrolls into place */
+    [data-expand] { animation-name: expand; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: view(); animation-range: entry 0% cover 40%; }
+    @keyframes expand { from { transform: scale(0.9); } to { transform: none; } }
+
+    /* Big project frames: settle from slightly tilted-back to flat while scrolling */
+    [data-settle] { animation-name: settle; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: view(); animation-range: entry 0% cover 45%; transform-origin: 50% 100%; }
+    @keyframes settle { from { transform: perspective(1600px) rotateX(14deg) scale(0.92) translateY(6%); } to { transform: none; } }
+
+    /* Bands rise a touch as they arrive, so sections hand over instead of stacking */
+    [data-band] { animation-name: band-in; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: view(); animation-range: entry 0% entry 60%; }
+    @keyframes band-in { from { transform: scale(0.965); } to { transform: none; } }
+  }
+}
+
+/* Phones: same choreography, shorter (keeps Speed Index low on slow connections) */
+@media (prefers-reduced-motion: no-preference) and (max-width: 767px) {
+  .word-mask > span { animation-duration: 0.75s; animation-delay: calc(var(--line, 0) * 50ms); }
+  .rise-in { animation-duration: 0.7s; animation-delay: calc(var(--d, 0) * 0.4ms); }
 }

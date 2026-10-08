@@ -5,7 +5,7 @@ import { CONTACT, waLink } from "../config";
 ---
 <Base
   title="Contacto"
-  description="Hablemos de la página web de su negocio. Escríbanos por WhatsApp o déjenos sus datos y le respondemos hoy."
+  description="Hablemos de la página web de tu negocio. Escríbenos por WhatsApp o a dsantoyop@gmail.com, o déjanos tus datos y te respondemos hoy."
   hideFab
   hideFinalCta
 >
@@ -13,16 +13,16 @@ import { CONTACT, waLink } from "../config";
     <div class="container-text text-center">
       <p class="eyebrow mb-4">Contacto</p>
       <h1 class="text-display text-ink">Hablemos.</h1>
-      <p class="mx-auto mt-5 text-lead text-ink-secondary">Le respondemos hoy.</p>
+      <p class="mx-auto mt-5 text-lead text-ink-secondary">Cuéntanos de tu negocio. Te respondemos hoy.</p>
     </div>
   </section>
 
   <section class="bg-canvas pb-section" aria-label="Formas de contacto">
     <div class="container-content grid gap-grid lg:grid-cols-2">
       <div class="theme-dark flex flex-col rounded-tile p-7 md:p-10" data-reveal>
-        <h2 class="text-headline text-ink">Escríbanos por WhatsApp.</h2>
-        <p class="mt-4 text-lead text-ink-secondary">Es la forma más rápida. Cuéntenos de su negocio y le mostramos una propuesta sin compromiso.</p>
-        <div class="mt-8"><WhatsAppButton label="Escríbanos por WhatsApp" class="w-full sm:w-auto" /></div>
+        <h2 class="text-headline text-ink">Escríbenos por WhatsApp.</h2>
+        <p class="mt-4 text-lead text-ink-secondary">Es la forma más rápida. Hablas directamente con quien diseña tu página y te mostramos una propuesta sin compromiso.</p>
+        <div class="mt-8"><WhatsAppButton label="Escríbenos por WhatsApp" class="w-full sm:w-auto" /></div>
         <dl class="mt-auto grid gap-5 pt-10 text-body">
           <div>
             <dt class="text-caption text-ink-tertiary">WhatsApp</dt>
@@ -33,15 +33,15 @@ import { CONTACT, waLink } from "../config";
             <dd><a class="text-ink hover:text-accent" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></dd>
           </div>
           <div>
-            <dt class="text-caption text-ink-tertiary">Ciudad</dt>
+            <dt class="text-caption text-ink-tertiary">País</dt>
             <dd class="text-ink">{CONTACT.city}</dd>
           </div>
         </dl>
       </div>
 
       <div class="rounded-tile bg-surface p-7 md:p-10" data-reveal style="--reveal-i:1">
-        <h2 id="formulario" class="text-headline text-ink">O déjenos sus datos.</h2>
-        <p class="mt-4 text-body text-ink-secondary">Le contactamos por teléfono o WhatsApp.</p>
+        <h2 id="formulario" class="text-headline text-ink">O déjanos tus datos.</h2>
+        <p class="mt-4 text-body text-ink-secondary">Te contactamos por teléfono o WhatsApp.</p>
         <form
           name="contacto"
           method="POST"
@@ -53,7 +53,7 @@ import { CONTACT, waLink } from "../config";
         >
           <input type="hidden" name="form-name" value="contacto" />
           <p class="hidden" aria-hidden="true">
-            <label>No llene este campo: <input name="empresa-web" tabindex="-1" autocomplete="off" /></label>
+            <label>No llenes este campo: <input name="empresa-web" tabindex="-1" autocomplete="off" /></label>
           </p>
           <div>
             <label class="field-label" for="f-nombre">Nombre</label>
@@ -75,8 +75,8 @@ import { CONTACT, waLink } from "../config";
           <div>
             <button type="submit" class="btn btn-primary w-full sm:w-auto">Enviar</button>
           </div>
-          <p class="hidden rounded-field bg-accent-tint p-4 text-body text-ink" role="status" data-form-ok>Gracias. Recibimos sus datos y le respondemos hoy.</p>
-          <p class="hidden rounded-field bg-surface-2 p-4 text-body text-ink" role="alert" data-form-error>No pudimos enviar el formulario. Por favor escríbanos por WhatsApp.</p>
+          <p class="hidden rounded-field bg-accent-tint p-4 text-body text-ink" role="status" data-form-ok>Gracias. Recibimos tus datos y te respondemos hoy.</p>
+          <p class="hidden rounded-field bg-surface-2 p-4 text-body text-ink" role="alert" data-form-error>No pudimos enviar el formulario. Por favor escríbenos por WhatsApp.</p>
         </form>
       </div>
     </div>

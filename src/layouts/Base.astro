@@ -87,7 +87,7 @@ const ogUrl = new URL(ogImage, Astro.site).href;
         },
         { rootMargin: "0px 0px -10% 0px", threshold: 0.15 },
       );
-      document.querySelectorAll("[data-reveal]").forEach((el) => reveal.observe(el));
+      document.querySelectorAll("[data-reveal], [data-zoom]").forEach((el) => reveal.observe(el));
 
       // 2) Floating WhatsApp: hide while an inline WhatsApp CTA is on screen or the menu is open
       const fab = document.querySelector<HTMLElement>("[data-fab]");

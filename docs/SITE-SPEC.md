@@ -27,20 +27,22 @@ A floating WhatsApp button appears on every page.
 ## 3. Sections by page
 
 ### Inicio
-1. Hero: headline, subheadline, WhatsApp button.
-2. Who we help: constructoras, talleres, ópticas.
-3. Experience line: "Filmika tiene más de 3 años construyendo sitios web."
-4. Packages preview: the 3 package cards (short version) linking to Paquetes.
-5. Plans path: Launch → Digital Care → Growth, with "No desaparecemos después del lanzamiento".
-6. Featured work: 2–3 projects from PORTFOLIO.md.
-7. Process summary (4 steps).
-8. Final CTA to WhatsApp.
+1. Hero: "Tu negocio merece una página que trabaje por ti." + subtitle, WhatsApp button, link to Portafolio, and a large media panel with real TruePhone (browser) and Tesla Partes (phone) screenshots.
+2. Servicios: short statement + the five services, each with one short paragraph.
+3. Featured work: TruePhone and Tesla Partes as case cards (outcome headline + tags).
+4. Differentiator: "Hablas directamente con quien diseña tu página." + the 3-years line.
+5. Lo que podemos hacer: Capacidades showcase, framed as examples for different kinds of business.
+6. Packages preview.
+7. Plans path: Launch → Digital Care → Growth.
+8. Process summary (4 steps).
+9. FAQ (4 questions, real answers).
+10. Close: "Hablemos." with WhatsApp and dsantoyop@gmail.com (shared on every page).
+
+The site speaks to **any business**. No copy targets constructoras, talleres, ópticas or Bogotá; those niches are for outreach only.
 
 ### Servicios
-- Página web para su negocio (diseño y publicación).
-- Catálogo en línea (productos o servicios, con contacto por WhatsApp).
-- Mantenimiento y actualizaciones (Digital Care).
-- Links to Paquetes and Planes.
+- Tu página web · Google Business · Catálogo en línea · Digital Care · Growth (copy in BRAND.md).
+- Each: outcome headline, one short paragraph, what is included, one link. Media alternates sides.
 
 ### Paquetes
 Content source: [PACKAGES.md](PACKAGES.md).
@@ -61,9 +63,9 @@ Content source: [PLANS.md](PLANS.md).
   ```
   Launch  →  Digital Care  →  Growth
   ```
-  - **Launch:** pago inicial. Su página, con el paquete que elija.
+  - **Launch:** pago inicial. Tu página, con el paquete que elijas.
   - **Digital Care:** mensualidad. Hosting, dominio, actualizaciones, cambios, fotos, productos, soporte, analytics, SEO básico, Google Business y reporte mensual.
-  - **Growth:** cuando quiera crecer. SEO local, Google Ads, Meta Ads, contenido, automatizaciones, chatbot, agente de voz, campañas de WhatsApp y seguimiento de leads.
+  - **Growth:** cuando quieras crecer. SEO local, Google Ads, Meta Ads, contenido, automatizaciones, chatbot, agente de voz, campañas de WhatsApp y seguimiento de leads.
 - Headline:
   > No desaparecemos después del lanzamiento.
 - WhatsApp CTA:
@@ -71,52 +73,55 @@ Content source: [PLANS.md](PLANS.md).
 - **No prices on the site for now** (placeholders only, defined by Mr market).
 
 ### Portafolio
-- Cards for each real project: image, short description, link to the live site.
-- Niche demos (built from the template repos), labeled clearly as "Demo".
+- One immersive case study per real project: full-bleed panel with a large browser frame and a real phone screenshot, then name, outcome headline, tags, "El reto" and "Lo que construimos", and the live link (or "Enlace disponible pronto").
+- Upcoming examples (from the template repos), framed as "Ejemplos para distintos tipos de negocio" and labeled "Demo · Próximamente".
 
 ### Proceso
-1. Conversamos sobre su negocio.
-2. Le mostramos una propuesta.
-3. Construimos su página.
-4. Publicamos y le damos soporte cada mes.
+1. Entendemos tu negocio.
+2. Te mostramos cómo se vería.
+3. Construimos y tú revisas.
+4. Publicamos y seguimos contigo.
+Each step ends with "Recibes: …". Delivery: unos 7 días desde que tenemos tu información.
 
 ### Nosotros
 - Who Filmika is, based on the owner's portfolio bio, written in the company voice. No personal names.
 - More than 3 years building websites (TruePhone, Tesla Partes, others), credited to Filmika.
-- Focus on local businesses in Colombia.
+- Differentiator: "Hablas directamente con quien diseña tu página." The team brings experience in architecture, mechanics and sales (no names).
 
 ### Capacidades (added 2026-10-08)
 - Shows **what we can do**, not only past work. Second design reference: instrument.com (bold editorial type, full-bleed panels, scroll-driven moments) on top of the Apple-inspired tokens.
-- Interactive demos, all labeled "Demo interactiva", with fictional businesses and illustrative CSS/SVG imagery: phone mockup cycling constructora / taller / óptica homepages; before/after slider (constructora); filterable catalog with live "Comprar por WhatsApp" message (óptica, Paquete Commerce); "Agenda tu revisión" form preview (taller); scroll-driven parallax sample; our Lighthouse-100 build standard.
+- Interactive demos, all labeled "Demo interactiva", with fictional businesses and illustrative CSS/SVG imagery, framed as "ejemplos para distintos tipos de negocio": phone mockup cycling example homepages; before/after slider; filterable catalog with live "Comprar por WhatsApp" message (Paquete Commerce); appointment form preview; scroll-driven parallax sample; our Lighthouse-100 build standard.
 - Inicio gets a "Lo que podemos hacer" section linking to each demo.
 
 ### Contacto / WhatsApp
 - Email: dsantoyop@gmail.com. WhatsApp number still pending.
 - WhatsApp button with a prefilled message.
 - Simple contact form (nombre, negocio, teléfono, mensaje).
-- Real contact details (WhatsApp number, email, city).
+- Real contact details (WhatsApp number, email, country).
 
 ## 4. Copy direction (Spanish samples)
-**Hero**
-> Páginas web que traen clientes a su negocio.
-> En Filmika creamos sitios serios y fáciles de usar para negocios en Colombia. Filmika tiene más de 3 años construyendo sitios web.
+Full copy direction lives in [BRAND.md](BRAND.md#copy-direction-mr-market-2026-10-08-with-the-owners-overrides).
 
-**Trust line**
-> Somos un equipo serio: trabajo real, proceso claro y atención directa por WhatsApp.
+**Hero**
+> Tu negocio merece una página que trabaje por ti.
+> Diseñamos páginas web claras, rápidas y conectadas a tu WhatsApp, para que tu negocio reciba más clientes.
+
+**Differentiator**
+> Hablas directamente con quien diseña tu página.
 
 **Packages intro**
-> Elija el paquete que mejor se adapta a su negocio. Le ayudamos a decidir por WhatsApp.
+> Elige el paquete para tu negocio. Te ayudamos a decidir por WhatsApp.
 
 **Plans intro**
-> No desaparecemos después del lanzamiento. Cada mes cuidamos su página para que siga trabajando por usted.
+> No desaparecemos después del lanzamiento. Cada mes cuidamos tu página para que siga trabajando por ti.
 
 **Portfolio intro**
-> Estos son algunos de los sitios que hemos construido.
+> Sitios que ya están trabajando.
 
-**Final CTA**
-> ¿Listo para que su negocio tenga una página que trabaje por usted? Escríbanos y le respondemos hoy.
+**Close**
+> Hablemos. Cuéntanos de tu negocio y te respondemos por WhatsApp con una recomendación clara, sin compromiso.
 
-Rules: "usted", short sentences, no jargon, no numbers other than "más de 3 años" (credited to Filmika), and no personal names (see BRAND.md).
+Rules: "tú", short sentences, no jargon, the only claim is "Filmika tiene más de 3 años construyendo sitios web", and no personal names (see BRAND.md). Motion and imagery references: [REFERENCES.md](REFERENCES.md).
 
 ## 5. Trust elements
 - **Portfolio:** only real, live projects with working links.
@@ -127,7 +132,7 @@ Rules: "usted", short sentences, no jargon, no numbers other than "más de 3 añ
 - No fake testimonials, logos, or metrics.
 
 ## 6. Primary CTA: WhatsApp
-- Button text: "Hablemos por WhatsApp" (or "Escríbanos por WhatsApp").
+- Button text: "Hablemos por WhatsApp" (or "Escríbenos por WhatsApp").
 - Placement: hero, each package card, Planes page, end of each page, and floating button.
 - Default prefilled message:
-  > Hola Filmika, vi su página y quiero información sobre una página web para mi negocio.
+  > Hola Filmika, vi tu página y quiero información sobre una página web para mi negocio.

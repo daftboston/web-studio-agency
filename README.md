@@ -7,10 +7,7 @@ This repo holds the Filmika marketing website (Astro + Tailwind CSS, deployed on
 
 Core message: Filmika is a serious business with more than 3 years building websites (TruePhone, Tesla Partes, and others), and **we don't disappear after launch** ("No desaparecemos después del lanzamiento").
 
-Target clients (Colombia, starting in Bogotá):
-- Construction companies (constructoras)
-- Car repair shops (talleres)
-- Optical stores (ópticas)
+The site speaks to **any business** (copy direction, 2026-10-08). Outreach niches (Colombia, starting in Bogotá: constructoras, talleres, ópticas) are used only for prospect mockups and lists, not as site copy.
 
 ## Business model
 Initial fee plus monthly fee, not a one-time page:
@@ -30,7 +27,7 @@ Initial fee plus monthly fee, not a one-time page:
 - [Astro](https://astro.build) 7 (static output) + [Tailwind CSS](https://tailwindcss.com) v4 via `@tailwindcss/vite`
 - Inter Variable, self-hosted with `@fontsource-variable/inter` (no Google Fonts request)
 - Design: Apple-inspired system by figma bro (accent `#3d3ad6`, WhatsApp green `#1a7f45`, warm neutrals). Tokens live in `src/styles/global.css`.
-- No animation libraries: IntersectionObserver reveals (visible without JS), native View Transitions, `prefers-reduced-motion` respected.
+- No animation libraries: IntersectionObserver reveals and image zooms (visible without JS), CSS-only headline masks and scroll-driven effects (written as longhands so the minifier cannot fold `animation-timeline` into the shorthand), native View Transitions, `prefers-reduced-motion` respected. See docs/REFERENCES.md.
 - `@astrojs/sitemap` builds `sitemap-index.xml`; `robots.txt` is generated from the site URL.
 - Contact form uses Netlify Forms (`data-netlify`, honeypot).
 
@@ -110,6 +107,7 @@ Every `wa.me` link is built by `waLink()` in `src/config.ts`, so changing the nu
 | [docs/PLANS.md](docs/PLANS.md) | Recurring model: Launch → Digital Care → Growth |
 | [docs/PORTFOLIO.md](docs/PORTFOLIO.md) | Real projects, pending items, niche demos |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | Phases and the ongoing prospect mockups track |
+| [docs/REFERENCES.md](docs/REFERENCES.md) | Design references (Clay): layout, copy, motion and imagery we adopted, and why |
 
 ## Template repos (demo bases, spec only)
 - [filmika-template-constructora](https://github.com/daftboston/filmika-template-constructora)

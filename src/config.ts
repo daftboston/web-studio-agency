@@ -13,7 +13,7 @@ export const SITE = {
   locale: "es_CO",
   lang: "es-CO",
   defaultDescription:
-    "Filmika diseña páginas web para constructoras, talleres y ópticas en Colombia. Tenemos más de 3 años construyendo sitios web. Hablemos por WhatsApp.",
+    "Diseñamos páginas web claras, rápidas y conectadas a tu WhatsApp, para que tu negocio reciba más clientes. Filmika tiene más de 3 años construyendo sitios web.",
   /**
    * The only number allowed in the copy (docs/BRAND.md), credited to the brand.
    * No personal names anywhere on the site (owner's decision, 2026-10-08).
@@ -28,8 +28,8 @@ export const CONTACT = {
   whatsappDisplay: "+57 XXX XXX XXXX",
   /** Contact email (confirmed by the owner, 2026-10-08). */
   email: "dsantoyop@gmail.com",
-  /** PLACEHOLDER (confirm): city shown on Contacto and in the footer. */
-  city: "Bogotá, Colombia",
+  /** Shown on Contacto and in the footer. Country only: the site speaks to any business (copy direction, 2026-10-08). */
+  city: "Colombia",
 } as const;
 
 /**
@@ -47,11 +47,12 @@ export const PRICES = {
 
 /** Prefilled WhatsApp messages, copied from docs/SITE-SPEC.md. */
 export const WA_MESSAGES = {
-  default: "Hola Filmika, vi su página y quiero información sobre una página web para mi negocio.",
+  default: "Hola Filmika, vi tu página y quiero información sobre una página web para mi negocio.",
   presencia: "Hola Filmika, quiero información sobre el Paquete Presencia.",
   profesional: "Hola Filmika, quiero información sobre el Paquete Profesional.",
   commerce: "Hola Filmika, quiero información sobre el Paquete Commerce.",
   planes: "Hola Filmika, quiero saber cómo funcionan los planes mensuales.",
+  servicios: "Hola Filmika, quiero saber qué servicio le sirve a mi negocio.",
 } as const;
 
 export type WaMessageKey = keyof typeof WA_MESSAGES;

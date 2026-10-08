@@ -8,7 +8,7 @@ import { PLANS } from "../data/plans";
 const faqs = [
   {
     q: "¿Qué pasa si quiero un cambio en mi página?",
-    a: "Nos escribe por WhatsApp y lo hacemos. Con Digital Care, los cambios de contenido, fotos y productos están incluidos.",
+    a: "Nos escribes por WhatsApp y lo hacemos. Con Digital Care, los cambios de contenido, fotos y productos están incluidos.",
   },
   {
     q: "¿Qué incluye la mensualidad?",
@@ -16,31 +16,31 @@ const faqs = [
   },
   {
     q: "¿Tengo que contratar Growth desde el principio?",
-    a: "No. Growth es para cuando su negocio esté listo para crecer: publicidad, contenido y automatización. Lo agregamos cuando usted quiera.",
+    a: "No. Growth es para cuando tu negocio esté listo para crecer: SEO local, publicidad y automatización de WhatsApp. Lo agregamos cuando quieras.",
   },
   {
     q: "¿Cuánto cuesta?",
-    a: "Depende del paquete y de su negocio. Escríbanos por WhatsApp y le enviamos una propuesta.",
+    a: "Tiene un pago inicial para construir tu página y una mensualidad para mantenerla activa y al día. Después de una llamada corta te enviamos una cotización clara con los dos valores.",
   },
 ];
 ---
 <Base
   title="Planes"
-  description="No desaparecemos después del lanzamiento. Launch, Digital Care y Growth: su página sigue activa, actualizada y trabajando para su negocio todos los meses."
+  description="No desaparecemos después del lanzamiento. Launch, Digital Care y Growth: tu página sigue activa, actualizada y trabajando para tu negocio todos los meses."
   finalCtaMessage="planes"
 >
   <section class="theme-dark pt-section pb-section">
     <div class="mx-auto w-full max-w-[52rem] px-gutter text-center">
       <p class="eyebrow mb-4">Planes</p>
       <h1 class="text-display text-ink">No desaparecemos después del lanzamiento.</h1>
-      <p class="mx-auto mt-5 max-w-text text-lead text-ink-secondary">Su página sigue activa, actualizada y trabajando para su negocio todos los meses.</p>
-      <div class="mt-8 flex justify-center"><WhatsAppButton message="planes" class="w-full sm:w-auto" label="Escríbanos por WhatsApp" /></div>
+      <p class="mx-auto mt-5 max-w-text text-lead text-ink-secondary">Tu página sigue activa, actualizada y trabajando para tu negocio todos los meses.</p>
+      <div class="mt-8 flex justify-center"><WhatsAppButton message="planes" class="w-full sm:w-auto" label="Pregunta por los planes" /></div>
     </div>
   </section>
 
   <Section labelledby="h-camino">
     <div class="container-content">
-      <SectionHeader id="h-camino" eyebrow="Launch → Digital Care → Growth" title="El camino de su página." lead="Un pago inicial para construir su página y una mensualidad para que siga trabajando." />
+      <SectionHeader id="h-camino" eyebrow="Launch → Digital Care → Growth" title="El camino de tu página." lead="Un pago inicial para construir tu página y una mensualidad para que siga trabajando." />
       <ol class="relative grid gap-grid border-l border-line pl-6 lg:grid-cols-3 lg:border-l-0 lg:pl-0" role="list">
         {PLANS.map((plan, i) => (
           <li class="relative flex flex-col rounded-card bg-surface p-7 md:p-8" id={plan.id} data-reveal style={`--reveal-i:${i}`}>
@@ -71,8 +71,8 @@ const faqs = [
   <Section tone="surface" labelledby="h-dc">
     <div class="container-text text-center" data-reveal>
       <p class="eyebrow mb-3">Digital Care</p>
-      <h2 id="h-dc" class="text-headline text-ink">Usted solo nos escribe por WhatsApp.</h2>
-      <p class="mt-4 text-lead text-ink-secondary">Nosotros nos encargamos de su página cada mes: cambios, fotos, productos y soporte.</p>
+      <h2 id="h-dc" class="text-headline text-ink">Tú solo nos escribes por WhatsApp.</h2>
+      <p class="mt-4 text-lead text-ink-secondary">Cada mes nos encargamos de tu página: cambios, fotos, productos y soporte.</p>
     </div>
   </Section>
 

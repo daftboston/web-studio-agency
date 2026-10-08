@@ -1,0 +1,86 @@
+---
+/** Demo interactiva (taller): "Agenda tu revisión" form that writes the WhatsApp message live. */
+import { waLink } from "../../config";
+import WaIcon from "../WaIcon.astro";
+const services = ["Mecánica general", "Frenos", "Suspensión", "Diagnóstico"];
+const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+const slots = ["mañana", "tarde"];
+const build = (s: { nombre?: string; servicio: string; dia: string; jornada: string; placa?: string }) =>
+  `[Demo Filmika] Hola${s.nombre ? `, soy ${s.nombre}` : ""}. Quiero agendar una revisión de ${s.servicio.toLowerCase()} para el ${s.dia.toLowerCase()} en la ${s.jornada}.${s.placa ? ` Placa: ${s.placa}.` : ""}`;
+const initial = build({ servicio: services[1], dia: days[5], jornada: slots[0] });
+---
+<div class="grid gap-grid rounded-tile bg-surface p-4 md:p-6 lg:grid-cols-[1.2fr_1fr]" data-agenda>
+  <form class="rounded-card bg-canvas p-5 md:p-6" onsubmit="return false" aria-labelledby="agenda-t">
+    <p id="agenda-t" class="text-title text-ink">Agenda tu revisión</p>
+    <p class="mt-1 text-caption text-ink-tertiary">Taller Ejemplo · Respuesta por WhatsApp</p>
+
+    <fieldset class="mt-5">
+      <legend class="field-label">Servicio</legend>
+      <div class="flex flex-wrap gap-2">
+        {services.map((s, i) => (
+          <label><input type="radio" name="servicio" value={s} class="sr-only" checked={i === 1} /><span class="chip-toggle">{s}</span></label>
+        ))}
+      </div>
+    </fieldset>
+
+    <div class="mt-5 grid gap-4 sm:grid-cols-2">
+      <div>
+        <label class="field-label" for="ag-dia">Día</label>
+        <select id="ag-dia" name="dia" class="field appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22><path d=%22M1 1l5 5 5-5%22 stroke=%22%2355534e%22 stroke-width=%221.6%22 fill=%22none%22/></svg>')] bg-[length:12px] bg-[right_1rem_center] bg-no-repeat">
+          {days.map((d, i) => <option selected={i === 5}>{d}</option>)}
+        </select>
+      </div>
+      <fieldset>
+        <legend class="field-label">Jornada</legend>
+        <div class="flex gap-2">
+          {slots.map((s, i) => (
+            <label class="flex-1"><input type="radio" name="jornada" value={s} class="sr-only" checked={i === 0} /><span class="chip-toggle w-full justify-center capitalize">{s}</span></label>
+          ))}
+        </div>
+      </fieldset>
+      <div>
+        <label class="field-label" for="ag-nombre">Nombre</label>
+        <input id="ag-nombre" name="nombre" class="field" autocomplete="off" placeholder="Ej.: Laura" maxlength="30" />
+      </div>
+      <div>
+        <label class="field-label" for="ag-placa">Placa</label>
+        <input id="ag-placa" name="placa" class="field uppercase placeholder:normal-case" autocomplete="off" placeholder="Ej.: ABC123" maxlength="7" />
+      </div>
+    </div>
+  </form>
+
+  <div class="flex flex-col rounded-card bg-[#e9e7e2] p-5 md:p-6">
+    <p class="text-caption text-[#55534e]">Vista previa en WhatsApp</p>
+    <div class="mt-3 flex items-center gap-3 border-b border-[#d6d3cb] pb-3" aria-hidden="true">
+      <span class="flex size-9 items-center justify-center rounded-full bg-[#141413] text-[0.8125rem] font-bold text-[#facc15]">TE</span>
+      <span class="text-caption font-semibold text-[#141413]">Taller Ejemplo</span>
+    </div>
+    <div class="mt-4 flex-1">
+      <p class="ml-auto max-w-[95%] rounded-2xl rounded-tr-sm bg-[#d9f2e1] px-4 py-3 text-body text-[#141413] shadow-card" data-agenda-preview>{initial}</p>
+    </div>
+    <a href={waLink(initial)} target="_blank" rel="noopener" class="btn btn-whatsapp mt-5 w-full" data-wa-inline data-agenda-link>
+      <WaIcon /><span>Agendar por WhatsApp</span>
+    </a>
+  </div>
+</div>
+
+<script>
+  import { onNear } from "../../scripts/lazy";
+  import { waLink } from "../../config";
+  onNear("[data-agenda]", (root) => {
+    const form = root.querySelector("form")!;
+    const preview = root.querySelector<HTMLElement>("[data-agenda-preview]");
+    const link = root.querySelector<HTMLAnchorElement>("[data-agenda-link]");
+    const clean = (v: FormDataEntryValue | null) => String(v ?? "").replace(/[<>]/g, "").trim();
+    const update = () => {
+      const d = new FormData(form);
+      const nombre = clean(d.get("nombre"));
+      const placa = clean(d.get("placa")).toUpperCase();
+      const text = `[Demo Filmika] Hola${nombre ? `, soy ${nombre}` : ""}. Quiero agendar una revisión de ${clean(d.get("servicio")).toLowerCase()} para el ${clean(d.get("dia")).toLowerCase()} en la ${clean(d.get("jornada"))}.${placa ? ` Placa: ${placa}.` : ""}`;
+      if (preview) preview.textContent = text;
+      if (link) link.href = waLink(text);
+    };
+    form.addEventListener("input", update);
+    form.addEventListener("change", update);
+  });
+</script>

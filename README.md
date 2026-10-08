@@ -73,12 +73,15 @@ npm run preview    # serves dist/ locally
 | Portfolio projects and demos | `src/data/portfolio.ts` + images in `src/assets/portfolio/` |
 | Colors, type, spacing, motion | `src/styles/global.css` |
 | Pages | `src/pages/*.astro` |
+| Interactive demos (Capacidades page + "Lo que podemos hacer" on Inicio) | `src/components/demos/*.astro` (vanilla JS/CSS, lazy-initialised) |
 
 Every `wa.me` link is built by `waLink()` in `src/config.ts`, so changing the number there updates the whole site.
 
+### Contact details already set
+- Email: `dsantoyop@gmail.com` (`CONTACT.email`)
+
 ### Placeholders to replace before going live
 - `CONTACT.whatsappNumber` = `57XXXXXXXXXX` and `CONTACT.whatsappDisplay`
-- `CONTACT.email` = `hola@filmika.example`
 - `CONTACT.city` = `Bogotá, Colombia` (confirm)
 - `SITE.url` = `https://filmika.netlify.app` (final domain)
 - `PRICES.*` = "Cotiza por WhatsApp" (prices pending from Mr market)

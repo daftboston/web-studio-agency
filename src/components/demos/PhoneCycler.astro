@@ -1,0 +1,199 @@
+---
+/**
+ * Demo interactiva: a phone mockup cycling through 3 illustrative niche homepages.
+ * All imagery is CSS/SVG. Businesses are fictional ("… Ejemplo"). Vanilla JS, lazy-initialised.
+ */
+interface Props { class?: string; size?: "md" | "lg" }
+const { class: cls = "", size = "md" } = Astro.props;
+const niches = [
+  { id: "constructora", label: "Constructora" },
+  { id: "taller", label: "Taller" },
+  { id: "optica", label: "Óptica" },
+];
+---
+<div class:list={["phone-cycler flex flex-col items-center gap-6", cls]} data-phone-cycler>
+  <figure
+    class:list={["pc-phone relative shrink-0 rounded-[2.9rem] bg-[#141413] p-[9px] shadow-float", size === "lg" ? "w-[280px] md:w-[300px]" : "w-[260px] md:w-[280px]"]}
+    aria-label="Maqueta de celular con páginas de inicio de ejemplo para una constructora, un taller y una óptica"
+  >
+    <div class="relative aspect-[9/19] overflow-hidden rounded-[2.35rem] bg-white">
+      <span class="absolute left-1/2 top-2 z-10 h-[22px] w-[84px] -translate-x-1/2 rounded-full bg-[#141413]" aria-hidden="true"></span>
+
+      <!-- Constructora -->
+      <div class="pc-screen" data-screen="constructora" data-active aria-hidden="true">
+        <div class="flex h-full flex-col bg-[#f6f5f3] text-[#141413]">
+          <div class="flex items-center justify-between px-4 pb-2 pt-10">
+            <span class="flex items-center gap-1.5 text-[11px] font-bold"><span class="size-3.5 rounded-[4px] bg-[#c2410c]"></span>Constructora Ejemplo</span>
+            <span class="flex flex-col gap-[3px]"><span class="h-[1.5px] w-3.5 bg-[#141413]"></span><span class="h-[1.5px] w-3.5 bg-[#141413]"></span></span>
+          </div>
+          <svg viewBox="0 0 260 150" class="w-full" aria-hidden="true">
+            <rect width="260" height="150" fill="#e9e7e2"/>
+            <rect x="20" y="40" width="70" height="110" fill="#55534e"/>
+            <rect x="100" y="15" width="80" height="135" fill="#141413"/>
+            <rect x="190" y="60" width="52" height="90" fill="#85837c"/>
+            <g fill="#f6f5f3" opacity=".9">
+              <rect x="30" y="52" width="12" height="10"/><rect x="50" y="52" width="12" height="10"/><rect x="70" y="52" width="10" height="10"/>
+              <rect x="30" y="72" width="12" height="10"/><rect x="50" y="72" width="12" height="10"/><rect x="70" y="72" width="10" height="10"/>
+              <rect x="112" y="28" width="14" height="12"/><rect x="134" y="28" width="14" height="12"/><rect x="156" y="28" width="14" height="12"/>
+              <rect x="112" y="50" width="14" height="12"/><rect x="134" y="50" width="14" height="12"/><rect x="156" y="50" width="14" height="12"/>
+              <rect x="112" y="72" width="14" height="12"/><rect x="134" y="72" width="14" height="12"/><rect x="156" y="72" width="14" height="12"/>
+              <rect x="200" y="72" width="12" height="10"/><rect x="220" y="72" width="12" height="10"/>
+            </g>
+            <path d="M205 10v50M205 12h48M245 12v14" stroke="#c2410c" stroke-width="3" fill="none"/>
+          </svg>
+          <div class="px-4 pt-4">
+            <p class="text-[19px] font-bold leading-[1.1] tracking-[-0.02em]">Construimos su próximo proyecto.</p>
+            <p class="mt-1.5 text-[11px] leading-snug text-[#55534e]">Casas, remodelaciones y obra comercial en su ciudad.</p>
+            <span class="mt-3 inline-flex h-7 items-center rounded-full bg-[#1a7f45] px-3 text-[10.5px] font-semibold text-white">Cotizar por WhatsApp</span>
+          </div>
+          <div class="mt-4 px-4">
+            <p class="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#55534e]">Obras recientes</p>
+            <div class="mt-2 grid grid-cols-2 gap-1.5">
+              <svg viewBox="0 0 100 64" class="w-full rounded-lg" aria-hidden="true"><rect width="100" height="64" fill="#dfe8f5"/><rect x="20" y="20" width="44" height="34" fill="#fff"/><path d="M14 22L42 6l28 16z" fill="#c2410c"/><rect x="36" y="38" width="10" height="16" fill="#141413"/><rect y="54" width="100" height="10" fill="#9fbf8f"/></svg>
+              <svg viewBox="0 0 100 64" class="w-full rounded-lg" aria-hidden="true"><rect width="100" height="64" fill="#e9e7e2"/><rect x="18" y="12" width="64" height="44" fill="#55534e"/><g fill="#f6f5f3"><rect x="26" y="20" width="10" height="8"/><rect x="45" y="20" width="10" height="8"/><rect x="64" y="20" width="10" height="8"/><rect x="26" y="36" width="10" height="8"/><rect x="45" y="36" width="10" height="8"/><rect x="64" y="36" width="10" height="8"/></g><rect y="56" width="100" height="8" fill="#a8a69f"/></svg>
+            </div>
+          </div>
+          <div class="mt-auto grid grid-cols-3 gap-1.5 p-4">
+            {["Proyectos", "Reformas", "Diseño"].map((t) => <span class="rounded-lg bg-white px-1.5 py-2.5 text-center text-[10px] font-semibold">{t}</span>)}
+          </div>
+        </div>
+      </div>
+
+      <!-- Taller -->
+      <div class="pc-screen" data-screen="taller" aria-hidden="true">
+        <div class="flex h-full flex-col bg-white text-[#141413]">
+          <div class="bg-[#141413] text-white">
+            <div class="flex items-center justify-between px-4 pb-2 pt-10">
+              <span class="flex items-center gap-1.5 text-[11px] font-bold"><span class="size-3.5 rounded-full border-[3px] border-[#facc15]"></span>Taller Ejemplo</span>
+              <span class="text-[10px] font-semibold text-[#facc15]">Abierto hoy</span>
+            </div>
+            <svg viewBox="0 0 260 110" class="w-full" aria-hidden="true">
+              <path d="M30 78c4-16 18-24 34-27l26-18c8-5 18-8 28-8h40c12 0 22 5 30 13l16 16c14 2 26 8 26 24v8H30z" fill="#f5f4f0"/>
+              <path d="M100 36h30v20H84zM138 36h22c8 0 14 4 19 10l4 10h-45z" fill="#2a2a28"/>
+              <circle cx="78" cy="86" r="16" fill="#141413" stroke="#f5f4f0" stroke-width="5"/><circle cx="190" cy="86" r="16" fill="#141413" stroke="#f5f4f0" stroke-width="5"/>
+              <rect x="0" y="100" width="260" height="10" fill="#2a2a28"/>
+            </svg>
+            <div class="px-4 pb-5 pt-2">
+              <p class="text-[19px] font-bold leading-[1.1] tracking-[-0.02em]">Su carro en buenas manos.</p>
+              <span class="mt-3 inline-flex h-7 items-center rounded-full bg-[#facc15] px-3 text-[10.5px] font-bold text-[#141413]">Agenda tu revisión</span>
+            </div>
+          </div>
+          <ul class="space-y-2 px-4 pt-4 text-[11px] font-medium">
+            {["Mecánica general", "Frenos", "Suspensión", "Diagnóstico"].map((t) => <li class="flex items-center justify-between border-b border-[#e3e1dc] pb-2">{t}<span class="text-[#55534e]">›</span></li>)}
+          </ul>
+          <div class="mx-4 mb-4 mt-auto h-16 rounded-lg bg-[#e9e7e2] bg-[linear-gradient(90deg,transparent_48%,#fff_48%,#fff_52%,transparent_52%),linear-gradient(0deg,transparent_45%,#fff_45%,#fff_55%,transparent_55%)]">
+            <span class="relative left-[46%] top-4 block size-3 rounded-full border-2 border-white bg-[#c2410c]"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Óptica -->
+      <div class="pc-screen" data-screen="optica" aria-hidden="true">
+        <div class="flex h-full flex-col bg-white text-[#141413]">
+          <div class="flex items-center justify-between px-4 pb-2 pt-10">
+            <span class="text-[12px] font-bold italic tracking-tight">Óptica Ejemplo</span>
+            <span class="text-[10px] font-medium text-[#55534e]">Catálogo</span>
+          </div>
+          <div class="mx-3 rounded-2xl bg-[#ecebfb] px-4 pb-4 pt-5">
+            <svg viewBox="0 0 200 70" class="mx-auto w-[85%]" aria-hidden="true">
+              <circle cx="55" cy="38" r="26" fill="none" stroke="#141413" stroke-width="7"/>
+              <circle cx="145" cy="38" r="26" fill="none" stroke="#141413" stroke-width="7"/>
+              <path d="M81 34c10-8 28-8 38 0" fill="none" stroke="#141413" stroke-width="6"/>
+              <path d="M29 30L8 22M171 30l21-8" stroke="#141413" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <p class="mt-3 text-[19px] font-bold leading-[1.1] tracking-[-0.02em]">Monturas para cada estilo.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-2 p-3">
+            {[["FK-101", "#141413"], ["FK-102", "#8a5a2b"], ["FK-205", "#3d3ad6"], ["FK-310", "#b91c1c"]].map(([ref, c]) => (
+              <div class="rounded-xl bg-[#f6f5f3] p-2">
+                <svg viewBox="0 0 100 40" class="w-full" aria-hidden="true"><rect x="8" y="10" width="34" height="22" rx="9" fill="none" stroke={c} stroke-width="5"/><rect x="58" y="10" width="34" height="22" rx="9" fill="none" stroke={c} stroke-width="5"/><path d="M42 18h16" stroke={c} stroke-width="4"/></svg>
+                <p class="mt-1 text-[10px] font-semibold">Ref. {ref}</p>
+                <span class="mt-1 block rounded-full bg-[#1a7f45] py-1 text-center text-[9px] font-semibold text-white">Comprar</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </figure>
+
+  <div class="flex items-center gap-2" data-js-only role="group" aria-label="Elegir página de ejemplo">
+    {niches.map((n, i) => (
+      <button type="button" class="chip-toggle relative overflow-hidden" data-pc-tab={n.id} aria-pressed={i === 0 ? "true" : "false"}>
+        {n.label}
+        <span class="pc-progress" aria-hidden="true"></span>
+      </button>
+    ))}
+    <button type="button" class="chip-toggle w-11 justify-center px-0" data-pc-pause aria-label="Pausar">
+      <svg class="pc-icon-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.5" height="12" rx="1" fill="currentColor"/><rect x="8.5" y="1" width="3.5" height="12" rx="1" fill="currentColor"/></svg>
+      <svg class="pc-icon-play hidden" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9.5-5.5z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  .pc-screen {
+    position: absolute; inset: 0;
+    opacity: 0; transform: translateX(12%) scale(0.97); visibility: hidden;
+    transition: opacity 600ms var(--ease-out-soft), transform 750ms var(--ease-out-soft), visibility 0s linear 750ms;
+  }
+  .pc-screen[data-active] { opacity: 1; transform: none; visibility: visible; transition-delay: 0s; }
+  .pc-screen[data-leaving] { transform: translateX(-12%) scale(0.97); }
+  .pc-progress { position: absolute; left: 1rem; right: 1rem; bottom: 6px; height: 2px; border-radius: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; opacity: 0.7; }
+  [data-playing] [aria-pressed="true"] .pc-progress { animation: pc-progress var(--pc-interval, 4000ms) linear forwards; }
+  @keyframes pc-progress { to { transform: scaleX(1); } }
+</style>
+
+<script>
+  import { onNear, reducedMotion } from "../../scripts/lazy";
+
+  onNear("[data-phone-cycler]", (root) => {
+    const screens = [...root.querySelectorAll<HTMLElement>("[data-screen]")];
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>("[data-pc-tab]")];
+    const pauseBtn = root.querySelector<HTMLButtonElement>("[data-pc-pause]");
+    const INTERVAL = 4000;
+    let index = 0;
+    let timer: number | undefined;
+    let userPaused = reducedMotion();
+    let hovered = false;
+    let visible = true;
+
+    const show = (next: number) => {
+      if (next === index) return;
+      screens[index].removeAttribute("data-active");
+      screens[index].setAttribute("data-leaving", "");
+      const prev = screens[index];
+      setTimeout(() => prev.removeAttribute("data-leaving"), 800);
+      index = next;
+      screens[index].setAttribute("data-active", "");
+      tabs.forEach((t, i) => t.setAttribute("aria-pressed", String(i === index)));
+      schedule();
+    };
+
+    const schedule = () => {
+      clearTimeout(timer);
+      const playing = !userPaused && !hovered && visible;
+      root.toggleAttribute("data-playing", playing);
+      // restart the progress animation on the active tab
+      tabs.forEach((t) => { const p = t.querySelector<HTMLElement>(".pc-progress"); if (p) { p.style.animation = "none"; void p.offsetWidth; p.style.animation = ""; } });
+      if (playing) timer = window.setTimeout(() => show((index + 1) % screens.length), INTERVAL);
+    };
+
+    const syncPause = () => {
+      pauseBtn?.setAttribute("aria-label", userPaused ? "Reproducir" : "Pausar");
+      pauseBtn?.querySelector(".pc-icon-pause")?.classList.toggle("hidden", userPaused);
+      pauseBtn?.querySelector(".pc-icon-play")?.classList.toggle("hidden", !userPaused);
+    };
+
+    tabs.forEach((t, i) => t.addEventListener("click", () => { show(i); }));
+    pauseBtn?.addEventListener("click", () => { userPaused = !userPaused; syncPause(); schedule(); });
+    const phone = root.querySelector("figure");
+    phone?.addEventListener("pointerenter", () => { hovered = true; schedule(); });
+    phone?.addEventListener("pointerleave", () => { hovered = false; schedule(); });
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; schedule(); }).observe(root);
+
+    root.style.setProperty("--pc-interval", `${INTERVAL}ms`);
+    syncPause();
+    schedule();
+  }, "0px");
+</script>

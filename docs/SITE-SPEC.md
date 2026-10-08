@@ -15,6 +15,7 @@ Language: Spanish (Colombia). This document covers content only, not technical d
 ```
 Inicio
 ├── Servicios
+├── Capacidades (demos interactivas)
 ├── Paquetes
 ├── Planes
 ├── Portafolio
@@ -85,7 +86,13 @@ Content source: [PLANS.md](PLANS.md).
 - More than 3 years of experience.
 - Focus on local businesses in Colombia.
 
+### Capacidades (added 2026-10-08)
+- Shows **what we can do**, not only past work. Second design reference: instrument.com (bold editorial type, full-bleed panels, scroll-driven moments) on top of the Apple-inspired tokens.
+- Interactive demos, all labeled "Demo interactiva", with fictional businesses and illustrative CSS/SVG imagery: phone mockup cycling constructora / taller / óptica homepages; before/after slider (constructora); filterable catalog with live "Comprar por WhatsApp" message (óptica, Paquete Commerce); "Agenda tu revisión" form preview (taller); scroll-driven parallax sample; our Lighthouse-100 build standard.
+- Inicio gets a "Lo que podemos hacer" section linking to each demo.
+
 ### Contacto / WhatsApp
+- Email: dsantoyop@gmail.com. WhatsApp number still pending.
 - WhatsApp button with a prefilled message.
 - Simple contact form (nombre, negocio, teléfono, mensaje).
 - Real contact details (WhatsApp number, email, city).

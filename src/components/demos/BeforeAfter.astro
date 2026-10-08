@@ -1,0 +1,75 @@
+---
+/** Demo interactiva: before/after slider for a construction project. Illustrative SVG only. */
+---
+<div class="ba relative select-none overflow-hidden rounded-tile bg-surface-2" style="--pos:50%" data-before-after>
+  <!-- Antes -->
+  <svg viewBox="0 0 800 500" class="block h-auto w-full" role="img" aria-labelledby="ba-antes-t">
+    <title id="ba-antes-t">Antes: lote en obra gris con andamios y una grúa (ilustración)</title>
+    <rect width="800" height="500" fill="#d9d6cf"/>
+    <rect y="420" width="800" height="80" fill="#a8a69f"/>
+    <rect x="220" y="140" width="360" height="280" fill="#b3b0a8"/>
+    <g fill="#8d8b85">
+      {[0, 1, 2, 3].map((r) => [0, 1, 2, 3, 4].map((c) => <rect x={245 + c * 66} y={165 + r * 62} width="44" height="38"/>))}
+    </g>
+    <g stroke="#6e6c66" stroke-width="5" fill="none">
+      <path d="M200 120v300M600 120v300M200 180h400M200 250h400M200 320h400M200 390h400"/>
+      <path d="M200 180l60 70M260 180l-60 70M540 320l60 70M600 320l-60 70"/>
+    </g>
+    <path d="M660 420V60M660 70h-260M660 70l60 0M450 70v60" stroke="#55534e" stroke-width="8" fill="none"/>
+    <rect x="430" y="130" width="40" height="22" fill="#55534e"/>
+    <rect x="90" y="370" width="90" height="50" fill="#85837c"/><rect x="100" y="350" width="60" height="22" fill="#6e6c66"/>
+  </svg>
+
+  <!-- Después (clipped) -->
+  <div class="ba-after absolute inset-0" aria-hidden="false">
+    <svg viewBox="0 0 800 500" class="block h-full w-full" role="img" aria-labelledby="ba-despues-t">
+      <title id="ba-despues-t">Después: edificio terminado con fachada clara, ventanas y jardín (ilustración)</title>
+      <rect width="800" height="500" fill="#dfe8f5"/>
+      <circle cx="680" cy="90" r="40" fill="#fde68a"/>
+      <rect y="420" width="800" height="80" fill="#9fbf8f"/>
+      <rect x="220" y="140" width="360" height="280" fill="#f6f5f3"/>
+      <rect x="210" y="128" width="380" height="16" fill="#3d3ad6"/>
+      <g fill="#3d3ad6" opacity=".85">
+        {[0, 1, 2, 3].map((r) => [0, 1, 2, 3, 4].map((c) => <rect x={245 + c * 66} y={165 + r * 62} width="44" height="38" rx="3"/>))}
+      </g>
+      <g fill="#ecebfb" opacity=".5">
+        {[0, 1, 2, 3].map((r) => [0, 1, 2, 3, 4].map((c) => <rect x={249 + c * 66} y={169 + r * 62} width="14" height="30"/>))}
+      </g>
+      <rect x="370" y="360" width="60" height="60" fill="#141413"/>
+      <g fill="#5c8a4f"><circle cx="150" cy="380" r="40"/><circle cx="660" cy="385" r="36"/><circle cx="110" cy="400" r="28"/></g>
+      <rect x="146" y="400" width="8" height="24" fill="#6b4f2a"/><rect x="656" y="400" width="8" height="24" fill="#6b4f2a"/>
+    </svg>
+  </div>
+
+  <span class="pointer-events-none absolute left-4 top-4 rounded-full bg-[#141413]/80 px-3 py-1 text-micro text-white">Antes</span>
+  <span class="pointer-events-none absolute right-4 top-4 rounded-full bg-[#141413]/80 px-3 py-1 text-micro text-white">Después</span>
+
+  <div class="ba-handle pointer-events-none absolute inset-y-0 w-0.5 -translate-x-1/2 bg-white shadow-[0_0_0_1px_rgb(0_0_0/0.1)]" aria-hidden="true">
+    <span class="absolute left-1/2 top-1/2 flex size-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#141413] shadow-float">
+      <svg width="20" height="20" viewBox="0 0 20 20"><path d="M7 5l-4 5 4 5M13 5l4 5-4 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+  </div>
+
+  <label class="sr-only" for="ba-range">Mover para comparar antes y después</label>
+  <input id="ba-range" type="range" min="0" max="100" value="50" class="ba-range absolute inset-0 h-full w-full cursor-ew-resize opacity-0" data-js-only />
+</div>
+
+<style>
+  .ba-after { clip-path: inset(0 0 0 var(--pos)); }
+  .ba-handle { left: var(--pos); }
+  .ba-range:focus-visible ~ .ba-handle span, .ba:has(.ba-range:focus-visible) .ba-handle span { outline: 2px solid var(--focus); outline-offset: 2px; }
+</style>
+
+<script>
+  import { onNear } from "../../scripts/lazy";
+  onNear("[data-before-after]", (root) => {
+    const range = root.querySelector<HTMLInputElement>("input[type=range]");
+    if (!range) return;
+    const set = () => {
+      root.style.setProperty("--pos", `${range.value}%`);
+      range.setAttribute("aria-valuetext", `${range.value}% antes, ${100 - Number(range.value)}% después`);
+    };
+    range.addEventListener("input", set);
+    set();
+  });
+</script>

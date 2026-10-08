@@ -372,3 +372,74 @@ html[data-menu-open] { overflow: hidden; }
 /* Floating button enters 600ms after load (fade-up). `backwards` fill so [data-hidden] still works afterwards. */
 .fab-enter { animation: hero-in 500ms var(--ease-out-soft) 600ms backwards; }
 html[data-menu-open] .nav-bar { background: var(--canvas); }
+
+/* ───────────── v1.1: editorial layer (Instrument-inspired energy on figma bro's tokens) ───────────── */
+
+/* Accent band: full indigo, used once per page for the capability showcase. */
+.theme-accent {
+  --canvas: #3d3ad6;
+  --surface: #322fb8;
+  --surface-2: #2f2cb0;
+  --ink: #ffffff;            /* 7.57:1 on canvas, 9.40:1 on surface */
+  --ink-secondary: #e4e3fb;  /* 6.01:1 on canvas */
+  --ink-tertiary: #d6d5f8;   /* 5.31:1 on canvas */
+  --line: rgb(255 255 255 / 0.22);
+  --line-strong: rgb(255 255 255 / 0.6);
+  --accent: #ffffff;
+  --accent-hover: #ecebfb;
+  --on-accent: #3d3ad6;
+  --on-ink: #3d3ad6;         /* primary button inverts: indigo label on white, 7.57:1 */
+  --ink-hover: #ecebfb;
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+@theme {
+  /* Editorial display size for one-off statements (Capacidades). 56 → 176px */
+  --text-mega: clamp(3.5rem, 0.9rem + 11vw, 11rem);
+  --text-mega--line-height: 0.92;
+  --text-mega--letter-spacing: -0.05em;
+  --text-mega--font-weight: 800;
+}
+
+@layer components {
+  /* Small uppercase label over a hairline: editorial section marker */
+  .label-rule { @apply flex items-center justify-between gap-4 border-t border-line pt-3 text-micro tracking-[0.08em] text-ink-tertiary uppercase; }
+
+  /* Full-bleed panel with large radius, inset by the gutter on small screens */
+  .panel-bleed { @apply mx-2 overflow-hidden rounded-[1.75rem] md:mx-4 md:rounded-[2.5rem]; }
+
+  .chip-demo { @apply inline-flex h-7 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-accent-tint px-3 text-micro text-accent; }
+  .theme-accent .chip-demo, .theme-dark .chip-demo { @apply bg-surface-2 text-ink; }
+  .chip-demo::before { content: ""; @apply size-1.5 rounded-full bg-current; }
+
+  /* Toggle chips (filters, radio chips). 44px hit area. */
+  .chip-toggle {
+    @apply inline-flex h-11 cursor-pointer items-center rounded-full bg-surface-2 px-4 text-[0.9375rem] font-medium text-ink
+           transition-colors duration-(--duration-quick) ease-standard hover:bg-line;
+  }
+  .chip-toggle[aria-pressed="true"], input:checked + .chip-toggle { @apply bg-ink text-on-ink; }
+  input:focus-visible + .chip-toggle { outline: 2px solid var(--focus); outline-offset: 2px; }
+}
+
+/* Mega type: tight tracking needs a touch more word space */
+.text-mega { word-spacing: 0.08em; }
+
+/* Interactive bits only show when JS runs (content itself is always visible). */
+html:not(.js) [data-js-only] { display: none !important; }
+
+/* Text animates transform only (never opacity), so contrast is never reduced.
+   Scroll-driven editorial moments (CSS only; static where unsupported or with reduced motion). */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    [data-scroll-words] > span { display: inline-block; animation: words-in linear both; animation-timeline: view(); animation-range: entry 10% cover 40%; }
+    [data-scroll-words] > span:nth-child(even) { --from: 18vw; }
+    @keyframes words-in { from { transform: translateX(var(--from, -18vw)); } to { transform: none; } }
+
+    [data-parallax] { animation: parallax linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+    @keyframes parallax { from { transform: translateY(calc(var(--depth, 0) * 1px)); } to { transform: translateY(calc(var(--depth, 0) * -1px)); } }
+
+    [data-scroll-scale] { animation: scroll-scale linear both; animation-timeline: view(); animation-range: entry 0% cover 50%; }
+    @keyframes scroll-scale { from { transform: scale(0.82); } to { transform: none; } }
+  }
+}

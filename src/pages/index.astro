@@ -6,6 +6,7 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
 import PackageCard from "../components/PackageCard.astro";
 import PortfolioTile from "../components/PortfolioTile.astro";
 import BrowserFrame from "../components/BrowserFrame.astro";
+import PhoneCycler from "../components/demos/PhoneCycler.astro";
 import { PACKAGES } from "../data/packages";
 import { PLANS, PROCESS } from "../data/plans";
 import { PROJECTS } from "../data/portfolio";
@@ -77,6 +78,46 @@ const niches = [
       <p class="mx-auto mt-5 max-w-text text-lead text-ink-secondary">Somos un equipo serio: trabajo real, proceso claro y atención directa por WhatsApp.</p>
     </div>
   </Section>
+
+  <!-- 3b. Lo que podemos hacer (editorial capability showcase) -->
+  <section class="overflow-x-clip bg-canvas pb-section-tight" aria-labelledby="h-podemos">
+    <div class="container-wide">
+      <p class="label-rule"><span>Capacidades</span><span>Demos interactivas</span></p>
+      <h2 id="h-podemos" class="mt-6 text-mega text-ink md:mt-10" data-scroll-words>
+        <span>Lo</span> <span>que</span> <span>podemos</span> <span>hacer.</span>
+      </h2>
+      <p class="mt-6 max-w-text text-lead text-ink-secondary">No solo le mostramos lo que ya hicimos. Pruebe aquí lo que podemos construir para su negocio.</p>
+    </div>
+    <div class="theme-accent panel-bleed mt-section-tight">
+      <div class="container-wide grid items-center gap-12 py-section lg:grid-cols-12">
+        <div class="order-2 lg:order-1 lg:col-span-6">
+          <span class="chip-demo">Demo interactiva</span>
+          <ol class="mt-6 border-b border-line" role="list">
+            {[
+              ["01", "Una página para cada negocio", "#demo-celular"],
+              ["02", "Antes y después para obras", "#demo-antes-despues"],
+              ["03", "Catálogo que vende por WhatsApp", "#demo-catalogo"],
+              ["04", "Agenda en línea para talleres", "#demo-agenda"],
+              ["05", "Movimiento al desplazarse", "#demo-movimiento"],
+              ["06", "Rápida por defecto", "#demo-velocidad"],
+            ].map(([n, t, href], i) => (
+              <li class="border-t border-line" data-reveal style={`--reveal-i:${Math.min(i, 4)}`}>
+                <a href={`/capacidades/${href}`} class="group flex items-baseline gap-5 py-4 md:py-5">
+                  <span class="text-caption text-ink-tertiary tabular-nums">{n}</span>
+                  <span class="text-title text-ink transition-transform duration-(--duration-ui) ease-standard group-hover:translate-x-1.5">{t}</span>
+                  <span class="ml-auto text-title text-ink-tertiary transition-transform duration-(--duration-ui) ease-standard group-hover:translate-x-1" aria-hidden="true">›</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+          <p class="mt-8"><a href="/capacidades/" class="btn btn-primary">Probar las demos</a></p>
+        </div>
+        <div class="order-1 lg:order-2 lg:col-span-6">
+          <PhoneCycler />
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- 4. Paquetes preview -->
   <Section tone="surface" labelledby="h-paq">

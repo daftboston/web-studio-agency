@@ -23,8 +23,8 @@ export const CONTACT = {
   whatsappNumber: "57XXXXXXXXXX",
   /** PLACEHOLDER: how the number is shown on the page. */
   whatsappDisplay: "+57 XXX XXX XXXX",
-  /** PLACEHOLDER: contact email. */
-  email: "hola@filmika.example",
+  /** Contact email (Daniel, confirmed 2026-10-08). */
+  email: "dsantoyop@gmail.com",
   /** PLACEHOLDER (confirm): city shown on Contacto and in the footer. */
   city: "Bogotá, Colombia",
 } as const;
@@ -61,6 +61,7 @@ export function waLink(message: WaMessageKey | string = "default"): string {
 
 export const NAV_LINKS = [
   { href: "/servicios/", label: "Servicios" },
+  { href: "/capacidades/", label: "Capacidades" },
   { href: "/paquetes/", label: "Paquetes" },
   { href: "/planes/", label: "Planes" },
   { href: "/portafolio/", label: "Portafolio" },

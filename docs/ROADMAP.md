@@ -23,9 +23,9 @@
 - Use PACKAGES.md as a reference for scope (for example, the Óptica catalog follows the Commerce "Catálogo + Venta por WhatsApp" idea).
 - Add them to the Portafolio page, labeled "Demo".
 
-## Phase 5: Deploy
-- Publish the Filmika site and demos.
-- Share the link in outreach.
+## Phase 5: Deploy (site v1 live)
+- Filmika site v1 is live at https://filmika.netlify.app (deployed from `site-v1` on 2026-10-08).
+- Still to do: replace the WhatsApp placeholder, publish the niche demos, then share the link in outreach.
 
 ## Ongoing: Digital Care and Growth
 - After each client launch, move them to Digital Care (monthly).

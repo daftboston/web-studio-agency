@@ -8,7 +8,7 @@
 export const SITE = {
   name: "Filmika",
   tagline: "Filmika – Páginas web para negocios",
-  /** PLACEHOLDER: final production URL (used for canonical URLs, Open Graph and the sitemap). */
+  /** Production URL (Netlify project "filmika", live since 2026-10-08). Used for canonical URLs, Open Graph and the sitemap. Change it here when a custom domain is set. */
   url: "https://filmika.netlify.app",
   locale: "es_CO",
   lang: "es-CO",

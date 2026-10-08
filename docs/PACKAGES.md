@@ -1,6 +1,6 @@
 # Paquetes Filmika
 
-Filmika offers 3 packages. Content below is Daniel's, kept in Spanish because it goes on the site.
+Filmika offers 3 packages. Content below is the owner's, kept in Spanish because it goes on the site.
 
 > **No prices in this document.** Pricing is defined by Mr market and will be added later.
 

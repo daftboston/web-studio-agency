@@ -8,10 +8,10 @@ Projects to show on the Filmika site. Only real projects with working links. No 
 - Live: https://www.truephone.shop/
 
 ### Tesla parts site (Tesla Partes CO)
-- URL: **pending from Daniel**
+- URL: **pending from the owner**
 
-## Pending from Daniel: other sites and URLs
-> ⚠️ **Pending.** Daniel will send the list of other sites he has built and their URLs. Add them here once confirmed.
+## Pending from the owner: other sites and URLs
+> ⚠️ **Pending.** The owner will send the list of other sites already built and their URLs. Add them here once confirmed.
 
 - [ ] Tesla parts site URL
 - [ ] Other sites (names and URLs)
@@ -19,7 +19,7 @@ Projects to show on the Filmika site. Only real projects with working links. No 
 ## Niche demos (not built yet)
 These demos will show each target client what their site could look like. Label them as "Demo" on the site.
 
-**Demo bases:** each demo starts from its template repo (spec only for now). Daniel will build them with animations using another AI.
+**Demo bases:** each demo starts from its template repo (spec only for now). The owner will build them with animations using another AI.
 
 | Demo | Template repo |
 |---|---|

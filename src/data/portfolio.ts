@@ -23,7 +23,7 @@ export const PROJECTS: Project[] = [
   {
     name: "Tesla Partes",
     description: "Catálogo de piezas y accesorios para Tesla Model 3 y Model Y: toque un punto del auto y vea el precio.",
-    /** PLACEHOLDER: Tesla Partes live URL pending from Daniel (docs/PORTFOLIO.md). */
+    /** PLACEHOLDER: Tesla Partes live URL pending from the owner (docs/PORTFOLIO.md). */
     url: null,
     image: teslaPartes,
     alt: "Catálogo de Tesla Partes con un Model 3 y piezas señaladas con su precio.",

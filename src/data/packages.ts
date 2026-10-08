@@ -1,4 +1,4 @@
-/** Package content from docs/PACKAGES.md (Spanish, as written by Daniel). No prices. */
+/** Package content from docs/PACKAGES.md (Spanish, as written by the owner). No prices. */
 import { PRICES, type WaMessageKey } from "../config";
 
 export interface Package {

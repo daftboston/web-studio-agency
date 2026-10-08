@@ -6,13 +6,16 @@
 **Tagline:** Filmika – Páginas web para negocios
 
 ## Positioning
-Filmika builds websites that help local businesses get more customers. Filmika is new (started October 2026). It is built on the personal experience of its founder, Daniel Santoyo, who has more than 3 years building websites (TruePhone, the Tesla Partes site, and others).
+Filmika builds websites that help local businesses get more customers. Filmika has more than 3 years building websites (TruePhone, the Tesla Partes site, and others).
 
-Rule: "más de 3 años" is the only number we use, and it always belongs to **Daniel personally**, never to Filmika, "the studio", or "the team". Never write "Filmika tiene más de 3 años" or "Más de 3 años de experiencia nos respaldan". No invented clients, metrics, or prices.
+Rules:
+- "más de 3 años" is the only number we use, and it is credited to the brand: "Filmika tiene más de 3 años construyendo sitios web."
+- **No personal names anywhere on the site** (owner's decision, 2026-10-08). The brand speaks as Filmika ("Filmika diseña…", "hemos construido…"). TruePhone and Tesla Partes can be named as portfolio projects.
+- No invented clients, metrics, or prices.
 
 Approved phrasing:
-> Filmika nace de más de 3 años de experiencia de Daniel Santoyo construyendo sitios web como TruePhone y Tesla Partes.
-> Daniel Santoyo tiene más de 3 años construyendo sitios web.
+> Filmika tiene más de 3 años construyendo sitios web.
+> Filmika tiene más de 3 años construyendo sitios web, como TruePhone y Tesla Partes.
 
 ## Tone of voice
 - Clear and direct. No jargon (avoid words like "stack", "framework", "SEO técnico" in client copy).
@@ -24,7 +27,7 @@ Approved phrasing:
 ## Sample Spanish copy
 **Hero (Inicio)**
 > Páginas web que traen clientes a su negocio.
-> En Filmika diseñamos sitios rápidos y fáciles de usar para constructoras, talleres y ópticas, con la experiencia de Daniel Santoyo: más de 3 años construyendo sitios web.
+> En Filmika diseñamos sitios rápidos y fáciles de usar para constructoras, talleres y ópticas. Tenemos más de 3 años construyendo sitios web.
 > [Hablemos por WhatsApp]
 
 **Value line**

@@ -4,14 +4,14 @@ import PageHero from "../components/PageHero.astro";
 import { SITE } from "../config";
 import Section from "../components/Section.astro";
 const values = [
-  { title: "La experiencia de Daniel Santoyo", text: "Daniel tiene más de 3 años construyendo sitios web, como TruePhone y Tesla Partes." },
+  { title: "Más de 3 años construyendo sitios web", text: SITE.experience },
   { title: "Enfocados en negocios locales de Colombia", text: "Constructoras, talleres y ópticas que quieren más clientes, más llamadas y más mensajes." },
   { title: "Atención directa por WhatsApp", text: "Habla con quien construye su página. Sin intermediarios ni formularios eternos." },
 ];
 ---
 <Base
   title="Nosotros"
-  description="Filmika nace de más de 3 años de experiencia de Daniel Santoyo construyendo sitios web. Páginas web para negocios locales de Colombia, con atención directa por WhatsApp."
+  description="Filmika tiene más de 3 años construyendo sitios web. Páginas web para negocios locales de Colombia, con atención directa por WhatsApp."
 >
   <PageHero
     eyebrow="Nosotros"
@@ -36,9 +36,9 @@ const values = [
   <Section labelledby="h-origen">
     <div class="container-text" data-reveal>
       <p class="eyebrow mb-3">De dónde venimos</p>
-      <h2 id="h-origen" class="text-headline text-ink">Un estudio nuevo, con experiencia detrás.</h2>
-      <p class="mt-4 text-lead text-ink-secondary">{SITE.founderExperience}</p>
-      <p class="mt-4 text-lead text-ink-secondary">Daniel también es arquitecto y viene de coordinar proyectos de edificación. Por eso trabajamos con orden, estándares claros y un proceso que usted puede seguir paso a paso.</p>
+      <h2 id="h-origen" class="text-headline text-ink">Experiencia en web y en obra.</h2>
+      <p class="mt-4 text-lead text-ink-secondary">{SITE.experience}</p>
+      <p class="mt-4 text-lead text-ink-secondary">También venimos de la arquitectura y la coordinación de proyectos de edificación. Por eso trabajamos con orden, estándares claros y un proceso que usted puede seguir paso a paso.</p>
     </div>
   </Section>
 

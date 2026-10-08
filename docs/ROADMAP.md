@@ -9,17 +9,17 @@
 - Name: **Filmika**. Tagline: "Filmika – Páginas web para negocios".
 
 ## Phase 3: Build the Filmika site (v1 built, in review)
-- v1 built with Astro + Tailwind v4 for Netlify on branch `site-v1` (Daniel asked for it on 2026-10-08). See the README for run, build and deploy steps.
-- Daniel builds the site locally with another AI, following SITE-SPEC.md, BRAND.md, PACKAGES.md, and PLANS.md (including the Paquetes and Planes pages).
+- v1 built with Astro + Tailwind v4 for Netlify on branch `site-v1` (the owner asked for it on 2026-10-08). See the README for run, build and deploy steps.
+- The owner builds the site locally with another AI, following SITE-SPEC.md, BRAND.md, PACKAGES.md, and PLANS.md (including the Paquetes and Planes pages).
 - After that, Web Studio Dev takes over managing the site (updates, content, deploys).
-- Waiting on: other site URLs from Daniel (see PORTFOLIO.md) and package and plan prices from Mr market.
+- Waiting on: other site URLs from the owner (see PORTFOLIO.md) and package and plan prices from Mr market.
 
 ## Phase 4: Build the niche demos (future)
 - Demo bases (spec only, created):
   - https://github.com/daftboston/filmika-template-constructora
   - https://github.com/daftboston/filmika-template-taller
   - https://github.com/daftboston/filmika-template-optica
-- Daniel builds each one with animations using another AI, following its README.
+- The owner builds each one with animations using another AI, following its README.
 - Use PACKAGES.md as a reference for scope (for example, the Óptica catalog follows the Commerce "Catálogo + Venta por WhatsApp" idea).
 - Add them to the Portafolio page, labeled "Demo".
 
@@ -39,5 +39,5 @@ Runs in parallel with the phases above.
 
 ## Ownership
 - **Mr market:** offer, package and plan pricing, and outreach scripts; finds prospects.
-- **Daniel:** builds the first version of the site and demos locally; package content.
+- **Owner:** builds the first version of the site and demos locally; package content.
 - **Web Studio Dev:** docs, managing the site after it is built, demos, and prospect mockups.

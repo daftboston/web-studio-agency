@@ -8,7 +8,8 @@
 ## Phase 2: Choose the name ✅ Done
 - Name: **Filmika**. Tagline: "Filmika – Páginas web para negocios".
 
-## Phase 3: Build the Filmika site (next)
+## Phase 3: Build the Filmika site (v1 built, in review)
+- v1 built with Astro + Tailwind v4 for Netlify on branch `site-v1` (Daniel asked for it on 2026-10-08). See the README for run, build and deploy steps.
 - Daniel builds the site locally with another AI, following SITE-SPEC.md, BRAND.md, PACKAGES.md, and PLANS.md (including the Paquetes and Planes pages).
 - After that, Web Studio Dev takes over managing the site (updates, content, deploys).
 - Waiting on: other site URLs from Daniel (see PORTFOLIO.md) and package and plan prices from Mr market.

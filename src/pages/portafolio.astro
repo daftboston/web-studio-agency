@@ -1,0 +1,37 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import PortfolioTile from "../components/PortfolioTile.astro";
+import DemoTile from "../components/DemoTile.astro";
+import { PROJECTS, DEMOS } from "../data/portfolio";
+---
+<Base
+  title="Portafolio"
+  description="Sitios reales construidos por Filmika, como TruePhone y Tesla Partes, y las próximas demos para constructoras, talleres y ópticas."
+>
+  <PageHero eyebrow="Portafolio" title="Trabajo real, sitios en línea." lead="Estos son algunos de los sitios que hemos construido." />
+
+  <section class="bg-canvas pb-section" aria-labelledby="h-proyectos">
+    <div class="container-wide">
+      <h2 id="h-proyectos" class="sr-only">Proyectos en línea</h2>
+      <div class="mx-auto grid max-w-content gap-grid md:grid-cols-2">
+        {PROJECTS.map((p, i) => <PortfolioTile project={p} index={i} sizes="(min-width: 768px) 520px, 100vw" />)}
+      </div>
+    </div>
+  </section>
+
+  <Section tone="surface" labelledby="h-demos">
+    <div class="container-content">
+      <SectionHeader id="h-demos" eyebrow="Próximamente" title="Demos por tipo de negocio." lead="Así podría verse la página de su negocio. Estamos preparando una demo para cada sector." />
+      <div class="grid gap-grid md:grid-cols-3">
+        {DEMOS.map((d, i) => (
+          <div class="[&>article]:bg-canvas">
+            <DemoTile niche={d.niche} name={d.name} text={d.text} index={i} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+</Base>

@@ -1,0 +1,13 @@
+---
+interface Props { niche: string; name: string; text: string; index?: number }
+const { niche, name, text, index = 0 } = Astro.props;
+---
+<article class="relative flex h-full flex-col gap-3 rounded-tile bg-surface p-6 md:p-7" data-reveal style={`--reveal-i:${index}`}>
+  <div class="flex flex-wrap gap-2">
+    <span class="chip chip-outline">Demo</span>
+    <span class="chip">Próximamente</span>
+  </div>
+  <p class="mt-2 text-caption font-semibold text-accent">{niche}</p>
+  <h3 class="text-title text-ink">{name}</h3>
+  <p class="text-body text-ink-secondary">{text}</p>
+</article>

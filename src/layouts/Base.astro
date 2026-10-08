@@ -1,0 +1,130 @@
+---
+import "@fontsource-variable/inter/opsz.css";
+import "../styles/global.css";
+import interLatin from "@fontsource-variable/inter/files/inter-latin-opsz-normal.woff2?url";
+import { SITE } from "../config";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import FinalCta from "../components/FinalCta.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Path to an image in /public used for Open Graph. */
+  ogImage?: string;
+  hideFab?: boolean;
+  hideFinalCta?: boolean;
+  finalCtaMessage?: string;
+  noindex?: boolean;
+}
+const {
+  title,
+  description = SITE.defaultDescription,
+  ogImage = "/og-image.png",
+  hideFab = false,
+  hideFinalCta = false,
+  finalCtaMessage,
+  noindex = false,
+} = Astro.props;
+const fullTitle = title === SITE.name ? SITE.tagline : `${title} · ${SITE.name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogUrl = new URL(ogImage, Astro.site).href;
+---
+<!doctype html>
+<html lang={SITE.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script is:inline>document.documentElement.classList.add("js");</script>
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={SITE.tagline} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
+    <slot name="head" />
+  </head>
+  <body class="min-h-dvh bg-canvas text-ink">
+    <a href="#main" class="sr-only z-[60] rounded-full bg-ink px-4 py-2 text-on-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-2">Saltar al contenido</a>
+    <Nav />
+    <main id="main" data-main>
+      <slot />
+      {!hideFinalCta && <FinalCta message={finalCtaMessage} />}
+    </main>
+    <Footer />
+    {!hideFab && <FloatingWhatsApp />}
+
+    <script>
+      // 1) One-shot scroll reveal (content is visible by default; see global.css)
+      const reveal = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add("is-in");
+              reveal.unobserve(e.target);
+            }
+          }
+        },
+        { rootMargin: "0px 0px -10% 0px", threshold: 0.15 },
+      );
+      document.querySelectorAll("[data-reveal]").forEach((el) => reveal.observe(el));
+
+      // 2) Floating WhatsApp: hide while an inline WhatsApp CTA is on screen or the menu is open
+      const fab = document.querySelector<HTMLElement>("[data-fab]");
+      const onScreen = new Set<Element>();
+      let menuOpen = false;
+      const syncFab = () => fab?.toggleAttribute("data-hidden", menuOpen || onScreen.size > 0);
+      const watch = new IntersectionObserver((entries) => {
+        for (const e of entries) e.isIntersecting ? onScreen.add(e.target) : onScreen.delete(e.target);
+        syncFab();
+      });
+      document.querySelectorAll("main [data-wa-inline]").forEach((el) => watch.observe(el));
+
+      // 3) Mobile menu
+      const btn = document.querySelector<HTMLButtonElement>("[data-menu-btn]");
+      const sheet = document.querySelector<HTMLElement>("[data-menu-sheet]");
+      const main = document.querySelector<HTMLElement>("[data-main]");
+      const footer = document.querySelector("footer");
+      const setMenu = (open: boolean, returnFocus = true) => {
+        if (!btn || !sheet) return;
+        menuOpen = open;
+        btn.setAttribute("aria-expanded", String(open));
+        btn.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+        sheet.toggleAttribute("data-open", open);
+        document.documentElement.toggleAttribute("data-menu-open", open);
+        main?.toggleAttribute("inert", open);
+        footer?.toggleAttribute("inert", open);
+        syncFab();
+        if (open) sheet.querySelector<HTMLElement>("a")?.focus();
+        else if (returnFocus) btn.focus();
+      };
+      btn?.addEventListener("click", () => setMenu(!menuOpen));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && menuOpen) setMenu(false);
+      });
+      matchMedia("(min-width: 1024px)").addEventListener("change", (m) => {
+        if (m.matches && menuOpen) setMenu(false, false);
+      });
+    </script>
+  </body>
+</html>

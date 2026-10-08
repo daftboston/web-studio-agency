@@ -1,0 +1,374 @@
+/*
+  Filmika · global styles. Based on figma bro's Apple-inspired token sheet (2026-10-08),
+  /workspace/figma/filmika-tokens-2026-10-08.css, plus site additions at the bottom.
+  Original header:
+  Filmika · Apple-inspired token sheet (DRAFT, 2026-10-08)
+  Target: Astro + Tailwind v4 (`@tailwindcss/vite`), e.g. src/styles/global.css.
+  Current npm versions checked 2026-10-08: tailwindcss 4.3.3, astro 7.3.8,
+  @fontsource-variable/inter 5.3.0.
+
+  Labels: [repo] = from daftboston/web-studio-agency (or its base, daftboston/NewPortfolio)
+          [proposed] = new Filmika value
+  The web-studio-agency repo has docs only (no code, Tailwind, logo, or brand color), so
+  nearly every value here is [proposed]. Nothing is copied from Apple: no SF Pro, no
+  Apple palette, no Apple assets.
+
+  Install: npm i @fontsource-variable/inter
+  In the base layout (frontmatter):  import "@fontsource-variable/inter/opsz.css";
+  (The opsz axis gives "Display"-style letterforms automatically at large sizes.)
+*/
+
+@import "tailwindcss";
+
+/* ───────────── Semantic colors (light = default) ───────────── */
+:root {
+  /* Neutrals: warm near-black / white / gray. Not Apple's #1d1d1f / #f5f5f7 ramp. */
+  --canvas: #ffffff;            /* [proposed] page background */
+  --surface: #f6f5f3;           /* [proposed] alternate bands, cards */
+  --surface-2: #e9e7e2;         /* [proposed] chips, pressed states */
+  --ink: #141413;               /* [proposed] headings/body: 18.43:1 on canvas, 16.92:1 on surface */
+  --ink-secondary: #55534e;     /* [proposed] sublines/body-2: 7.68:1 canvas, 7.05:1 surface, 6.22:1 on surface-2 */
+  --ink-tertiary: #6e6c66;      /* [proposed] captions/meta: 5.25:1 canvas, 4.82:1 surface */
+  --line: #e3e1dc;              /* [proposed] decorative dividers only (1.31:1, not for UI boundaries) */
+  --line-strong: #85837c;       /* [proposed] form field borders: 3.79:1 on canvas (meets 3:1 for UI) */
+
+  /* One accent: "Filmika indigo". Links, "Ver más ›", focus, Recomendado. */
+  --accent: #3d3ad6;            /* [proposed] 7.57:1 on canvas, 6.95:1 on surface; white on it 7.57:1 */
+  --accent-hover: #322fb8;      /* [proposed] white on it 9.40:1 */
+  --accent-tint: #ecebfb;       /* [proposed] accent text on it 6.43:1 */
+  --on-accent: #ffffff;         /* [proposed] 7.57:1 on --accent */
+
+  /* WhatsApp: ONLY for WhatsApp CTAs and the floating button.
+     A darker take on the WhatsApp green: white label 5.04:1, and the button
+     edge vs canvas is 5.04:1. The official #25D366 gives white text only 1.98:1. */
+  --whatsapp: #1a7f45;          /* [proposed] */
+  --whatsapp-hover: #156b3a;    /* [proposed] white on it 6.57:1 */
+  --on-whatsapp: #ffffff;
+
+  --on-ink: #ffffff;            /* label on primary dark button: 18.43:1; hover bg #2a2a28 gives 14.38:1 */
+  --ink-hover: #2a2a28;         /* [proposed] */
+
+  --focus: var(--accent);       /* [proposed] 2px ring + 2px offset: 7.57:1 vs canvas */
+}
+
+/* Scoped dark BAND (one or two dramatic sections per page, apple.com-style).
+   Full site-wide dark mode is intentionally NOT shipped in v1 (see spec §2). */
+.theme-dark {
+  --canvas: #0d0d0c;            /* [proposed] */
+  --surface: #1a1a18;           /* [proposed] */
+  --surface-2: #262624;         /* [proposed] */
+  --ink: #f5f4f0;               /* [proposed] 17.67:1 on canvas, 15.84:1 on surface */
+  --ink-secondary: #a8a69f;     /* [proposed] 7.98:1 canvas, 7.15:1 surface */
+  --ink-tertiary: #8d8b85;      /* [proposed] 5.71:1 canvas, 5.12:1 surface */
+  --line: #2e2e2b;              /* [proposed] decorative */
+  --line-strong: #6e6c66;       /* [proposed] */
+  --accent: #9b9cff;            /* [proposed] links on dark: 7.96:1 canvas, 7.13:1 surface */
+  --accent-hover: #b6b7ff;      /* [proposed] */
+  --accent-tint: #23224a;       /* [proposed] */
+  --on-accent: #0d0d0c;         /* [proposed] 7.96:1 on dark --accent */
+  --on-ink: #0d0d0c;            /* primary button inverts to light: #0d0d0c on #f5f4f0 = 17.67:1 */
+  --ink-hover: #dddbd5;         /* [proposed] */
+  /* --whatsapp stays #1a7f45 with white label (5.04:1). Button edge vs dark canvas is 3.86:1 (≥3:1 OK). */
+  color-scheme: dark;
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+/* ───────────── Tailwind v4 theme ───────────── */
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-tertiary: var(--ink-tertiary);
+  --color-ink-hover: var(--ink-hover);
+  --color-on-ink: var(--on-ink);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-tint: var(--accent-tint);
+  --color-on-accent: var(--on-accent);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-hover: var(--whatsapp-hover);
+  --color-on-whatsapp: var(--on-whatsapp);
+  --color-focus: var(--focus);
+}
+
+@theme {
+  /* Font: self-hosted Inter (OFL) first, then the system UI font. No SF Pro is bundled. [proposed] */
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Fluid type scale. Clamp spans ~375px → ~1440px viewports. [proposed]
+     Sizes in comments are min → max. Display sizes get tighter tracking. */
+  --text-hero: clamp(2.75rem, 1.6rem + 4.9vw, 5.5rem);         /* 44 → 88px */
+  --text-hero--line-height: 1.04;
+  --text-hero--letter-spacing: -0.035em;
+  --text-hero--font-weight: 700;
+
+  --text-display: clamp(2.25rem, 1.5rem + 3.2vw, 4rem);        /* 36 → 64px */
+  --text-display--line-height: 1.07;
+  --text-display--letter-spacing: -0.03em;
+  --text-display--font-weight: 700;
+
+  --text-headline: clamp(1.75rem, 1.25rem + 2.1vw, 3rem);      /* 28 → 48px, section titles */
+  --text-headline--line-height: 1.1;
+  --text-headline--letter-spacing: -0.022em;
+  --text-headline--font-weight: 650;
+
+  --text-title: clamp(1.25rem, 1.05rem + 0.85vw, 1.75rem);     /* 20 → 28px, card titles */
+  --text-title--line-height: 1.2;
+  --text-title--letter-spacing: -0.012em;
+  --text-title--font-weight: 600;
+
+  --text-lead: clamp(1.125rem, 1rem + 0.55vw, 1.5rem);         /* 18 → 24px, sublines */
+  --text-lead--line-height: 1.4;
+  --text-lead--letter-spacing: -0.008em;
+  --text-lead--font-weight: 400;
+
+  --text-body: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);       /* 16 → 17px */
+  --text-body--line-height: 1.55;
+  --text-body--letter-spacing: -0.003em;
+  --text-body--font-weight: 400;
+
+  --text-eyebrow: clamp(0.875rem, 0.82rem + 0.25vw, 1.0625rem); /* 14 → 17px, kicker above headlines */
+  --text-eyebrow--line-height: 1.3;
+  --text-eyebrow--letter-spacing: 0;
+  --text-eyebrow--font-weight: 600;
+
+  --text-caption: 0.875rem;                                     /* 14px */
+  --text-caption--line-height: 1.43;
+  --text-caption--letter-spacing: 0;
+  --text-caption--font-weight: 400;
+
+  --text-micro: 0.8125rem;                                      /* 13px: chips, legal */
+  --text-micro--line-height: 1.3;
+  --text-micro--letter-spacing: 0.01em;
+  --text-micro--font-weight: 600;
+
+  /* Spacing: keep Tailwind's 0.25rem base (--spacing). Layout tokens: [proposed] */
+  --spacing-gutter: clamp(1.25rem, 0.8rem + 2vw, 2.5rem);      /* 20 → 40px side padding → px-gutter */
+  --spacing-section: clamp(4rem, 2.6rem + 6vw, 8rem);          /* 64 → 128px band padding → py-section */
+  --spacing-section-tight: clamp(3rem, 2.2rem + 3.4vw, 5rem);  /* 48 → 80px → py-section-tight */
+  --spacing-stack: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem);      /* headline → content gap */
+  --spacing-grid: clamp(1rem, 0.75rem + 1vw, 1.5rem);          /* card grid gap → gap-grid */
+  --spacing-nav: 3rem;                                         /* 48px nav height → h-nav, scroll-mt-nav */
+
+  /* Containers → max-w-text / max-w-content / max-w-wide [proposed] */
+  --container-text: 40rem;      /* 640px: centered copy blocks */
+  --container-content: 68rem;   /* 1088px: card grids */
+  --container-wide: 84rem;      /* 1344px: hero media, portfolio */
+
+  /* Radii [proposed]: minimal set */
+  --radius-field: 0.75rem;      /* 12px inputs */
+  --radius-card: 1.25rem;       /* 20px package cards */
+  --radius-tile: 1.75rem;       /* 28px large portfolio / hero tiles */
+  /* buttons & chips use rounded-full */
+
+  /* Shadows [proposed]: minimal; surfaces do most of the work */
+  --shadow-card: 0 1px 2px rgb(20 20 19 / 0.04), 0 12px 32px -16px rgb(20 20 19 / 0.14);
+  --shadow-lift: 0 2px 4px rgb(20 20 19 / 0.05), 0 20px 44px -18px rgb(20 20 19 / 0.22);
+  --shadow-float: 0 6px 20px rgb(20 20 19 / 0.22), 0 2px 6px rgb(20 20 19 / 0.12);
+
+  /* Motion [proposed] */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);   /* reveals, hero intro */
+  --ease-standard: cubic-bezier(0.3, 0, 0.2, 1);     /* hovers, menus */
+  --ease-in-quick: cubic-bezier(0.4, 0, 1, 1);       /* exits */
+  --duration-quick: 150ms;   /* hover/press */
+  --duration-ui: 250ms;      /* menu, nav background */
+  --duration-reveal: 700ms;  /* scroll reveal */
+  --duration-hero: 900ms;    /* first-paint hero intro */
+
+  --animate-hero-in: hero-in var(--duration-hero) var(--ease-out-soft) both;
+  @keyframes hero-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
+  }
+}
+
+/* ───────────── Base ───────────── */
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;          /* Inter opsz → display cut on big type */
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-padding-top: calc(var(--spacing-nav) + 1rem);
+    background: var(--canvas);
+    color: var(--ink);
+  }
+  body { font-size: var(--text-body); line-height: 1.55; }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+}
+
+/* ───────────── Components ─────────────
+   Tailwind v4 note: plain classes can't be @apply'd into each other, so markup
+   combines them: class="btn btn-primary", class="chip chip-accent". */
+@layer components {
+  /* Buttons: 48px tall (touch target), full pill. */
+  .btn {
+    @apply inline-flex h-12 items-center justify-center gap-2 rounded-full px-6 text-[1.0625rem] font-semibold tracking-[-0.01em]
+           transition-[background-color,transform,box-shadow] duration-(--duration-quick) ease-standard
+           active:scale-[0.98];
+  }
+  .btn-primary   { @apply bg-ink text-on-ink hover:bg-ink-hover; }                    /* 18.43:1 */
+  .btn-whatsapp  { @apply bg-whatsapp text-on-whatsapp hover:bg-whatsapp-hover; }     /* 5.04:1, hover 6.57:1 */
+  .btn-secondary { @apply bg-transparent text-ink ring-1 ring-line-strong ring-inset hover:bg-surface; } /* 18.43:1, edge 3.79:1 */
+  .btn-sm        { @apply h-9 px-4 text-[0.9375rem]; }                                /* nav-only (36px) */
+
+  /* Link-style "Ver más ›": accent text, chevron nudges on hover */
+  .link-more {
+    @apply inline-flex items-center gap-1 text-[1.0625rem] font-medium text-accent underline-offset-4 hover:text-accent-hover hover:underline;
+  }
+  .link-more::after {
+    content: "›"; font-size: 1.15em; line-height: 1;
+    transition: transform var(--duration-quick) var(--ease-standard);
+  }
+  .link-more:hover::after { transform: translateX(3px); }
+
+  /* Chips */
+  .chip         { @apply inline-flex h-7 items-center rounded-full bg-surface-2 px-3 text-micro text-ink; }     /* 14.92:1 */
+  .chip-accent  { @apply bg-accent text-on-accent; }                                    /* "Recomendado": 7.57:1 (dark band 7.96:1) */
+  .chip-outline { @apply bg-transparent text-ink-secondary ring-1 ring-line-strong ring-inset; } /* "Demo": 7.68:1 */
+
+  /* Cards */
+  .card-package { @apply relative flex flex-col gap-5 rounded-card bg-surface p-7 md:p-8; }
+  .card-package[data-recommended] { @apply bg-canvas shadow-card ring-2 ring-accent; }
+  .tile-portfolio {
+    @apply relative block overflow-hidden rounded-tile bg-surface
+           transition-[transform,box-shadow] duration-(--duration-ui) ease-standard
+           hover:-translate-y-1 hover:shadow-lift;
+  }
+
+  /* Frosted sticky nav. Blur via Tailwind utilities; opaque fallback. */
+  .nav-bar {
+    @apply sticky top-0 z-50 h-nav border-b border-line/70 bg-canvas/72 backdrop-blur-xl backdrop-saturate-150;
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .nav-bar { background: var(--canvas); }
+  }
+
+  /* Floating WhatsApp button: 56px circle on mobile, pill with label from lg. */
+  .fab-whatsapp {
+    @apply fixed z-40 inline-flex size-14 items-center justify-center rounded-full bg-whatsapp text-on-whatsapp shadow-float
+           transition-[opacity,transform,background-color] duration-(--duration-ui) ease-standard
+           hover:bg-whatsapp-hover lg:h-12 lg:w-auto lg:gap-2 lg:px-5;
+    right: max(1rem, calc(env(safe-area-inset-right) + 1rem));
+    bottom: max(1rem, calc(env(safe-area-inset-bottom) + 1rem));
+  }
+  .fab-whatsapp[data-hidden] { opacity: 0; transform: translateY(12px) scale(0.96); pointer-events: none; }
+}
+
+/* ───────────── Reveal on scroll (IntersectionObserver adds .is-in) ─────────────
+   Content is visible by default. Hidden-until-revealed applies only when JS has
+   run (html.js) and motion is allowed. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity var(--duration-reveal) var(--ease-out-soft),
+      transform var(--duration-reveal) var(--ease-out-soft);
+    transition-delay: calc(var(--reveal-i, 0) * 80ms);   /* stagger: style="--reveal-i:1" */
+  }
+  html.js [data-reveal].is-in { opacity: 1; transform: none; }
+
+  /* Optional product-style hero media: gentle scale while scrolling. CSS
+     scroll-driven animation, only where supported; otherwise static. */
+  @supports (animation-timeline: view()) {
+    [data-hero-media] {
+      animation: hero-media-scale linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+    @keyframes hero-media-scale {
+      from { transform: scale(0.94); opacity: 0.6; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+  }
+
+  /* Native cross-document View Transitions (MPA, no JS router). Browsers without support ignore it. */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation-duration: 220ms; animation-timing-function: var(--ease-standard); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ───────────── Site additions (not in the token sheet) ───────────── */
+@layer components {
+  .container-text    { @apply mx-auto w-full max-w-text px-gutter; }
+  .container-content { @apply mx-auto w-full max-w-content px-gutter; }
+  .container-wide    { @apply mx-auto w-full max-w-wide px-gutter; }
+  .eyebrow { @apply text-eyebrow text-accent; }
+
+  /* Nav links */
+  .nav-link { @apply text-[0.875rem] text-ink-secondary transition-colors duration-(--duration-quick) hover:text-ink; }
+  .nav-link[aria-current="page"] { @apply text-ink; }
+
+  /* Mobile menu sheet (sibling of the nav, so the nav's backdrop-filter doesn't trap it) */
+  .menu-sheet {
+    @apply fixed inset-x-0 bottom-0 z-50 flex flex-col overflow-y-auto bg-canvas px-gutter pt-2;
+    top: var(--spacing-nav);
+    padding-bottom: max(1.5rem, calc(env(safe-area-inset-bottom) + 1rem));
+    transition: opacity var(--duration-ui) var(--ease-standard), transform var(--duration-ui) var(--ease-standard), visibility 0s linear var(--duration-ui);
+  }
+  .menu-sheet:not([data-open]) { opacity: 0; transform: translateY(-12px); visibility: hidden; pointer-events: none; }
+  .menu-sheet[data-open] { transition-delay: 0s; }
+
+  .menu-btn .bar { @apply absolute left-1/2 h-[1.5px] w-[18px] -translate-x-1/2 rounded-full bg-ink; transition: transform var(--duration-ui) var(--ease-standard); }
+  .menu-btn .bar-1 { transform: translate(-50%, -3.5px); }
+  .menu-btn .bar-2 { transform: translate(-50%, 3.5px); }
+  .menu-btn[aria-expanded="true"] .bar-1 { transform: translate(-50%, 0) rotate(45deg); }
+  .menu-btn[aria-expanded="true"] .bar-2 { transform: translate(-50%, 0) rotate(-45deg); }
+
+  /* Checklist */
+  .check-list > li { @apply relative pl-7; }
+  .check-list > li::before {
+    content: ""; position: absolute; left: 0; top: 0.45em; width: 1rem; height: 0.55rem;
+    border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+    transform: rotate(-45deg) scale(0.85); transform-origin: center;
+  }
+
+  /* Neutral device frame we draw ourselves (no Apple device renders) */
+  .browser-frame { @apply overflow-hidden rounded-[14px] bg-surface-2 ring-1 ring-line; }
+  .browser-frame .bf-bar { @apply flex h-7 items-center gap-1.5 px-3 md:h-8; }
+  .browser-frame .bf-dot { @apply size-2 rounded-full bg-line-strong/40 md:size-2.5; }
+
+  /* Form fields */
+  .field { @apply h-12 w-full rounded-field border border-line-strong bg-canvas px-4 text-body text-ink placeholder:text-ink-tertiary focus:outline-2 focus:outline-offset-0 focus:outline-accent; }
+  textarea.field { @apply h-auto min-h-36 py-3; }
+  .field-label { @apply mb-1.5 block text-caption text-ink-secondary; }
+
+  /* Accordions */
+  .details-row summary { @apply flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-title text-ink; }
+  .details-row summary::-webkit-details-marker { display: none; }
+  .details-row summary::after { content: "+"; @apply text-[1.5rem] font-normal text-ink-tertiary transition-transform duration-(--duration-ui) ease-standard; }
+  .details-row[open] summary::after { transform: rotate(45deg); }
+}
+
+/* Hero intro stagger (Inicio, first paint only) */
+.hero-in { animation: var(--animate-hero-in); }
+.hero-in-1 { animation-delay: 80ms; }
+.hero-in-2 { animation-delay: 160ms; }
+.hero-in-3 { animation-delay: 240ms; }
+
+/* Keep the wordmark in place across view transitions */
+.brand-mark { view-transition-name: brand; }
+
+/* Lock page scroll while the mobile menu is open */
+html[data-menu-open] { overflow: hidden; }
+
+/* Floating button enters 600ms after load (fade-up). `backwards` fill so [data-hidden] still works afterwards. */
+.fab-enter { animation: hero-in 500ms var(--ease-out-soft) 600ms backwards; }
+html[data-menu-open] .nav-bar { background: var(--canvas); }

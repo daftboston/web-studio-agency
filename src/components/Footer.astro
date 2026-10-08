@@ -1,0 +1,39 @@
+---
+import { CONTACT, NAV_LINKS, SITE, waLink } from "../config";
+import Wordmark from "./Wordmark.astro";
+const year = new Date().getFullYear();
+---
+<footer class="bg-surface pt-section-tight pb-24 lg:pb-section-tight">
+  <div class="container-content">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <Wordmark />
+        <p class="mt-3 text-caption text-ink-secondary">{SITE.tagline}</p>
+        <p class="mt-1 text-caption text-ink-secondary">Más de 3 años de experiencia.</p>
+      </div>
+      <div>
+        <h2 class="text-caption font-semibold text-ink">Páginas</h2>
+        <ul class="mt-3 space-y-2 text-caption" role="list">
+          <li><a class="text-ink-secondary hover:text-ink" href="/">Inicio</a></li>
+          {NAV_LINKS.map((l) => <li><a class="text-ink-secondary hover:text-ink" href={l.href}>{l.label}</a></li>)}
+          <li><a class="text-ink-secondary hover:text-ink" href="/contacto/">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-caption font-semibold text-ink">Contacto</h2>
+        <ul class="mt-3 space-y-2 text-caption text-ink-secondary" role="list">
+          <li><a class="hover:text-ink" href={waLink()} target="_blank" rel="noopener">WhatsApp {CONTACT.whatsappDisplay}</a></li>
+          <li><a class="hover:text-ink" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
+          <li>{CONTACT.city}</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-caption font-semibold text-ink">Legal</h2>
+        <ul class="mt-3 space-y-2 text-caption" role="list">
+          <li><a class="text-ink-secondary hover:text-ink" href="/privacidad/">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="mt-12 border-t border-line pt-6 text-micro text-ink-tertiary">Filmika – Páginas web para negocios · Colombia · © {year}</p>
+  </div>
+</footer>

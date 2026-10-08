@@ -1,0 +1,149 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import PackageCard from "../components/PackageCard.astro";
+import PortfolioTile from "../components/PortfolioTile.astro";
+import BrowserFrame from "../components/BrowserFrame.astro";
+import { PACKAGES } from "../data/packages";
+import { PLANS, PROCESS } from "../data/plans";
+import { PROJECTS } from "../data/portfolio";
+
+const niches = [
+  { name: "Constructoras", text: "Muestre sus proyectos terminados y reciba solicitudes de cotización." },
+  { name: "Talleres", text: "Que lo encuentren en Google y le agenden la revisión por WhatsApp." },
+  { name: "Ópticas", text: "Su catálogo de monturas en línea, con pedidos directos a WhatsApp." },
+];
+---
+<Base
+  title="Filmika"
+  description="Páginas web que traen clientes a su negocio. Filmika diseña sitios para constructoras, talleres y ópticas en Colombia. Más de 3 años de experiencia."
+>
+  <!-- 1. Hero -->
+  <section class="overflow-hidden bg-canvas pt-section-tight md:pt-section">
+    <div class="mx-auto w-full max-w-[60rem] px-gutter text-center">
+      <p class="eyebrow hero-in mb-4">Filmika</p>
+      <h1 class="hero-in text-hero text-ink">Páginas web que traen clientes a su negocio.</h1>
+      <p class="hero-in hero-in-1 mx-auto mt-5 max-w-[34rem] text-lead text-ink-secondary">
+        En Filmika diseñamos sitios rápidos y fáciles de usar para constructoras, talleres y ópticas. Más de 3 años de experiencia nos respaldan.
+      </p>
+      <div class="hero-in hero-in-2 mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-6">
+        <WhatsAppButton />
+        <a href="/paquetes/" class="link-more justify-center">Ver paquetes</a>
+      </div>
+    </div>
+    <div class="container-wide hero-in hero-in-3 mt-12 md:mt-16">
+      <div data-hero-media class="relative mx-auto max-w-[68rem] pb-10 md:pb-16">
+        <BrowserFrame
+          src={PROJECTS[0].image}
+          alt={PROJECTS[0].alt}
+          eager
+          widths={[640, 960, 1280]}
+          sizes="(min-width: 1120px) 1088px, 100vw"
+          class="shadow-lift"
+        />
+        <BrowserFrame
+          src={PROJECTS[1].image}
+          alt={PROJECTS[1].alt}
+          widths={[320, 480, 640]}
+          sizes="(min-width: 768px) 34vw, 45vw"
+          class="absolute -bottom-0 right-3 w-[45%] shadow-float md:right-[-2%] md:w-[36%]"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. A quién ayudamos -->
+  <Section tone="surface" labelledby="h-quien">
+    <div class="container-content">
+      <SectionHeader id="h-quien" eyebrow="A quién ayudamos" title="Páginas pensadas para su tipo de negocio." lead="Su negocio, visible en Google y a un mensaje de distancia." />
+      <div class="grid gap-grid lg:grid-cols-3">
+        {niches.map((n, i) => (
+          <article class="rounded-card bg-canvas p-7 md:p-8" data-reveal style={`--reveal-i:${i}`}>
+            <h3 class="text-title text-ink">{n.name}</h3>
+            <p class="mt-2 text-body text-ink-secondary">{n.text}</p>
+            <p class="mt-5 text-caption text-ink-tertiary">Demo próximamente</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- 3. Experiencia -->
+  <Section tight labelledby="h-exp">
+    <div class="mx-auto w-full max-w-[52rem] px-gutter text-center" data-reveal>
+      <h2 id="h-exp" class="text-display text-ink">Más de 3 años construyendo páginas para negocios.</h2>
+      <p class="mx-auto mt-5 max-w-text text-lead text-ink-secondary">Somos un equipo serio: trabajo real, proceso claro y atención directa por WhatsApp.</p>
+    </div>
+  </Section>
+
+  <!-- 4. Paquetes preview -->
+  <Section tone="surface" labelledby="h-paq">
+    <div class="container-content">
+      <SectionHeader id="h-paq" eyebrow="Paquetes" title="Tres paquetes, una meta: más clientes." lead="Elija el paquete que mejor se adapta a su negocio. Le ayudamos a decidir por WhatsApp." />
+      <div class="-mx-gutter flex snap-x snap-mandatory gap-grid overflow-x-auto px-gutter pb-2 pt-1 lg:mx-0 lg:grid lg:grid-cols-3 lg:overflow-visible lg:px-0">
+        {PACKAGES.map((p, i) => (
+          <div class="w-[85%] shrink-0 snap-center sm:w-[60%] lg:w-auto">
+            <PackageCard pkg={p} compact index={i} />
+          </div>
+        ))}
+      </div>
+      <p class="mt-stack text-center"><a href="/paquetes/" class="link-more">Comparar paquetes</a></p>
+    </div>
+  </Section>
+
+  <!-- 5. Plans path (dark band) -->
+  <Section tone="dark" labelledby="h-planes">
+    <div class="container-content">
+      <header class="mx-auto mb-stack max-w-text text-center" data-reveal>
+        <p class="eyebrow mb-3">Planes</p>
+        <h2 id="h-planes" class="text-display text-ink">No desaparecemos después del lanzamiento.</h2>
+        <p class="mt-5 text-lead text-ink-secondary">Cada mes cuidamos su página para que siga trabajando por usted.</p>
+      </header>
+      <ol class="relative grid gap-8 border-l border-line pl-6 lg:grid-cols-3 lg:gap-grid lg:border-l-0 lg:pl-0" role="list">
+        {PLANS.map((plan, i) => (
+          <li class="relative lg:rounded-card lg:bg-surface lg:p-8" data-reveal style={`--reveal-i:${i}`}>
+            <span class="absolute -left-[1.85rem] top-1.5 size-2.5 rounded-full bg-accent lg:hidden" aria-hidden="true"></span>
+            <p class="text-caption text-ink-tertiary">{plan.label}</p>
+            <h3 class="mt-1 text-title text-ink">{plan.name}</h3>
+            <p class="mt-2 text-body text-ink-secondary">{plan.short}</p>
+            {i < PLANS.length - 1 && <span class="absolute -right-[0.95rem] top-1/2 hidden -translate-y-1/2 text-[1.5rem] text-ink-tertiary lg:block" aria-hidden="true">›</span>}
+          </li>
+        ))}
+      </ol>
+      <div class="mt-stack flex flex-col items-center gap-5 sm:flex-row sm:justify-center sm:gap-6" data-reveal>
+        <WhatsAppButton message="planes" label="Escríbanos por WhatsApp" class="w-full sm:w-auto" />
+        <a href="/planes/" class="link-more">Ver planes</a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- 6. Trabajo destacado -->
+  <Section labelledby="h-trabajo">
+    <div class="container-wide">
+      <SectionHeader id="h-trabajo" eyebrow="Portafolio" title="Trabajo destacado." lead="Estos son algunos de los sitios que hemos construido." />
+      <div class="mx-auto grid max-w-content gap-grid md:grid-cols-2">
+        {PROJECTS.map((p, i) => <PortfolioTile project={p} index={i} sizes="(min-width: 768px) 520px, 100vw" />)}
+      </div>
+      <p class="mt-stack text-center"><a href="/portafolio/" class="link-more">Ver portafolio</a></p>
+    </div>
+  </Section>
+
+  <!-- 7. Proceso -->
+  <Section tone="surface" labelledby="h-proceso">
+    <div class="container-content">
+      <SectionHeader id="h-proceso" eyebrow="Proceso" title="Así trabajamos." lead="Sabe qué pasa en cada paso." />
+      <ol class="grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-grid" role="list">
+        {PROCESS.map((s, i) => (
+          <li data-reveal style={`--reveal-i:${i}`}>
+            <span class="block text-display text-ink-tertiary" aria-hidden="true">{s.n}</span>
+            <h3 class="mt-3 text-title text-ink"><span class="sr-only">Paso {s.n}: </span>{s.title}</h3>
+            <p class="mt-2 text-body text-ink-secondary">{s.text}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="mt-stack text-center"><a href="/proceso/" class="link-more">Ver el proceso</a></p>
+    </div>
+  </Section>
+</Base>

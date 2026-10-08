@@ -1,0 +1,73 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import BrowserFrame from "../components/BrowserFrame.astro";
+import { PROJECTS } from "../data/portfolio";
+
+const services = [
+  {
+    id: "pagina-web",
+    eyebrow: "Página web",
+    title: "Página web para su negocio.",
+    lead: "Diseñamos y publicamos una página clara, rápida y fácil de usar en el celular.",
+    bullets: ["Diseño a la medida de su negocio", "Textos claros que explican lo que usted hace", "Dominio, hosting y SSL", "Botón de WhatsApp y Google Maps"],
+    link: { href: "/paquetes/", label: "Ver paquetes" },
+    image: PROJECTS[0],
+    tone: "canvas",
+  },
+  {
+    id: "catalogo",
+    eyebrow: "Catálogo en línea",
+    title: "Sus productos o servicios, en línea.",
+    lead: "Un catálogo con fotos, referencias y un botón para pedir por WhatsApp. Sin carrito ni pasarela de pagos.",
+    bullets: ["Categorías y ficha por producto", "Disponibilidad visible", "Mensaje automático con la referencia", "Fácil de actualizar"],
+    link: { href: "/paquetes/#commerce", label: "Ver el paquete Commerce" },
+    image: PROJECTS[1],
+    tone: "surface",
+  },
+] as const;
+---
+<Base
+  title="Servicios"
+  description="Diseño, contenido, publicación y soporte de páginas web para negocios en Colombia. Página web, catálogo en línea y mantenimiento mensual."
+>
+  <PageHero
+    eyebrow="Servicios"
+    title="Nos encargamos de todo."
+    lead="Nos encargamos de todo: diseño, contenido, publicación y soporte. Usted se concentra en su negocio."
+  />
+
+  {services.map((s, i) => (
+    <Section tone={s.tone} labelledby={`h-${s.id}`}>
+      <div class="container-content grid items-center gap-stack lg:grid-cols-2 lg:gap-16">
+        <div class:list={["order-1", i % 2 === 1 ? "lg:order-2" : "lg:order-1"]} data-reveal>
+          <BrowserFrame src={s.image.image} alt={s.image.alt} sizes="(min-width: 1024px) 520px, 100vw" />
+        </div>
+        <div class:list={["order-2", i % 2 === 1 ? "lg:order-1" : "lg:order-2"]} data-reveal style="--reveal-i:1">
+          <p class="eyebrow mb-3">{s.eyebrow}</p>
+          <h2 id={`h-${s.id}`} class="text-headline text-ink">{s.title}</h2>
+          <p class="mt-4 text-lead text-ink-secondary">{s.lead}</p>
+          <ul class="check-list mt-6 space-y-2 text-body text-ink" role="list">
+            {s.bullets.map((b) => <li>{b}</li>)}
+          </ul>
+          <p class="mt-6"><a href={s.link.href} class="link-more">{s.link.label}</a></p>
+        </div>
+      </div>
+    </Section>
+  ))}
+
+  <Section tone="dark" labelledby="h-care">
+    <div class="container-content grid items-center gap-stack lg:grid-cols-2 lg:gap-16">
+      <div data-reveal>
+        <p class="eyebrow mb-3">Mantenimiento · Digital Care</p>
+        <h2 id="h-care" class="text-headline text-ink">Mantenimiento y actualizaciones, cada mes.</h2>
+        <p class="mt-4 text-lead text-ink-secondary">Nosotros nos encargamos de su página cada mes: cambios, fotos, productos y soporte. Usted solo nos escribe por WhatsApp.</p>
+        <p class="mt-6"><a href="/planes/" class="link-more">Ver planes</a></p>
+      </div>
+      <ul class="check-list grid gap-3 rounded-card bg-surface p-7 text-body text-ink sm:grid-cols-2 md:p-8" role="list" data-reveal style="--reveal-i:1">
+        {["Hosting y dominio", "Actualizaciones", "Cambios de contenido", "Nuevas fotografías", "Productos", "Soporte", "Analytics", "Reporte mensual"].map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+  </Section>
+</Base>

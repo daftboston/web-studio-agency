@@ -1,0 +1,14 @@
+---
+import WhatsAppButton from "./WhatsAppButton.astro";
+interface Props { message?: string }
+const { message = "default" } = Astro.props;
+---
+<section class="bg-canvas py-section" aria-labelledby="cta-final">
+  <div class="container-text text-center" data-reveal>
+    <h2 id="cta-final" class="text-headline text-ink">¿Listo para que su negocio tenga una página que trabaje por usted?</h2>
+    <p class="mt-4 text-lead text-ink-secondary">Escríbanos y le respondemos hoy.</p>
+    <div class="mt-8 flex justify-center">
+      <WhatsAppButton message={message} class="w-full sm:w-auto" />
+    </div>
+  </div>
+</section>

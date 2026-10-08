@@ -1,0 +1,92 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import { PLANS } from "../data/plans";
+
+const faqs = [
+  {
+    q: "¿Qué pasa si quiero un cambio en mi página?",
+    a: "Nos escribe por WhatsApp y lo hacemos. Con Digital Care, los cambios de contenido, fotos y productos están incluidos.",
+  },
+  {
+    q: "¿Qué incluye la mensualidad?",
+    a: "Hosting, dominio, actualizaciones, cambios de contenido, nuevas fotografías, productos, soporte, analytics, SEO básico, Google Business y un reporte mensual.",
+  },
+  {
+    q: "¿Tengo que contratar Growth desde el principio?",
+    a: "No. Growth es para cuando su negocio esté listo para crecer: publicidad, contenido y automatización. Lo agregamos cuando usted quiera.",
+  },
+  {
+    q: "¿Cuánto cuesta?",
+    a: "Depende del paquete y de su negocio. Escríbanos por WhatsApp y le enviamos una propuesta.",
+  },
+];
+---
+<Base
+  title="Planes"
+  description="No desaparecemos después del lanzamiento. Launch, Digital Care y Growth: su página sigue activa, actualizada y trabajando para su negocio todos los meses."
+  finalCtaMessage="planes"
+>
+  <section class="theme-dark pt-section pb-section">
+    <div class="mx-auto w-full max-w-[52rem] px-gutter text-center">
+      <p class="eyebrow mb-4">Planes</p>
+      <h1 class="text-display text-ink">No desaparecemos después del lanzamiento.</h1>
+      <p class="mx-auto mt-5 max-w-text text-lead text-ink-secondary">Su página sigue activa, actualizada y trabajando para su negocio todos los meses.</p>
+      <div class="mt-8 flex justify-center"><WhatsAppButton message="planes" class="w-full sm:w-auto" label="Escríbanos por WhatsApp" /></div>
+    </div>
+  </section>
+
+  <Section labelledby="h-camino">
+    <div class="container-content">
+      <SectionHeader id="h-camino" eyebrow="Launch → Digital Care → Growth" title="El camino de su página." lead="Un pago inicial para construir su página y una mensualidad para que siga trabajando." />
+      <ol class="relative grid gap-grid border-l border-line pl-6 lg:grid-cols-3 lg:border-l-0 lg:pl-0" role="list">
+        {PLANS.map((plan, i) => (
+          <li class="relative flex flex-col rounded-card bg-surface p-7 md:p-8" id={plan.id} data-reveal style={`--reveal-i:${i}`}>
+            <span class="absolute -left-[1.85rem] top-9 size-2.5 rounded-full bg-accent lg:hidden" aria-hidden="true"></span>
+            <p class="text-caption text-ink-tertiary">Paso {i + 1} · {plan.label}</p>
+            <h2 class="mt-1 text-title text-ink">{plan.name}</h2>
+            <p class="mt-2 text-body text-ink-secondary">{plan.text}</p>
+            {plan.id === "launch" && (
+              <ul class="mt-5 flex flex-wrap gap-2" role="list">{plan.items.map((x) => <li class="chip">{x}</li>)}</ul>
+            )}
+            {plan.id === "digital-care" && (
+              <ul class="check-list mt-5 space-y-2 text-body text-ink" role="list">{plan.items.map((x) => <li>{x}</li>)}</ul>
+            )}
+            {plan.id === "growth" && (
+              <ul class="mt-5 flex flex-wrap gap-2" role="list">{plan.items.map((x) => <li class="chip">{x}</li>)}</ul>
+            )}
+            <div class="mt-auto pt-6">
+              <p class="text-caption text-ink-tertiary">Precio: <span class="font-semibold text-ink-secondary">{plan.price}</span></p>
+              {plan.id === "launch" && <p class="mt-3"><a href="/paquetes/" class="link-more">Ver paquetes</a></p>}
+            </div>
+            {i < PLANS.length - 1 && <span class="absolute -right-[0.95rem] top-1/2 hidden -translate-y-1/2 text-[1.5rem] text-ink-tertiary lg:block" aria-hidden="true">›</span>}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </Section>
+
+  <Section tone="surface" labelledby="h-dc">
+    <div class="container-text text-center" data-reveal>
+      <p class="eyebrow mb-3">Digital Care</p>
+      <h2 id="h-dc" class="text-headline text-ink">Usted solo nos escribe por WhatsApp.</h2>
+      <p class="mt-4 text-lead text-ink-secondary">Nosotros nos encargamos de su página cada mes: cambios, fotos, productos y soporte.</p>
+    </div>
+  </Section>
+
+  <Section labelledby="h-faq">
+    <div class="container-text">
+      <SectionHeader id="h-faq" title="Preguntas frecuentes." />
+      <div class="divide-y divide-line border-y border-line" data-reveal>
+        {faqs.map((f) => (
+          <details class="details-row">
+            <summary>{f.q}</summary>
+            <p class="pb-6 text-body text-ink-secondary">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </Section>
+</Base>

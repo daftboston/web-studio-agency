@@ -1,0 +1,50 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+const values = [
+  { title: "Más de 3 años de experiencia", text: "Construimos páginas web reales que hoy están en línea y funcionando." },
+  { title: "Enfocados en negocios locales de Colombia", text: "Constructoras, talleres y ópticas que quieren más clientes, más llamadas y más mensajes." },
+  { title: "Atención directa por WhatsApp", text: "Habla con quien construye su página. Sin intermediarios ni formularios eternos." },
+];
+---
+<Base
+  title="Nosotros"
+  description="Somos Filmika: páginas web para negocios locales de Colombia. Más de 3 años de experiencia y atención directa por WhatsApp."
+>
+  <PageHero
+    eyebrow="Nosotros"
+    title="Somos Filmika."
+    lead="Somos un estudio de páginas web en Bogotá. Diseñamos y lanzamos sitios de punta a punta: diseño, contenido, publicación y soporte. Nos importa que su página le traiga clientes, no solo que se vea bien."
+  />
+
+  <Section tone="surface" labelledby="h-valores">
+    <div class="container-content">
+      <h2 id="h-valores" class="sr-only">Lo que nos define</h2>
+      <div class="grid gap-grid lg:grid-cols-3">
+        {values.map((v, i) => (
+          <article class="rounded-card bg-canvas p-7 md:p-8" data-reveal style={`--reveal-i:${i}`}>
+            <h3 class="text-title text-ink">{v.title}</h3>
+            <p class="mt-3 text-body text-ink-secondary">{v.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section labelledby="h-origen">
+    <div class="container-text" data-reveal>
+      <p class="eyebrow mb-3">De dónde venimos</p>
+      <h2 id="h-origen" class="text-headline text-ink">Experiencia en web y en obra.</h2>
+      <p class="mt-4 text-lead text-ink-secondary">Detrás de Filmika hay experiencia en desarrollo web y móvil, y también en arquitectura y coordinación de proyectos de edificación. Por eso trabajamos con orden, estándares claros y un proceso que usted puede seguir paso a paso.</p>
+      <p class="mt-4 text-lead text-ink-secondary">Entre nuestros proyectos está TruePhone, un marketplace de iPhones verificados que hoy está en línea.</p>
+    </div>
+  </Section>
+
+  <Section tone="surface" tight labelledby="h-trust">
+    <div class="container-text text-center" data-reveal>
+      <h2 id="h-trust" class="text-headline text-ink">Somos un equipo serio: trabajo real, proceso claro y atención directa por WhatsApp.</h2>
+      <p class="mt-6"><a href="/portafolio/" class="link-more">Ver nuestro trabajo</a></p>
+    </div>
+  </Section>
+</Base>

@@ -96,12 +96,18 @@ Inicio, Portafolio and Capacidades:
 
 - Each section carries `data-scene="light | warm | dark | accent"` (white, warm #f5f4f1,
   near-black #0d0d0c, Filmika indigo #3d3ad6). Pages opt in with `<Base scenes>`.
-- One IntersectionObserver in `Base.astro` watches a line across the middle of the viewport
-  (`rootMargin: -50% 0px -50% 0px`) and copies the scene of the section on it to `<html data-scene>`;
-  it also updates `<meta name="theme-color">`.
+- A direction-aware trigger line in `Base.astro` (62% of the viewport while scrolling down, 38%
+  while scrolling up; passive scroll listener, one rAF per frame) copies the scene of the section on
+  it to `<html data-scene>`; it also updates `<meta name="theme-color">`.
 - `global.css` registers the palette variables with `@property` (`<color>`), so the page
-  background and all text, card, line and accent colours interpolate together:
-  800ms, `cubic-bezier(0.22, 1, 0.36, 1)`. Each scene is a full palette already checked for
+  background and all text, card, line and accent colours interpolate. Softened on 2026-10-09:
+  grounds (page, canvas, surfaces, lines) ease over 1600ms with `cubic-bezier(0.65, 0, 0.35, 1)`;
+  text colours (and the logo ink) swap in 320ms centred on the background's midpoint
+  (delay 640ms), so text is never mid-grey on mid-grey for more than an instant.
+- Transition effect (2026-10-09): a feathered radial **aura** of the incoming colour rises from the
+  edge the new section enters from (behind the content; faint until the text has swapped, then peaks at 0.5 around 68% of the run), and a faint **film grain**
+  veil flickers through (peak opacity 0.09, 12 steps). Opacity/transform only, created lazily by JS,
+  skipped with reduced motion. Each scene is a full palette already checked for
   contrast (light root, `.theme-dark`, `.theme-accent`), so text never sits on the wrong ground.
 - Reduced motion: `transition: none`, the colours swap instantly.
 - Without JS no scene is set and each section paints its own band (`html:not(.js) [data-scene]`).

@@ -93,26 +93,86 @@ const ogUrl = new URL(ogImage, Astro.site).href;
       );
       document.querySelectorAll("[data-reveal], [data-zoom]").forEach((el) => reveal.observe(el));
 
-      // 1b) Scroll-driven page background: the [data-scene] element crossing the middle of the
-      //     viewport sets <html data-scene>. Colours transition in CSS (global.css).
+      // 1b) Scroll-driven page background. A direction-aware trigger line (62% of the viewport
+      //     while scrolling down, 38% while scrolling up) picks the active [data-scene], so the new
+      //     colour starts as soon as a section is well into view. Colours ease in CSS (global.css);
+      //     JS adds the aura + film-grain effect, skipped with reduced motion.
       if (document.body.hasAttribute("data-scenes")) {
         const root = document.documentElement;
         const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
         const pageColor: Record<string, string> = { light: "#ffffff", warm: "#f5f4f1", dark: "#0d0d0c", accent: "#3d3ad6" };
-        const scenes = new IntersectionObserver(
-          (entries) => {
-            for (const e of entries) {
-              if (!e.isIntersecting) continue;
-              const scene = (e.target as HTMLElement).dataset.scene || "light";
-              if (root.dataset.scene !== scene) {
-                root.dataset.scene = scene;
-                meta?.setAttribute("content", pageColor[scene] ?? "#ffffff");
-              }
-            }
-          },
-          { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
-        );
-        document.querySelectorAll("[data-scene]").forEach((el) => scenes.observe(el));
+        const scenes = [...document.querySelectorAll<HTMLElement>("[data-scene]")];
+        const calm = matchMedia("(prefers-reduced-motion: reduce)");
+        const DURATION = 1600;
+        const EASE = "cubic-bezier(0.65, 0, 0.35, 1)";
+        let aura: HTMLElement | null = null;
+        let grain: HTMLElement | null = null;
+        let running: Animation[] = [];
+        let lastY = scrollY;
+        let dir: "down" | "up" = "down";
+        let ticking = false;
+        let first = true;
+
+        const effect = (scene: string, from: "top" | "bottom") => {
+          if (calm.matches) return;
+          if (!aura) {
+            aura = Object.assign(document.createElement("div"), { className: "scene-aura" });
+            grain = Object.assign(document.createElement("div"), { className: "scene-grain" });
+            aura.setAttribute("aria-hidden", "true"); grain.setAttribute("aria-hidden", "true");
+            document.body.append(aura, grain);
+          }
+          running.forEach((a) => a.cancel());
+          aura.dataset.from = from;
+          aura.style.setProperty("--aura", pageColor[scene] ?? "#ffffff");
+          const rise = from === "bottom" ? -1 : 1;
+          running = [
+            aura.animate(
+              [
+                // Faint until the text colours have swapped (~0.4–0.6 of the run), then it blooms,
+                // so the incoming colour never pools under the outgoing text colour.
+                { opacity: 0, transform: `translateY(${rise * -8}vmax) scale(0.25)` },
+                { opacity: 0.1, transform: `translateY(${rise * 4}vmax) scale(0.6)`, offset: 0.4 },
+                { opacity: 0.5, transform: `translateY(${rise * 16}vmax) scale(0.95)`, offset: 0.68 },
+                { opacity: 0, transform: `translateY(${rise * 30}vmax) scale(1.25)` },
+              ],
+              { duration: DURATION, easing: EASE },
+            ),
+            grain!.animate(
+              [
+                { opacity: 0, transform: "translate(0, 0)" },
+                { opacity: 0.09, transform: "translate(-2%, 1%)", offset: 0.3 },
+                { opacity: 0.07, transform: "translate(1%, -2%)", offset: 0.6 },
+                { opacity: 0, transform: "translate(-1%, 2%)" },
+              ],
+              { duration: DURATION, easing: "steps(12, end)" },
+            ),
+          ];
+        };
+
+        const pick = () => {
+          ticking = false;
+          const line = innerHeight * (dir === "down" ? 0.62 : 0.38);
+          let active: HTMLElement | undefined;
+          for (const el of scenes) {
+            const r = el.getBoundingClientRect();
+            if (r.top <= line && r.bottom > line) { active = el; break; }
+          }
+          const scene = active?.dataset.scene;
+          if (!scene || root.dataset.scene === scene) return;
+          const wasSet = !first;
+          first = false;
+          root.dataset.scene = scene;
+          meta?.setAttribute("content", pageColor[scene] ?? "#ffffff");
+          if (wasSet) effect(scene, dir === "down" ? "bottom" : "top");
+        };
+        addEventListener("scroll", () => {
+          const y = scrollY;
+          if (y !== lastY) dir = y > lastY ? "down" : "up";
+          lastY = y;
+          if (!ticking) { ticking = true; requestAnimationFrame(pick); }
+        }, { passive: true });
+        addEventListener("resize", () => { if (!ticking) { ticking = true; requestAnimationFrame(pick); } }, { passive: true });
+        pick();
       }
 
       // 2) Floating WhatsApp: hide while an inline WhatsApp CTA is on screen or the menu is open

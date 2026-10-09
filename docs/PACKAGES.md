@@ -11,7 +11,7 @@ The setup price (pago inicial) **includes the domain and the first month of Digi
 |---|---|---|---|
 | **Landing + campaña** | Una sola página hecha para recibir tráfico de anuncios | **$600.000** | **$90.000 / mes** |
 | **Página web** | 4–5 páginas, WhatsApp, Google Business | **$900.000** | **$90.000 / mes** |
-| **Catálogo en línea** | Panel de administración, productos, pedidos por WhatsApp | **$1.500.000** | **$130.000 / mes** |
+| **Catálogo en línea** | Panel de administración, productos (o inmuebles), pedidos por WhatsApp | **$1.500.000** | **$130.000 / mes** |
 | Sitio Profesional | Sitio corporativo más grande (ver Paquete 2 abajo) | **Se cotiza** | Se cotiza |
 | Growth | SEO local, anuncios, automatización (ver PLANS.md) | **Se cotiza según el proyecto** | — |
 
@@ -24,10 +24,13 @@ How this maps to the original packages below:
 - **Profesional** stays as the larger corporate site ("Sitio Profesional"), with no approved
   price: it shows **"Se cotiza"**.
 - Ad management for *Landing + campaña* is Growth (quoted); the landing price covers the page.
+- **Catálogo en línea also works for property listings** (added 2026-10-09): an inmobiliaria uploads
+  its properties (fotos, precio, arriendo o venta, ubicación) from the same panel, and each listing
+  has a WhatsApp button to ask or book a visit. Same plan and price as a product catalog.
 
 Site copy (tú voice):
 > **Página web:** $900.000 + $90.000 al mes de Digital Care.
-> **Catálogo en línea:** $1.500.000 + $130.000 al mes.
+> **Catálogo en línea:** $1.500.000 + $130.000 al mes. Para productos o, si eres inmobiliaria, para tus propiedades.
 > **Landing + campaña:** $600.000 + $90.000 al mes.
 > El pago inicial incluye el dominio y el primer mes de Digital Care.
 > Precios de lanzamiento para los primeros clientes, en pesos colombianos (COP).
@@ -152,7 +155,8 @@ Se vende como **"Catálogo + Venta por WhatsApp"** (no como "Marketplace").
 ### Ideal para
 - Ópticas
 - Talleres
-- También constructoras
+- También constructoras *(constructoras paused in outreach, 2026-10-09)*
+- Inmobiliarias: the same catalog for property listings (added 2026-10-09)
 
 ### Ejemplo Óptica
 ```

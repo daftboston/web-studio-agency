@@ -74,20 +74,20 @@ export const PROJECTS: Project[] = [
  * Framed generically: they are examples for different kinds of business, not the site's target list. */
 export const DEMOS = [
   {
-    id: "proyectos",
-    niche: "Negocios que muestran su trabajo",
-    name: "Ejemplo: proyectos y antes/después",
-    text: "Trabajos terminados con antes y después, servicios y un proceso claro de principio a fin.",
+    id: "citas",
+    niche: "Clínicas dentales",
+    name: "Ejemplo: agenda por WhatsApp",
+    text: "Servicios, ubicación con mapa y un botón principal para agendar una cita por WhatsApp.",
   },
   {
-    id: "citas",
-    niche: "Negocios que agendan citas",
-    name: "Ejemplo: agenda por WhatsApp",
-    text: "Servicios, ubicación con mapa y un botón principal para reservar una cita por WhatsApp.",
+    id: "inmuebles",
+    niche: "Inmobiliarias",
+    name: "Ejemplo: inmuebles en catálogo",
+    text: "Propiedades en arriendo y venta con fotos y precio, y un botón de WhatsApp en cada una para preguntar o agendar una visita.",
   },
   {
     id: "catalogo",
-    niche: "Negocios que venden productos",
+    niche: "Tiendas",
     name: "Ejemplo: catálogo con pedidos",
     text: "Catálogo con filtros y un botón de WhatsApp en cada producto, con la referencia ya escrita.",
   },

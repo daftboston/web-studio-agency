@@ -1,43 +1,48 @@
 ---
-/** Demo interactiva: before/after slider for a construction project. Illustrative SVG only. */
+/** Demo interactiva: before/after slider for a property (empty apartment, then painted and furnished). Illustrative SVG only. */
 ---
 <div class="ba relative select-none overflow-hidden rounded-tile bg-surface-2" style="--pos:50%" data-before-after>
-  <!-- Antes -->
+  <!-- Antes: empty, unpainted apartment -->
   <svg viewBox="0 0 800 500" class="block h-auto w-full" role="img" aria-labelledby="ba-antes-t">
-    <title id="ba-antes-t">Antes: lote en obra gris con andamios y una grúa (ilustración)</title>
-    <rect width="800" height="500" fill="#d9d6cf"/>
-    <rect y="420" width="800" height="80" fill="#a8a69f"/>
-    <rect x="220" y="140" width="360" height="280" fill="#b3b0a8"/>
-    <g fill="#8d8b85">
-      {[0, 1, 2, 3].map((r) => [0, 1, 2, 3, 4].map((c) => <rect x={245 + c * 66} y={165 + r * 62} width="44" height="38"/>))}
-    </g>
-    <g stroke="#6e6c66" stroke-width="5" fill="none">
-      <path d="M200 120v300M600 120v300M200 180h400M200 250h400M200 320h400M200 390h400"/>
-      <path d="M200 180l60 70M260 180l-60 70M540 320l60 70M600 320l-60 70"/>
-    </g>
-    <path d="M660 420V60M660 70h-260M660 70l60 0M450 70v60" stroke="#55534e" stroke-width="8" fill="none"/>
-    <rect x="430" y="130" width="40" height="22" fill="#55534e"/>
-    <rect x="90" y="370" width="90" height="50" fill="#85837c"/><rect x="100" y="350" width="60" height="22" fill="#6e6c66"/>
+    <title id="ba-antes-t">Antes: sala de un apartamento vacía, sin pintar y con cajas (ilustración)</title>
+    <rect width="800" height="500" fill="#cfccc4"/>
+    <path d="M0 0h800v40L700 90H100L0 40z" fill="#bdb9b0"/>
+    <path d="M0 380h800v120H0z" fill="#a8a69f"/>
+    <path d="M0 380l100-30h600l100 30" fill="#b3b0a8"/>
+    <rect x="100" y="90" width="600" height="260" fill="#c4c1b8"/>
+    <rect x="470" y="130" width="170" height="150" fill="#e4e2dc" stroke="#8d8b85" stroke-width="8"/>
+    <path d="M555 130v150M470 205h170" stroke="#8d8b85" stroke-width="6"/>
+    <path d="M300 90v36" stroke="#55534e" stroke-width="3"/><circle cx="300" cy="134" r="9" fill="#e9e7e2" stroke="#55534e" stroke-width="3"/>
+    <g fill="#a8916b"><rect x="170" y="300" width="110" height="80"/><rect x="250" y="330" width="80" height="50"/></g>
+    <path d="M170 318h110M250 346h80" stroke="#8a7350" stroke-width="5"/>
+    <path d="M150 200l40 22M610 330l30-40M380 160l20 30" stroke="#a8a69f" stroke-width="4"/>
   </svg>
 
-  <!-- Después (clipped) -->
+  <!-- Después (clipped): same room painted and furnished -->
   <div class="ba-after absolute inset-0" aria-hidden="false">
     <svg viewBox="0 0 800 500" class="block h-full w-full" role="img" aria-labelledby="ba-despues-t">
-      <title id="ba-despues-t">Después: edificio terminado con fachada clara, ventanas y jardín (ilustración)</title>
-      <rect width="800" height="500" fill="#dfe8f5"/>
-      <circle cx="680" cy="90" r="40" fill="#fde68a"/>
-      <rect y="420" width="800" height="80" fill="#9fbf8f"/>
-      <rect x="220" y="140" width="360" height="280" fill="#f6f5f3"/>
-      <rect x="210" y="128" width="380" height="16" fill="#3d3ad6"/>
-      <g fill="#3d3ad6" opacity=".85">
-        {[0, 1, 2, 3].map((r) => [0, 1, 2, 3, 4].map((c) => <rect x={245 + c * 66} y={165 + r * 62} width="44" height="38" rx="3"/>))}
-      </g>
-      <g fill="#ecebfb" opacity=".5">
-        {[0, 1, 2, 3].map((r) => [0, 1, 2, 3, 4].map((c) => <rect x={249 + c * 66} y={169 + r * 62} width="14" height="30"/>))}
-      </g>
-      <rect x="370" y="360" width="60" height="60" fill="#141413"/>
-      <g fill="#5c8a4f"><circle cx="150" cy="380" r="40"/><circle cx="660" cy="385" r="36"/><circle cx="110" cy="400" r="28"/></g>
-      <rect x="146" y="400" width="8" height="24" fill="#6b4f2a"/><rect x="656" y="400" width="8" height="24" fill="#6b4f2a"/>
+      <title id="ba-despues-t">Después: la misma sala pintada y amoblada, con sofá, tapete, lámpara y plantas (ilustración)</title>
+      <rect width="800" height="500" fill="#f3ede4"/>
+      <path d="M0 0h800v40L700 90H100L0 40z" fill="#e8e0d4"/>
+      <path d="M0 380h800v120H0z" fill="#b98a5e"/>
+      <path d="M0 380l100-30h600l100 30" fill="#c99a6c"/>
+      <rect x="100" y="90" width="600" height="260" fill="#f7f2ea"/>
+      <rect x="470" y="130" width="170" height="150" fill="#cfe3f5" stroke="#ffffff" stroke-width="8"/>
+      <path d="M555 130v150M470 205h170" stroke="#ffffff" stroke-width="6"/>
+      <rect x="455" y="122" width="34" height="170" fill="#3d3ad6" opacity=".85"/><rect x="621" y="122" width="34" height="170" fill="#3d3ad6" opacity=".85"/>
+      <rect x="170" y="150" width="150" height="100" fill="#ffffff" stroke="#141413" stroke-width="6"/>
+      <path d="M180 235l40-45 30 30 25-20 35 35z" fill="#3d3ad6" opacity=".7"/><circle cx="290" cy="178" r="12" fill="#fbbf24"/>
+      <ellipse cx="380" cy="430" rx="250" ry="34" fill="#e8dccb"/>
+      <rect x="200" y="300" width="300" height="70" rx="18" fill="#55534e"/>
+      <rect x="215" y="268" width="270" height="50" rx="16" fill="#6e6c66"/>
+      <rect x="185" y="300" width="40" height="80" rx="14" fill="#47453f"/><rect x="475" y="300" width="40" height="80" rx="14" fill="#47453f"/>
+      <rect x="250" y="285" width="60" height="40" rx="10" fill="#fbbf24"/>
+      <path d="M600 240v130" stroke="#141413" stroke-width="5"/><path d="M570 240h60l-12-40h-36z" fill="#fde68a"/>
+      <rect x="585" y="370" width="30" height="8" fill="#141413"/>
+      <rect x="85" y="330" width="40" height="50" fill="#f6f5f3" stroke="#a8a69f" stroke-width="3"/>
+      <g fill="#5c8a4f"><ellipse cx="95" cy="300" rx="14" ry="34"/><ellipse cx="118" cy="306" rx="12" ry="30"/><ellipse cx="106" cy="290" rx="10" ry="36"/></g>
+      <rect x="690" y="340" width="34" height="42" fill="#f6f5f3" stroke="#a8a69f" stroke-width="3"/>
+      <g fill="#5c8a4f"><circle cx="707" cy="320" r="22"/></g>
     </svg>
   </div>
 

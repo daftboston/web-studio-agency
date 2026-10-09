@@ -1,18 +1,18 @@
 ---
-/** Demo interactiva (taller): "Agenda tu revisión" form that writes the WhatsApp message live. */
+/** Demo interactiva (veterinaria): "Agenda la cita de tu mascota" form that writes the WhatsApp message live. */
 import { waLink } from "../../config";
 import WaIcon from "../WaIcon.astro";
-const services = ["Mecánica general", "Frenos", "Suspensión", "Diagnóstico"];
+const services = ["Consulta general", "Vacunación", "Peluquería", "Desparasitación"];
 const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
 const slots = ["mañana", "tarde"];
-const build = (s: { nombre?: string; servicio: string; dia: string; jornada: string; placa?: string }) =>
-  `[Demo Filmika] Hola${s.nombre ? `, soy ${s.nombre}` : ""}. Quiero agendar una revisión de ${s.servicio.toLowerCase()} para el ${s.dia.toLowerCase()} en la ${s.jornada}.${s.placa ? ` Placa: ${s.placa}.` : ""}`;
+const build = (s: { nombre?: string; servicio: string; dia: string; jornada: string; mascota?: string }) =>
+  `[Demo Filmika] Hola${s.nombre ? `, soy ${s.nombre}` : ""}. Quiero agendar una cita de ${s.servicio.toLowerCase()}${s.mascota ? ` para ${s.mascota}` : ""} el ${s.dia.toLowerCase()} en la ${s.jornada}.`;
 const initial = build({ servicio: services[1], dia: days[5], jornada: slots[0] });
 ---
 <div class="grid gap-grid rounded-tile bg-surface p-4 md:p-6 lg:grid-cols-[1.2fr_1fr]" data-agenda>
   <form class="rounded-card bg-canvas p-5 md:p-6" onsubmit="return false" aria-labelledby="agenda-t">
-    <p id="agenda-t" class="text-title text-ink">Agenda tu revisión</p>
-    <p class="mt-1 text-caption text-ink-tertiary">Taller Ejemplo · Respuesta por WhatsApp</p>
+    <p id="agenda-t" class="text-title text-ink">Agenda la cita de tu mascota</p>
+    <p class="mt-1 text-caption text-ink-tertiary">Veterinaria Ejemplo · Respuesta por WhatsApp</p>
 
     <fieldset class="mt-5">
       <legend class="field-label">Servicio</legend>
@@ -43,8 +43,8 @@ const initial = build({ servicio: services[1], dia: days[5], jornada: slots[0] }
         <input id="ag-nombre" name="nombre" class="field" autocomplete="off" placeholder="Ej.: Laura" maxlength="30" />
       </div>
       <div>
-        <label class="field-label" for="ag-placa">Placa</label>
-        <input id="ag-placa" name="placa" class="field uppercase placeholder:normal-case" autocomplete="off" placeholder="Ej.: ABC123" maxlength="7" />
+        <label class="field-label" for="ag-mascota">Nombre de tu mascota</label>
+        <input id="ag-mascota" name="mascota" class="field" autocomplete="off" placeholder="Ej.: Luna" maxlength="20" />
       </div>
     </div>
   </form>
@@ -52,8 +52,8 @@ const initial = build({ servicio: services[1], dia: days[5], jornada: slots[0] }
   <div class="flex flex-col rounded-card bg-[#e9e7e2] p-5 md:p-6">
     <p class="text-caption text-[#55534e]">Vista previa en WhatsApp</p>
     <div class="mt-3 flex items-center gap-3 border-b border-[#d6d3cb] pb-3" aria-hidden="true">
-      <span class="flex size-9 items-center justify-center rounded-full bg-[#141413] text-[0.8125rem] font-bold text-[#facc15]">TE</span>
-      <span class="text-caption font-semibold text-[#141413]">Taller Ejemplo</span>
+      <span class="flex size-9 items-center justify-center rounded-full bg-[#141413] text-[0.8125rem] font-bold text-[#fdba74]">VE</span>
+      <span class="text-caption font-semibold text-[#141413]">Veterinaria Ejemplo</span>
     </div>
     <div class="mt-4 flex-1">
       <p class="ml-auto max-w-[95%] rounded-2xl rounded-tr-sm bg-[#d9f2e1] px-4 py-3 text-body text-[#141413] shadow-card" data-agenda-preview>{initial}</p>
@@ -75,8 +75,8 @@ const initial = build({ servicio: services[1], dia: days[5], jornada: slots[0] }
     const update = () => {
       const d = new FormData(form);
       const nombre = clean(d.get("nombre"));
-      const placa = clean(d.get("placa")).toUpperCase();
-      const text = `[Demo Filmika] Hola${nombre ? `, soy ${nombre}` : ""}. Quiero agendar una revisión de ${clean(d.get("servicio")).toLowerCase()} para el ${clean(d.get("dia")).toLowerCase()} en la ${clean(d.get("jornada"))}.${placa ? ` Placa: ${placa}.` : ""}`;
+      const mascota = clean(d.get("mascota"));
+      const text = `[Demo Filmika] Hola${nombre ? `, soy ${nombre}` : ""}. Quiero agendar una cita de ${clean(d.get("servicio")).toLowerCase()}${mascota ? ` para ${mascota}` : ""} el ${clean(d.get("dia")).toLowerCase()} en la ${clean(d.get("jornada"))}.`;
       if (preview) preview.textContent = text;
       if (link) link.href = waLink(text);
     };

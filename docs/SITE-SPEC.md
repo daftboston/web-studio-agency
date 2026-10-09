@@ -38,7 +38,7 @@ A floating WhatsApp button appears on every page.
 9. FAQ (4 questions, real answers).
 10. Close: "Hablemos." with WhatsApp and dsantoyop@gmail.com (shared on every page).
 
-The site speaks to **any business**. No copy targets constructoras, talleres, ópticas or Bogotá; those niches are for outreach only.
+The site speaks to **any business**. No copy targets a single niche or Bogotá; niches (clínicas dentales, inmobiliarias, veterinarias, servicios para el hogar, estética, talleres especializados, ópticas y oficinas contables/jurídicas; constructoras paused, 2026-10-09) are for outreach only. Where the site shows example businesses, use a varied mix (clínica dental, inmobiliaria, veterinaria, tienda), not only cars and construction.
 
 ### Servicios
 - Tu página web · Google Business · Catálogo en línea · Digital Care · Growth (copy in BRAND.md).
@@ -92,7 +92,7 @@ Each step ends with "Recibes: …". Delivery: unos 7 días desde que tenemos tu 
 
 ### Capacidades (added 2026-10-08)
 - Shows **what we can do**, not only past work. Second design reference: instrument.com (bold editorial type, full-bleed panels, scroll-driven moments) on top of the Apple-inspired tokens.
-- Interactive demos, all labeled "Demo interactiva", with fictional businesses and illustrative CSS/SVG imagery, framed as "ejemplos para distintos tipos de negocio": phone mockup cycling example homepages; before/after slider; filterable catalog with live "Comprar por WhatsApp" message (Paquete Commerce); appointment form preview; scroll-driven parallax sample; our Lighthouse-100 build standard.
+- Interactive demos, all labeled "Demo interactiva", with fictional businesses and illustrative CSS/SVG imagery, framed as "ejemplos para distintos tipos de negocio": phone mockup cycling example homepages (clínica dental, inmobiliaria, veterinaria, óptica/tienda); before/after slider (apartment before and after being painted and furnished); filterable catalog with live "Comprar por WhatsApp" message (Catálogo en línea; the same catalog also works for property listings); appointment form preview (veterinaria); scroll-driven parallax sample; our Lighthouse-100 build standard.
 - Inicio gets a "Lo que podemos hacer" section linking to each demo.
 
 ### Contacto / WhatsApp

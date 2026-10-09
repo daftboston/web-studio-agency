@@ -368,6 +368,10 @@ html:not(.js) [data-scene="dark"] {
 
 /* Keep the wordmark in place across view transitions */
 .brand-mark { view-transition-name: brand; }
+/* Logo ink follows the page: the dark-ink SVG is inverted to light ink on dark and indigo
+   scenes (and inside dark bands), in step with the 800ms scene transition. */
+.brand-logo { transition: filter var(--duration-scene, 800ms) var(--ease-scene, ease); }
+html[data-scene="dark"] .brand-logo, html[data-scene="accent"] .brand-logo, .theme-dark .brand-logo, .theme-accent .brand-logo { filter: invert(1); }
 
 /* Lock page scroll while the mobile menu is open */
 html[data-menu-open] { overflow: hidden; }

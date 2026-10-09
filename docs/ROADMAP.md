@@ -16,11 +16,12 @@
 
 ## Phase 4: Build the niche demos (future)
 - Demo bases (spec only, created):
-  - https://github.com/daftboston/filmika-template-constructora
+  - https://github.com/daftboston/filmika-template-constructora (paused: constructoras are paused in outreach, 2026-10-09)
   - https://github.com/daftboston/filmika-template-taller
   - https://github.com/daftboston/filmika-template-optica
 - The owner builds each one with animations using another AI, following its README.
-- Use PACKAGES.md as a reference for scope (for example, the Óptica catalog follows the Commerce "Catálogo + Venta por WhatsApp" idea).
+- Use PACKAGES.md as a reference for scope (for example, the Óptica catalog follows the "Catálogo en línea" package; an inmobiliaria can use the same catalog for property listings).
+- Candidate new demo bases for the current niches: clínica dental, inmobiliaria, veterinaria (not created yet).
 - Add them to the Portafolio page, labeled "Demo".
 
 ## Phase 5: Deploy (site v1 live)
@@ -34,7 +35,7 @@
 ## Ongoing track: prospect mockups
 Runs in parallel with the phases above.
 - Simple homepage images on a phone screen, made for specific prospects.
-- Niches: constructoras, talleres, and ópticas in Bogotá.
+- Niches (Mr market, approved 2026-10-09): clínicas dentales, inmobiliarias, veterinarias, servicios para el hogar, estética, talleres especializados, ópticas y oficinas contables/jurídicas. Constructoras are paused.
 - Used by Mr market in outreach to show a business what its site could look like.
 
 ## Ownership

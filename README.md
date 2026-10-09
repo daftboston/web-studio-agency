@@ -7,7 +7,7 @@ This repo holds the Filmika marketing website (Astro + Tailwind CSS, deployed on
 
 Core message: Filmika is a serious business with more than 3 years building websites (TruePhone, Tesla Partes, and others), and **we don't disappear after launch** ("No desaparecemos después del lanzamiento").
 
-The site speaks to **any business** (copy direction, 2026-10-08). Outreach niches (Colombia, starting in Bogotá: constructoras, talleres, ópticas) are used only for prospect mockups and lists, not as site copy.
+The site speaks to **any business** (copy direction, 2026-10-08). Outreach niches (Colombia; Mr market, 2026-10-09): clínicas dentales, inmobiliarias, veterinarias, servicios para el hogar, estética, talleres especializados, ópticas y oficinas contables/jurídicas. Constructoras are paused. They are used only for prospect mockups and lists, not as site copy.
 
 ## Business model
 Initial fee plus monthly fee, not a one-time page:
@@ -87,6 +87,7 @@ Every `wa.me` link is built by `waLink()` in `src/config.ts`, so changing the nu
 
 ### Already set
 - Email: `dsantoyop@gmail.com` (`CONTACT.email`)
+- Logo: the owner's wordmark (the "l" is a film strip), vectorized: `public/logo/filmika-logo-dark.svg` / `-white.svg` (+ trimmed transparent PNGs). Favicon and apple-touch icon use the film-strip "l". See docs/BRAND.md.
 - Prices: launch prices in `PRICES` (approved by Mr market, 2026-10-08; see docs/PACKAGES.md)
 - WhatsApp: `573214527399`, shown as `+57 321 452 7399` (`CONTACT.whatsappNumber` / `CONTACT.whatsappDisplay`)
 - Site URL: `https://filmika.netlify.app` (`SITE.url`; change it when a custom domain exists)
@@ -94,8 +95,7 @@ Every `wa.me` link is built by `waLink()` in `src/config.ts`, so changing the nu
 ### Placeholders to replace (the site is live, so these are visible now)
 - `CONTACT.city` = `Colombia` (country only; confirm)
 - Tesla Partes live URL (`url: null` in `src/data/portfolio.ts`; the tile shows "Enlace disponible pronto")
-- Niche demos (constructora, taller, óptica) are shown as "Próximamente"
-- Logo: text wordmark + simple "F" favicon until a real logo exists
+- Example tiles on Portafolio (clínica dental, inmobiliaria, tienda) are shown as "Próximamente"
 - `/privacidad/` is a short draft; review it (Ley 1581 de 2012) before launch
 
 ## Documents
@@ -110,7 +110,7 @@ Every `wa.me` link is built by `waLink()` in `src/config.ts`, so changing the nu
 | [docs/REFERENCES.md](docs/REFERENCES.md) | Design references (Clay): layout, copy, motion and imagery we adopted, and why |
 
 ## Template repos (demo bases, spec only)
-- [filmika-template-constructora](https://github.com/daftboston/filmika-template-constructora)
+- [filmika-template-constructora](https://github.com/daftboston/filmika-template-constructora) (paused)
 - [filmika-template-taller](https://github.com/daftboston/filmika-template-taller)
 - [filmika-template-optica](https://github.com/daftboston/filmika-template-optica)
 

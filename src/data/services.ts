@@ -36,7 +36,7 @@ export const SERVICES: Service[] = [
     n: "03",
     name: "Catálogo en línea",
     title: "Tus productos, actualizados por ti.",
-    text: "Tú mismo subes tus productos, fotos y precios. Cada cliente te pide por WhatsApp con la referencia ya escrita, sin carrito ni pasarela de pagos.",
+    text: "Tú mismo subes tus productos, fotos y precios, o tus inmuebles si eres una inmobiliaria. Cada cliente te escribe por WhatsApp con la referencia ya escrita, sin carrito ni pasarela de pagos.",
     includes: ["Categorías y ficha por producto", "Precios y disponibilidad visibles", "Pedido por WhatsApp con la referencia", "Panel sencillo para subir productos"],
     link: { href: "/capacidades/#demo-catalogo", label: "Probar la demo de catálogo" },
   },

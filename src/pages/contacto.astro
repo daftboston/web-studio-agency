@@ -1,0 +1,108 @@
+---
+import Base from "../layouts/Base.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import { CONTACT, waLink } from "../config";
+---
+<Base
+  title="Contacto"
+  description="Hablemos de la página web de tu negocio. Escríbenos por WhatsApp o a dsantoyop@gmail.com, o déjanos tus datos y te respondemos hoy."
+  hideFab
+  hideFinalCta
+>
+  <section class="bg-canvas pt-section pb-section-tight">
+    <div class="container-text text-center">
+      <p class="eyebrow mb-4">Contacto</p>
+      <h1 class="text-display text-ink">Hablemos.</h1>
+      <p class="mx-auto mt-5 text-lead text-ink-secondary">Cuéntanos de tu negocio. Te respondemos hoy.</p>
+    </div>
+  </section>
+
+  <section class="bg-canvas pb-section" aria-label="Formas de contacto">
+    <div class="container-content grid gap-grid lg:grid-cols-2">
+      <div class="theme-dark flex flex-col rounded-tile p-7 md:p-10" data-reveal>
+        <h2 class="text-headline text-ink">Escríbenos por WhatsApp.</h2>
+        <p class="mt-4 text-lead text-ink-secondary">Es la forma más rápida. Hablas directamente con quien diseña tu página y te mostramos una propuesta sin compromiso.</p>
+        <div class="mt-8"><WhatsAppButton label="Escríbenos por WhatsApp" class="w-full sm:w-auto" /></div>
+        <dl class="mt-auto grid gap-5 pt-10 text-body">
+          <div>
+            <dt class="text-caption text-ink-tertiary">WhatsApp</dt>
+            <dd><a class="text-ink hover:text-accent" href={waLink()} target="_blank" rel="noopener">{CONTACT.whatsappDisplay}</a></dd>
+          </div>
+          <div>
+            <dt class="text-caption text-ink-tertiary">Correo</dt>
+            <dd><a class="text-ink hover:text-accent" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></dd>
+          </div>
+          <div>
+            <dt class="text-caption text-ink-tertiary">País</dt>
+            <dd class="text-ink">{CONTACT.city}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="rounded-tile bg-surface p-7 md:p-10" data-reveal style="--reveal-i:1">
+        <h2 id="formulario" class="text-headline text-ink">O déjanos tus datos.</h2>
+        <p class="mt-4 text-body text-ink-secondary">Te contactamos por teléfono o WhatsApp.</p>
+        <form
+          name="contacto"
+          method="POST"
+          action="/gracias/"
+          data-netlify="true"
+          netlify-honeypot="empresa-web"
+          class="mt-8 grid gap-5"
+          data-contact-form
+        >
+          <input type="hidden" name="form-name" value="contacto" />
+          <p class="hidden" aria-hidden="true">
+            <label>No llenes este campo: <input name="empresa-web" tabindex="-1" autocomplete="off" /></label>
+          </p>
+          <div>
+            <label class="field-label" for="f-nombre">Nombre</label>
+            <input class="field" id="f-nombre" name="nombre" type="text" autocomplete="name" required />
+          </div>
+          <div>
+            <label class="field-label" for="f-negocio">Negocio</label>
+            <input class="field" id="f-negocio" name="negocio" type="text" autocomplete="organization" required />
+          </div>
+          <div>
+            <label class="field-label" for="f-telefono">Teléfono</label>
+            <input class="field" id="f-telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required />
+          </div>
+          <div>
+            <label class="field-label" for="f-mensaje">Mensaje</label>
+            <textarea class="field" id="f-mensaje" name="mensaje" rows="4"></textarea>
+          </div>
+          <p class="text-caption text-ink-tertiary">Al enviar acepta nuestra <a class="text-accent underline underline-offset-2" href="/privacidad/">política de privacidad</a>.</p>
+          <div>
+            <button type="submit" class="btn btn-primary w-full sm:w-auto">Enviar</button>
+          </div>
+          <p class="hidden rounded-field bg-accent-tint p-4 text-body text-ink" role="status" data-form-ok>Gracias. Recibimos tus datos y te respondemos hoy.</p>
+          <p class="hidden rounded-field bg-surface-2 p-4 text-body text-ink" role="alert" data-form-error>No pudimos enviar el formulario. Por favor escríbenos por WhatsApp.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Progressive enhancement: submit to Netlify Forms without leaving the page.
+    const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const ok = form.querySelector("[data-form-ok]");
+      const err = form.querySelector("[data-form-error]");
+      const btn = form.querySelector<HTMLButtonElement>("button[type=submit]");
+      if (btn) btn.disabled = true;
+      try {
+        const body = new URLSearchParams(new FormData(form) as unknown as Record<string, string>).toString();
+        const res = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        err?.classList.add("hidden");
+        ok?.classList.remove("hidden");
+      } catch {
+        err?.classList.remove("hidden");
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  </script>
+</Base>

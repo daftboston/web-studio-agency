@@ -1,0 +1,17 @@
+---
+import Base from "../layouts/Base.astro";
+import { CONTACT } from "../config";
+---
+<Base title="Política de privacidad" description="Cómo Filmika usa los datos que nos envías." hideFinalCta>
+  <!-- PLACEHOLDER: short draft. Review (Ley 1581 de 2012, habeas data) before going live. -->
+  <section class="bg-canvas py-section">
+    <div class="container-text">
+      <h1 class="text-display text-ink">Política de privacidad</h1>
+      <div class="mt-8 space-y-5 text-body text-ink-secondary">
+        <p>En Filmika usamos los datos que nos envías (nombre, negocio, teléfono y mensaje) solo para responder tu solicitud y prepararte una propuesta.</p>
+        <p>No vendemos ni compartimos tus datos con terceros para publicidad. Los formularios se procesan con nuestro proveedor de hosting y las conversaciones por WhatsApp se rigen por las políticas de WhatsApp.</p>
+        <p>Puedes pedirnos en cualquier momento que actualicemos o eliminemos tus datos escribiendo a <a class="text-accent underline underline-offset-2" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.</p>
+      </div>
+    </div>
+  </section>
+</Base>

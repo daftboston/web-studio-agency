@@ -1,0 +1,30 @@
+---
+import type { Project } from "../data/portfolio";
+import BrowserFrame from "./BrowserFrame.astro";
+interface Props { project: Project; index?: number; sizes?: string; eager?: boolean }
+const { project, index = 0, sizes, eager = false } = Astro.props;
+const Tag = project.url ? "a" : "div";
+---
+<Tag
+  href={project.url ?? undefined}
+  target={project.url ? "_blank" : undefined}
+  rel={project.url ? "noopener" : undefined}
+  class:list={["tile-portfolio group flex h-full flex-col", !project.url && "hover:translate-y-0 hover:shadow-none"]}
+  data-reveal
+  style={`--reveal-i:${index}`}
+>
+  <div class="px-5 pt-5 md:px-7 md:pt-7">
+    <BrowserFrame crop src={project.image} alt={project.alt} sizes={sizes} eager={eager} />
+  </div>
+  <div class="flex flex-1 flex-col gap-2 p-5 md:p-7">
+    <h3 class="text-title text-ink">{project.name}</h3>
+    <p class="text-body text-ink-secondary">{project.description}</p>
+    <p class="mt-auto pt-2">
+      {project.url ? (
+        <span class="link-more">Ver el sitio<span class="sr-only"> {project.name} (se abre en una pestaña nueva)</span></span>
+      ) : (
+        <span class="text-caption text-ink-tertiary">Enlace disponible pronto</span>
+      )}
+    </p>
+  </div>
+</Tag>

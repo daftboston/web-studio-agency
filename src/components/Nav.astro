@@ -1,0 +1,43 @@
+---
+import { NAV_LINKS } from "../config";
+import Wordmark from "./Wordmark.astro";
+import WhatsAppButton from "./WhatsAppButton.astro";
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || path.startsWith(href);
+---
+<header class="nav-bar">
+  <nav class="container-wide flex h-full items-center justify-between gap-6" aria-label="Principal">
+    <Wordmark />
+    <ul class="hidden items-center gap-7 lg:flex" role="list">
+      {NAV_LINKS.map((l) => (
+        <li><a href={l.href} class="nav-link" aria-current={isActive(l.href) ? "page" : undefined}>{l.label}</a></li>
+      ))}
+    </ul>
+    <div class="hidden lg:block">
+      <WhatsAppButton small label="WhatsApp" inline={false} />
+    </div>
+    <button
+      type="button"
+      class="menu-btn relative -mr-2.5 size-11 lg:hidden"
+      aria-expanded="false"
+      aria-controls="menu-sheet"
+      aria-label="Abrir menú"
+      data-menu-btn
+    >
+      <span class="bar bar-1"></span><span class="bar bar-2"></span>
+    </button>
+  </nav>
+</header>
+
+<div id="menu-sheet" class="menu-sheet lg:hidden" data-menu-sheet>
+  <ul class="divide-y divide-line" role="list">
+    {[...NAV_LINKS, { href: "/contacto/", label: "Contacto" }].map((l) => (
+      <li>
+        <a href={l.href} class="flex h-14 items-center text-title text-ink" aria-current={isActive(l.href) ? "page" : undefined}>{l.label}</a>
+      </li>
+    ))}
+  </ul>
+  <div class="mt-auto pt-8">
+    <WhatsAppButton class="w-full" inline={false} label="Escríbenos por WhatsApp" />
+  </div>
+</div>

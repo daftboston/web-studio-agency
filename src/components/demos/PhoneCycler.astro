@@ -1,0 +1,215 @@
+---
+/**
+ * Demo interactiva: a phone mockup cycling through 4 illustrative homepages (clínica dental,
+ * inmobiliaria, veterinaria, óptica/tienda).
+ * All imagery is CSS/SVG. Businesses are fictional ("… Ejemplo"). Vanilla JS, lazy-initialised.
+ */
+interface Props { class?: string; size?: "md" | "lg" }
+const { class: cls = "", size = "md" } = Astro.props;
+const niches = [
+  { id: "dental", label: "Dental" },
+  { id: "inmobiliaria", label: "Inmobiliaria" },
+  { id: "veterinaria", label: "Veterinaria" },
+  { id: "optica", label: "Tienda" },
+];
+---
+<div class:list={["phone-cycler flex flex-col items-center gap-6", cls]} data-phone-cycler>
+  <figure
+    class:list={["pc-phone relative shrink-0 rounded-[2.9rem] bg-[#141413] p-[9px] shadow-float", size === "lg" ? "w-[280px] md:w-[300px]" : "w-[260px] md:w-[280px]"]}
+    aria-label="Maqueta de celular con páginas de inicio de ejemplo para distintos tipos de negocio"
+  >
+    <div class="relative aspect-[9/19] overflow-hidden rounded-[2.35rem] bg-white">
+      <span class="absolute left-1/2 top-2 z-10 h-[22px] w-[84px] -translate-x-1/2 rounded-full bg-[#141413]" aria-hidden="true"></span>
+
+      <!-- Clínica dental -->
+      <div class="pc-screen" data-screen="dental" data-active aria-hidden="true">
+        <div class="flex h-full flex-col bg-white text-[#141413]">
+          <div class="flex items-center justify-between px-4 pb-2 pt-10">
+            <span class="flex items-center gap-1.5 text-[11px] font-bold"><span class="size-3.5 rounded-full bg-[#0f766e]"></span>Clínica Dental Ejemplo</span>
+            <span class="text-[10px] font-semibold text-[#0f766e]">Abierto hoy</span>
+          </div>
+          <div class="mx-3 rounded-2xl bg-[#e6f4f1] px-4 pb-4 pt-4">
+            <svg viewBox="0 0 220 96" class="mx-auto w-[78%]" aria-hidden="true">
+              <path d="M88 10c-16 0-26 11-26 26 0 13 5 20 8 33 3 13 5 22 12 22 8 0 7-20 18-20s10 20 18 20c7 0 9-9 12-22 3-13 8-20 8-33 0-15-10-26-26-26-8 0-13 4-16 4s-8-4-16-4z" fill="#fff" stroke="#0f766e" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M160 20l4 10 10 4-10 4-4 10-4-10-10-4 10-4zM48 54l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#14b8a6"/>
+            </svg>
+            <p class="mt-2 text-[19px] font-bold leading-[1.1] tracking-[-0.02em]">Tu sonrisa, en buenas manos.</p>
+            <p class="mt-1 text-[11px] leading-snug text-[#55534e]">Valoración, limpieza y ortodoncia.</p>
+            <span class="mt-3 inline-flex h-7 items-center rounded-full bg-[#25d366] px-3 text-[10.5px] font-semibold text-white">Agenda tu cita</span>
+          </div>
+          <ul class="space-y-2 px-4 pt-4 text-[11px] font-medium">
+            {["Valoración", "Limpieza dental", "Blanqueamiento", "Ortodoncia"].map((t) => <li class="flex items-center justify-between border-b border-[#e3e1dc] pb-2">{t}<span class="text-[#55534e]">›</span></li>)}
+          </ul>
+          <div class="mx-4 mb-4 mt-auto h-14 rounded-lg bg-[#e9e7e2] bg-[linear-gradient(90deg,transparent_48%,#fff_48%,#fff_52%,transparent_52%),linear-gradient(0deg,transparent_45%,#fff_45%,#fff_55%,transparent_55%)]">
+            <span class="relative left-[46%] top-4 block size-3 rounded-full border-2 border-white bg-[#0f766e]"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inmobiliaria -->
+      <div class="pc-screen" data-screen="inmobiliaria" aria-hidden="true">
+        <div class="flex h-full flex-col bg-[#f6f5f3] text-[#141413]">
+          <div class="bg-[#1e293b] text-white">
+            <div class="flex items-center justify-between px-4 pb-2 pt-10">
+              <span class="flex items-center gap-1.5 text-[11px] font-bold"><svg viewBox="0 0 14 14" class="size-3.5" aria-hidden="true"><path d="M1 7l6-5 6 5v6H1z" fill="#fbbf24"/></svg>Inmobiliaria Ejemplo</span>
+              <span class="flex flex-col gap-[3px]"><span class="h-[1.5px] w-3.5 bg-white"></span><span class="h-[1.5px] w-3.5 bg-white"></span></span>
+            </div>
+            <div class="px-4 pb-4 pt-2">
+              <p class="text-[19px] font-bold leading-[1.1] tracking-[-0.02em]">Encuentra tu próximo hogar.</p>
+              <div class="mt-3 flex gap-1.5 text-[10px] font-semibold">
+                <span class="rounded-full bg-white px-2.5 py-1 text-[#1e293b]">Arriendo</span><span class="rounded-full px-2.5 py-1 ring-1 ring-white/50">Venta</span>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-2 p-3">
+            {[["Apartamento", "3 hab · 2 baños", "#dbeafe", "#1e293b"], ["Casa", "4 hab · patio", "#fef3c7", "#92400e"]].map(([t, d, sky, roof]) => (
+              <div class="flex gap-2.5 rounded-xl bg-white p-2">
+                <svg viewBox="0 0 80 60" class="w-[42%] shrink-0 rounded-lg" aria-hidden="true"><rect width="80" height="60" fill={sky}/><path d="M14 30l26-18 26 18z" fill={roof}/><rect x="20" y="30" width="40" height="24" fill="#fff"/><rect x="25" y="35" width="10" height="8" fill="#93c5fd"/><rect x="45" y="35" width="10" height="8" fill="#93c5fd"/><rect x="36" y="42" width="8" height="12" fill={roof}/><rect y="54" width="80" height="6" fill="#86a37a"/></svg>
+                <div class="flex min-w-0 flex-col py-0.5">
+                  <p class="text-[11px] font-bold">{t}</p>
+                  <p class="text-[10px] text-[#55534e]">{d}</p>
+                  <span class="mt-auto inline-flex h-6 w-fit items-center rounded-full bg-[#25d366] px-2.5 text-[9.5px] font-semibold text-white">Preguntar</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="mt-auto grid grid-cols-3 gap-1.5 p-3">
+            {["Arriendo", "Venta", "Avalúos"].map((t) => <span class="rounded-lg bg-white px-1.5 py-2.5 text-center text-[10px] font-semibold">{t}</span>)}
+          </div>
+        </div>
+      </div>
+
+      <!-- Veterinaria -->
+      <div class="pc-screen" data-screen="veterinaria" aria-hidden="true">
+        <div class="flex h-full flex-col bg-[#fff7ed] text-[#141413]">
+          <div class="flex items-center justify-between px-4 pb-2 pt-10">
+            <span class="flex items-center gap-1.5 text-[11px] font-bold"><svg viewBox="0 0 14 14" class="size-3.5" aria-hidden="true"><g fill="#c2410c"><ellipse cx="7" cy="9.5" rx="3.4" ry="3"/><circle cx="3" cy="5.5" r="1.5"/><circle cx="5.6" cy="3" r="1.5"/><circle cx="8.4" cy="3" r="1.5"/><circle cx="11" cy="5.5" r="1.5"/></g></svg>Veterinaria Ejemplo</span>
+            <span class="text-[10px] font-semibold text-[#9a3412]">Abierto hoy</span>
+          </div>
+          <svg viewBox="0 0 260 120" class="w-full" aria-hidden="true">
+            <rect width="260" height="120" fill="#fed7aa"/>
+            <circle cx="200" cy="30" r="18" fill="#fdba74"/>
+            <g fill="#9a3412" opacity=".9"><ellipse cx="96" cy="78" rx="26" ry="22"/><ellipse cx="62" cy="52" rx="10" ry="13"/><ellipse cx="84" cy="34" rx="10" ry="13"/><ellipse cx="110" cy="34" rx="10" ry="13"/><ellipse cx="131" cy="52" rx="10" ry="13"/></g>
+            <g fill="#c2410c" opacity=".45"><ellipse cx="190" cy="92" rx="13" ry="11"/><ellipse cx="173" cy="78" rx="5" ry="6.5"/><ellipse cx="184" cy="69" rx="5" ry="6.5"/><ellipse cx="197" cy="69" rx="5" ry="6.5"/><ellipse cx="207" cy="78" rx="5" ry="6.5"/></g>
+          </svg>
+          <div class="px-4 pt-4">
+            <p class="text-[19px] font-bold leading-[1.1] tracking-[-0.02em]">Cuidamos a tu mejor amigo.</p>
+            <p class="mt-1.5 text-[11px] leading-snug text-[#55534e]">Consulta, vacunas y peluquería.</p>
+            <span class="mt-3 inline-flex h-7 items-center rounded-full bg-[#25d366] px-3 text-[10.5px] font-semibold text-white">Agenda por WhatsApp</span>
+          </div>
+          <div class="mt-auto grid grid-cols-3 gap-1.5 p-4">
+            {["Consulta", "Vacunas", "Peluquería"].map((t) => <span class="rounded-lg bg-white px-1.5 py-2.5 text-center text-[10px] font-semibold">{t}</span>)}
+          </div>
+        </div>
+      </div>
+
+      <!-- Óptica -->
+      <div class="pc-screen" data-screen="optica" aria-hidden="true">
+        <div class="flex h-full flex-col bg-white text-[#141413]">
+          <div class="flex items-center justify-between px-4 pb-2 pt-10">
+            <span class="text-[12px] font-bold italic tracking-tight">Óptica Ejemplo</span>
+            <span class="text-[10px] font-medium text-[#55534e]">Catálogo</span>
+          </div>
+          <div class="mx-3 rounded-2xl bg-[#ecebfb] px-4 pb-4 pt-5">
+            <svg viewBox="0 0 200 70" class="mx-auto w-[85%]" aria-hidden="true">
+              <circle cx="55" cy="38" r="26" fill="none" stroke="#141413" stroke-width="7"/>
+              <circle cx="145" cy="38" r="26" fill="none" stroke="#141413" stroke-width="7"/>
+              <path d="M81 34c10-8 28-8 38 0" fill="none" stroke="#141413" stroke-width="6"/>
+              <path d="M29 30L8 22M171 30l21-8" stroke="#141413" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <p class="mt-3 text-[19px] font-bold leading-[1.1] tracking-[-0.02em]">Monturas para cada estilo.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-2 p-3">
+            {[["FK-101", "#141413"], ["FK-102", "#8a5a2b"], ["FK-205", "#3d3ad6"], ["FK-310", "#b91c1c"]].map(([ref, c]) => (
+              <div class="rounded-xl bg-[#f6f5f3] p-2">
+                <svg viewBox="0 0 100 40" class="w-full" aria-hidden="true"><rect x="8" y="10" width="34" height="22" rx="9" fill="none" stroke={c} stroke-width="5"/><rect x="58" y="10" width="34" height="22" rx="9" fill="none" stroke={c} stroke-width="5"/><path d="M42 18h16" stroke={c} stroke-width="4"/></svg>
+                <p class="mt-1 text-[10px] font-semibold">Ref. {ref}</p>
+                <span class="mt-1 block rounded-full bg-[#25d366] py-1 text-center text-[9px] font-semibold text-white">Comprar</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </figure>
+
+  <div class="flex flex-wrap items-center justify-center gap-2" data-js-only role="group" aria-label="Elegir página de ejemplo">
+    {niches.map((n, i) => (
+      <button type="button" class="chip-toggle relative overflow-hidden" data-pc-tab={n.id} aria-pressed={i === 0 ? "true" : "false"}>
+        {n.label}
+        <span class="pc-progress" aria-hidden="true"></span>
+      </button>
+    ))}
+    <button type="button" class="chip-toggle w-11 justify-center px-0" data-pc-pause aria-label="Pausar">
+      <svg class="pc-icon-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.5" height="12" rx="1" fill="currentColor"/><rect x="8.5" y="1" width="3.5" height="12" rx="1" fill="currentColor"/></svg>
+      <svg class="pc-icon-play hidden" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9.5-5.5z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  .pc-screen {
+    position: absolute; inset: 0;
+    opacity: 0; transform: translateX(12%) scale(0.97); visibility: hidden;
+    transition: opacity 600ms var(--ease-out-soft), transform 750ms var(--ease-out-soft), visibility 0s linear 750ms;
+  }
+  .pc-screen[data-active] { opacity: 1; transform: none; visibility: visible; transition-delay: 0s; }
+  .pc-screen[data-leaving] { transform: translateX(-12%) scale(0.97); }
+  .pc-progress { position: absolute; left: 1rem; right: 1rem; bottom: 6px; height: 2px; border-radius: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; opacity: 0.7; }
+  [data-playing] [aria-pressed="true"] .pc-progress { animation: pc-progress var(--pc-interval, 4000ms) linear forwards; }
+  @keyframes pc-progress { to { transform: scaleX(1); } }
+</style>
+
+<script>
+  import { onNear, reducedMotion } from "../../scripts/lazy";
+
+  onNear("[data-phone-cycler]", (root) => {
+    const screens = [...root.querySelectorAll<HTMLElement>("[data-screen]")];
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>("[data-pc-tab]")];
+    const pauseBtn = root.querySelector<HTMLButtonElement>("[data-pc-pause]");
+    const INTERVAL = 4000;
+    let index = 0;
+    let timer: number | undefined;
+    let userPaused = reducedMotion();
+    let hovered = false;
+    let visible = true;
+
+    const show = (next: number) => {
+      if (next === index) return;
+      screens[index].removeAttribute("data-active");
+      screens[index].setAttribute("data-leaving", "");
+      const prev = screens[index];
+      setTimeout(() => prev.removeAttribute("data-leaving"), 800);
+      index = next;
+      screens[index].setAttribute("data-active", "");
+      tabs.forEach((t, i) => t.setAttribute("aria-pressed", String(i === index)));
+      schedule();
+    };
+
+    const schedule = () => {
+      clearTimeout(timer);
+      const playing = !userPaused && !hovered && visible;
+      root.toggleAttribute("data-playing", playing);
+      // restart the progress animation on the active tab
+      tabs.forEach((t) => { const p = t.querySelector<HTMLElement>(".pc-progress"); if (p) { p.style.animation = "none"; void p.offsetWidth; p.style.animation = ""; } });
+      if (playing) timer = window.setTimeout(() => show((index + 1) % screens.length), INTERVAL);
+    };
+
+    const syncPause = () => {
+      pauseBtn?.setAttribute("aria-label", userPaused ? "Reproducir" : "Pausar");
+      pauseBtn?.querySelector(".pc-icon-pause")?.classList.toggle("hidden", userPaused);
+      pauseBtn?.querySelector(".pc-icon-play")?.classList.toggle("hidden", !userPaused);
+    };
+
+    tabs.forEach((t, i) => t.addEventListener("click", () => { show(i); }));
+    pauseBtn?.addEventListener("click", () => { userPaused = !userPaused; syncPause(); schedule(); });
+    const phone = root.querySelector("figure");
+    phone?.addEventListener("pointerenter", () => { hovered = true; schedule(); });
+    phone?.addEventListener("pointerleave", () => { hovered = false; schedule(); });
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; schedule(); }).observe(root);
+
+    root.style.setProperty("--pc-interval", `${INTERVAL}ms`);
+    syncPause();
+    schedule();
+  }, "0px");
+</script>

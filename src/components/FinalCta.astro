@@ -1,0 +1,23 @@
+---
+import WhatsAppButton from "./WhatsAppButton.astro";
+import { CONTACT } from "../config";
+interface Props { message?: string; scene?: string }
+const { message = "default", scene } = Astro.props;
+---
+<section class:list={["pb-section pt-section-tight", !scene && "bg-canvas"]} data-scene={scene} aria-labelledby="cta-final">
+  <div class="container-wide">
+    <div class="theme-dark panel-bleed !mx-0" data-band>
+      <div class="grid gap-10 px-6 py-section md:px-12 lg:grid-cols-12 lg:items-end lg:px-16">
+        <div class="lg:col-span-8" data-reveal>
+          <p class="eyebrow mb-4">Contacto</p>
+          <h2 id="cta-final" class="text-mega text-ink">Hablemos.</h2>
+          <p class="mt-6 max-w-text text-lead text-ink-secondary">Cuéntanos de tu negocio y te respondemos por WhatsApp con una recomendación clara, sin compromiso.</p>
+        </div>
+        <div class="flex flex-col gap-5 lg:col-span-4 lg:items-end" data-reveal style="--reveal-i:1">
+          <WhatsAppButton message={message} label="Escríbenos por WhatsApp" class="w-full sm:w-auto" />
+          <a href={`mailto:${CONTACT.email}`} class="link-more text-ink">{CONTACT.email}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

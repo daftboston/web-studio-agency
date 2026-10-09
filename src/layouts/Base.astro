@@ -1,0 +1,216 @@
+---
+import "@fontsource-variable/inter/opsz.css";
+import "../styles/global.css";
+import interLatin from "@fontsource-variable/inter/files/inter-latin-opsz-normal.woff2?url";
+import { SITE } from "../config";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import FinalCta from "../components/FinalCta.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Path to an image in /public used for Open Graph. */
+  ogImage?: string;
+  hideFab?: boolean;
+  hideFinalCta?: boolean;
+  finalCtaMessage?: string;
+  noindex?: boolean;
+  /** Scroll-driven page background: sections carry data-scene, see global.css. */
+  scenes?: boolean;
+}
+const {
+  title,
+  description = SITE.defaultDescription,
+  ogImage = "/og-image.png",
+  hideFab = false,
+  hideFinalCta = false,
+  finalCtaMessage,
+  noindex = false,
+  scenes = false,
+} = Astro.props;
+const fullTitle = title === SITE.name ? SITE.tagline : `${title} · ${SITE.name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogUrl = new URL(ogImage, Astro.site).href;
+---
+<!doctype html>
+<html lang={SITE.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script is:inline>document.documentElement.classList.add("js");</script>
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="preload" as="image" href="/logo/filmika-logo-dark.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={SITE.tagline} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
+    <slot name="head" />
+  </head>
+  <body class:list={["min-h-dvh text-ink", scenes ? "bg-page" : "bg-canvas"]} data-scenes={scenes ? "" : undefined}>
+    <a href="#main" class="sr-only z-[60] rounded-full bg-ink px-4 py-2 text-on-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-2">Saltar al contenido</a>
+    <Nav />
+    <main id="main" data-main>
+      <slot />
+      {!hideFinalCta && <FinalCta message={finalCtaMessage} scene={scenes ? "light" : undefined} />}
+    </main>
+    <Footer scene={scenes ? "light" : undefined} />
+    {!hideFab && <FloatingWhatsApp />}
+
+    <script>
+      // 1) One-shot scroll reveal (content is visible by default; see global.css)
+      const reveal = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add("is-in");
+              reveal.unobserve(e.target);
+            }
+          }
+        },
+        { rootMargin: "0px 0px -10% 0px", threshold: 0.15 },
+      );
+      document.querySelectorAll("[data-reveal], [data-zoom]").forEach((el) => reveal.observe(el));
+
+      // 1b) Scroll-driven page background. A direction-aware trigger line (62% of the viewport
+      //     while scrolling down, 38% while scrolling up) picks the active [data-scene], so the new
+      //     colour starts as soon as a section is well into view. Colours ease in CSS (global.css);
+      //     JS adds the aura + film-grain effect, skipped with reduced motion.
+      if (document.body.hasAttribute("data-scenes")) {
+        const root = document.documentElement;
+        const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+        const pageColor: Record<string, string> = { light: "#ffffff", warm: "#f5f4f1", dark: "#0d0d0c", accent: "#3d3ad6" };
+        const scenes = [...document.querySelectorAll<HTMLElement>("[data-scene]")];
+        const calm = matchMedia("(prefers-reduced-motion: reduce)");
+        const DURATION = 1600;
+        const EASE = "cubic-bezier(0.65, 0, 0.35, 1)";
+        let aura: HTMLElement | null = null;
+        let grain: HTMLElement | null = null;
+        let running: Animation[] = [];
+        let lastY = scrollY;
+        let dir: "down" | "up" = "down";
+        let ticking = false;
+        let first = true;
+
+        const effect = (scene: string, from: "top" | "bottom") => {
+          if (calm.matches) return;
+          if (!aura) {
+            aura = Object.assign(document.createElement("div"), { className: "scene-aura" });
+            grain = Object.assign(document.createElement("div"), { className: "scene-grain" });
+            aura.setAttribute("aria-hidden", "true"); grain.setAttribute("aria-hidden", "true");
+            document.body.append(aura, grain);
+          }
+          running.forEach((a) => a.cancel());
+          aura.dataset.from = from;
+          aura.style.setProperty("--aura", pageColor[scene] ?? "#ffffff");
+          const rise = from === "bottom" ? -1 : 1;
+          running = [
+            aura.animate(
+              [
+                // Faint until the text colours have swapped (~0.4–0.6 of the run), then it blooms,
+                // so the incoming colour never pools under the outgoing text colour.
+                { opacity: 0, transform: `translateY(${rise * -8}vmax) scale(0.25)` },
+                { opacity: 0.1, transform: `translateY(${rise * 4}vmax) scale(0.6)`, offset: 0.4 },
+                { opacity: 0.5, transform: `translateY(${rise * 16}vmax) scale(0.95)`, offset: 0.68 },
+                { opacity: 0, transform: `translateY(${rise * 30}vmax) scale(1.25)` },
+              ],
+              { duration: DURATION, easing: EASE },
+            ),
+            grain!.animate(
+              [
+                { opacity: 0, transform: "translate(0, 0)" },
+                { opacity: 0.09, transform: "translate(-2%, 1%)", offset: 0.3 },
+                { opacity: 0.07, transform: "translate(1%, -2%)", offset: 0.6 },
+                { opacity: 0, transform: "translate(-1%, 2%)" },
+              ],
+              { duration: DURATION, easing: "steps(12, end)" },
+            ),
+          ];
+        };
+
+        const pick = () => {
+          ticking = false;
+          const line = innerHeight * (dir === "down" ? 0.62 : 0.38);
+          let active: HTMLElement | undefined;
+          for (const el of scenes) {
+            const r = el.getBoundingClientRect();
+            if (r.top <= line && r.bottom > line) { active = el; break; }
+          }
+          const scene = active?.dataset.scene;
+          if (!scene || root.dataset.scene === scene) return;
+          const wasSet = !first;
+          first = false;
+          root.dataset.scene = scene;
+          meta?.setAttribute("content", pageColor[scene] ?? "#ffffff");
+          if (wasSet) effect(scene, dir === "down" ? "bottom" : "top");
+        };
+        addEventListener("scroll", () => {
+          const y = scrollY;
+          if (y !== lastY) dir = y > lastY ? "down" : "up";
+          lastY = y;
+          if (!ticking) { ticking = true; requestAnimationFrame(pick); }
+        }, { passive: true });
+        addEventListener("resize", () => { if (!ticking) { ticking = true; requestAnimationFrame(pick); } }, { passive: true });
+        pick();
+      }
+
+      // 2) Floating WhatsApp: hide while an inline WhatsApp CTA is on screen or the menu is open
+      const fab = document.querySelector<HTMLElement>("[data-fab]");
+      const onScreen = new Set<Element>();
+      let menuOpen = false;
+      const syncFab = () => fab?.toggleAttribute("data-hidden", menuOpen || onScreen.size > 0);
+      const watch = new IntersectionObserver((entries) => {
+        for (const e of entries) e.isIntersecting ? onScreen.add(e.target) : onScreen.delete(e.target);
+        syncFab();
+      });
+      document.querySelectorAll("main [data-wa-inline]").forEach((el) => watch.observe(el));
+
+      // 3) Mobile menu
+      const btn = document.querySelector<HTMLButtonElement>("[data-menu-btn]");
+      const sheet = document.querySelector<HTMLElement>("[data-menu-sheet]");
+      const main = document.querySelector<HTMLElement>("[data-main]");
+      const footer = document.querySelector("footer");
+      const setMenu = (open: boolean, returnFocus = true) => {
+        if (!btn || !sheet) return;
+        menuOpen = open;
+        btn.setAttribute("aria-expanded", String(open));
+        btn.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+        sheet.toggleAttribute("data-open", open);
+        document.documentElement.toggleAttribute("data-menu-open", open);
+        main?.toggleAttribute("inert", open);
+        footer?.toggleAttribute("inert", open);
+        syncFab();
+        if (open) sheet.querySelector<HTMLElement>("a")?.focus();
+        else if (returnFocus) btn.focus();
+      };
+      btn?.addEventListener("click", () => setMenu(!menuOpen));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && menuOpen) setMenu(false);
+      });
+      matchMedia("(min-width: 1024px)").addEventListener("change", (m) => {
+        if (m.matches && menuOpen) setMenu(false, false);
+      });
+    </script>
+  </body>
+</html>

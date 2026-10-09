@@ -2,11 +2,12 @@
 
 Filmika does not sell a one-time page. The model is an **initial fee plus a monthly fee**: we build the site, then we keep it running and growing.
 
-> **Prices are placeholders.** Final pricing is defined by Mr market. Do not publish any number shown as `$___`.
+> **Launch prices approved by Mr market (2026-10-08).** Current entry prices for the first clients, in COP, not estimates.
+> The setup price includes the domain and the first month of Digital Care. Source of truth on the site: `PRICES` in `src/config.ts`.
 
 ## Key message (Spanish)
 > **No desaparecemos después del lanzamiento.**
-> Su página sigue activa, actualizada y trabajando para su negocio todos los meses.
+> Tu página sigue activa, actualizada y trabajando para tu negocio todos los meses.
 
 ## The path
 ```
@@ -17,12 +18,16 @@ Launch  →  Digital Care  →  Growth
 ---
 
 ## 1. Launch (pago inicial, una vez)
-The one-time build. Launch = one of the 3 packages in [PACKAGES.md](PACKAGES.md):
-- 🟢 Presencia
-- 🔵 Profesional
-- 🟣 Commerce
+The one-time build. Launch = one of the priced packages in [PACKAGES.md](PACKAGES.md):
 
-Precio: `$___` (placeholder, depends on the package)
+| Paquete | Pago inicial | Digital Care después |
+|---|---|---|
+| Landing + campaña | $600.000 | $90.000 / mes |
+| Página web | $900.000 | $90.000 / mes |
+| Catálogo en línea | $1.500.000 | $130.000 / mes |
+| Sitio Profesional (más grande) | Se cotiza | Se cotiza |
+
+Precio: **desde $600.000**. Includes the domain and the first month of Digital Care.
 
 ---
 
@@ -40,10 +45,10 @@ Monthly plan that keeps the site alive and up to date. Incluye:
 - Google Business
 - Reporte mensual
 
-Precio: `$___ / mes` (placeholder)
+Precio: **$90.000 / mes** (Landing + campaña, Página web) · **$130.000 / mes** (Catálogo en línea). The first month is included in the setup price.
 
 Sample copy:
-> Nosotros nos encargamos de su página cada mes: cambios, fotos, productos y soporte. Usted solo nos escribe por WhatsApp.
+> Cada mes nos encargamos de tu página: cambios, fotos, productos y soporte. Tú solo nos escribes por WhatsApp.
 
 ---
 
@@ -59,13 +64,13 @@ Later upsell for clients who want more customers. Opciones:
 - Campañas de WhatsApp
 - Seguimiento de leads
 
-Precio: `$___` (placeholder, per service or custom quote)
+Precio: **Se cotiza según el proyecto.**
 
 Sample copy:
-> Cuando su negocio esté listo para crecer, le ayudamos a atraer más clientes con publicidad, contenido y automatización.
+> Cuando tu negocio esté listo para crecer, te ayudamos a atraer más clientes con SEO local, publicidad y automatización de WhatsApp.
 
 ---
 
 ## Ownership
-- **Mr market:** final prices and how the plans are offered in outreach.
+- **Mr market:** prices (launch prices approved 2026-10-08) and how the plans are offered in outreach.
 - **Web Studio Dev:** keeps this doc and the site content in sync.

@@ -1,0 +1,50 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { SITE } from "../config";
+import Section from "../components/Section.astro";
+const values = [
+  { title: "Más de 3 años construyendo sitios web", text: SITE.experience },
+  { title: "Hablas con quien diseña tu página", text: "Sin intermediarios ni cadenas de correos. Una conversación directa por WhatsApp, de principio a fin." },
+  { title: "Entendemos cómo funciona un negocio", text: "El equipo de Filmika viene de la arquitectura, la mecánica y las ventas. Por eso diseñamos páginas que sirven al día a día, no solo a la imagen." },
+];
+---
+<Base
+  title="Nosotros"
+  description="Filmika tiene más de 3 años construyendo sitios web. Páginas web claras, rápidas y conectadas a WhatsApp. Hablas directamente con quien diseña tu página."
+>
+  <PageHero
+    eyebrow="Nosotros"
+    title="Somos Filmika."
+    lead="Diseñamos y lanzamos páginas web de punta a punta: diseño, contenido, publicación y soporte. Nos importa que tu página te traiga clientes, no solo que se vea bien."
+  />
+
+  <Section tone="surface" labelledby="h-valores">
+    <div class="container-content">
+      <h2 id="h-valores" class="sr-only">Lo que nos define</h2>
+      <div class="grid gap-grid lg:grid-cols-3">
+        {values.map((v, i) => (
+          <article class="rounded-card bg-canvas p-7 md:p-8" data-reveal style={`--reveal-i:${i}`}>
+            <h3 class="text-title text-ink">{v.title}</h3>
+            <p class="mt-3 text-body text-ink-secondary">{v.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section labelledby="h-origen">
+    <div class="container-wide grid gap-stack lg:grid-cols-12 lg:gap-grid">
+      <div class="lg:col-span-7" data-reveal>
+        <p class="eyebrow mb-3">De dónde venimos</p>
+        <h2 id="h-origen" class="text-headline text-ink">Hablas directamente con quien diseña tu página.</h2>
+        <p class="mt-5 max-w-text text-lead text-ink-secondary">{SITE.experience}</p>
+        <p class="mt-4 max-w-text text-lead text-ink-secondary">También venimos de la arquitectura, la mecánica y las ventas. Eso nos da un proceso ordenado, estándares claros y una mirada práctica de cómo un negocio gana clientes.</p>
+      </div>
+      <div class="lg:col-span-4 lg:col-start-9 lg:pt-12" data-reveal style="--reveal-i:1">
+        <p class="text-body text-ink-secondary">Trabajo real, proceso claro y atención directa por WhatsApp. Sin promesas inventadas ni clientes inventados.</p>
+        <p class="mt-6"><a href="/portafolio/" class="link-more">Ver nuestro trabajo</a></p>
+      </div>
+    </div>
+  </Section>
+</Base>

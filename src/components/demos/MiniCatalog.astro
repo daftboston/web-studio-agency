@@ -1,0 +1,124 @@
+---
+/**
+ * Demo interactiva (óptica / Catálogo en línea): filterable catalog where each product's
+ * "Comprar por WhatsApp" link is rebuilt live from the chosen color.
+ * Products, references and prices are illustrative example data.
+ */
+import { waLink } from "../../config";
+import WaIcon from "../WaIcon.astro";
+
+type Shape = "round" | "square" | "aviator" | "cat" | "thin" | "case";
+const products: { ref: string; name: string; cat: string; price: string; shape: Shape; stock: boolean; colors: [string, string][] }[] = [
+  { ref: "FK-101", name: "Montura aro redondo", cat: "Monturas", price: "$ 250.000", shape: "round", stock: true, colors: [["negro", "#141413"], ["carey", "#8a5a2b"]] },
+  { ref: "FK-102", name: "Montura cuadrada clásica", cat: "Monturas", price: "$ 280.000", shape: "square", stock: true, colors: [["azul", "#3d3ad6"], ["negro", "#141413"]] },
+  { ref: "FK-205", name: "Gafas de sol aviador", cat: "Gafas de sol", price: "$ 320.000", shape: "aviator", stock: true, colors: [["dorado", "#a16207"], ["negro", "#141413"]] },
+  { ref: "FK-208", name: "Gafas de sol ojo de gato", cat: "Gafas de sol", price: "$ 300.000", shape: "cat", stock: false, colors: [["rojo", "#b91c1c"], ["carey", "#8a5a2b"]] },
+  { ref: "FK-310", name: "Montura liviana", cat: "Monturas", price: "$ 390.000", shape: "thin", stock: true, colors: [["plata", "#6e6c66"], ["negro", "#141413"]] },
+  { ref: "FK-401", name: "Estuche rígido", cat: "Accesorios", price: "$ 45.000", shape: "case", stock: true, colors: [["negro", "#141413"], ["azul", "#3d3ad6"]] },
+];
+const cats = ["Todas", ...new Set(products.map((p) => p.cat))];
+const msg = (p: (typeof products)[number], color: string) =>
+  p.stock
+    ? `[Demo Filmika] Hola, estoy interesado en la referencia ${p.ref} (${p.name}, color ${color}) de ${p.price}.`
+    : `[Demo Filmika] Hola, ¿me avisan cuando llegue la referencia ${p.ref} (${p.name}, color ${color})?`;
+---
+<div class="rounded-tile bg-surface p-4 md:p-6" data-mini-catalog>
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <div class="flex flex-wrap gap-2" role="group" aria-label="Filtrar por categoría" data-js-only>
+      {cats.map((c, i) => <button type="button" class="chip-toggle" data-filter={c} aria-pressed={i === 0 ? "true" : "false"}>{c}</button>)}
+    </div>
+    <p class="text-caption text-ink-tertiary" aria-live="polite" data-count>{products.length} referencias</p>
+  </div>
+
+  <ul class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3" role="list">
+    {products.map((p) => (
+      <li class="flex flex-col rounded-card bg-canvas p-4" data-product data-cat={p.cat} data-ref={p.ref} data-name={p.name} data-price={p.price} data-stock={String(p.stock)}>
+        <div class="flex aspect-[5/3] items-center justify-center rounded-[14px] bg-surface" style={`--frame:${p.colors[0][1]}`} data-frame>
+          <svg viewBox="0 0 120 60" class="w-3/4 transition-colors duration-(--duration-ui)" aria-hidden="true" fill="none" stroke="var(--frame)" stroke-width="5" stroke-linecap="round">
+            {p.shape === "round" && <><circle cx="35" cy="32" r="18"/><circle cx="85" cy="32" r="18"/><path d="M53 29c4-4 10-4 14 0"/></>}
+            {p.shape === "square" && <><rect x="14" y="16" width="40" height="30" rx="5"/><rect x="66" y="16" width="40" height="30" rx="5"/><path d="M54 26h12"/></>}
+            {p.shape === "aviator" && <><path d="M14 18h40c0 18-8 28-20 28S14 36 14 18zM66 18h40c0 18-8 28-20 28S66 36 66 18z" fill="var(--frame)" fill-opacity=".25"/><path d="M54 20h12"/></>}
+            {p.shape === "cat" && <><path d="M10 16l46 4c0 14-8 24-22 24S12 32 10 16zM110 16l-46 4c0 14 8 24 22 24s22-12 24-28z" fill="var(--frame)" fill-opacity=".25"/><path d="M56 24h8"/></>}
+            {p.shape === "thin" && <g stroke-width="3"><ellipse cx="35" cy="32" rx="20" ry="15"/><ellipse cx="85" cy="32" rx="20" ry="15"/><path d="M55 28h10"/></g>}
+            {p.shape === "case" && <><rect x="14" y="14" width="92" height="34" rx="17" fill="var(--frame)" fill-opacity=".2"/><path d="M14 31h92"/></>}
+          </svg>
+        </div>
+        <div class="mt-3 flex items-start justify-between gap-2">
+          <div>
+            <p class="text-micro text-ink-tertiary">Ref. {p.ref} · {p.cat}</p>
+            <h3 class="mt-0.5 text-body font-semibold text-ink">{p.name}</h3>
+          </div>
+          <p class="whitespace-nowrap text-body font-semibold text-ink">{p.price}</p>
+        </div>
+        <div class="mt-2 flex items-center justify-between gap-2">
+          <fieldset class="flex items-center gap-0.5">
+            <legend class="sr-only">Color de {p.name}</legend>
+            {p.colors.map(([name, hex], i) => (
+              <label class="relative flex size-11 cursor-pointer items-center justify-center">
+                <input type="radio" class="peer sr-only" name={`c-${p.ref}`} value={name} data-hex={hex} checked={i === 0} />
+                <span class="size-6 rounded-full ring-1 ring-line-strong ring-offset-2 ring-offset-canvas peer-checked:ring-2 peer-checked:ring-ink peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-accent" style={`background:${hex}`}></span>
+                <span class="sr-only">{name}</span>
+              </label>
+            ))}
+          </fieldset>
+          <span class:list={["text-caption font-medium", p.stock ? "text-ink" : "text-ink-tertiary"]}>{p.stock ? "Disponible" : "Agotado"}</span>
+        </div>
+        <a href={waLink(msg(p, p.colors[0][0]))} target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm mt-3 w-full" data-wa-inline data-buy>
+          <WaIcon size={18} /><span>{p.stock ? "Comprar por WhatsApp" : "Avisarme por WhatsApp"}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <div class="mt-5 rounded-card bg-canvas p-4" data-js-only>
+    <p class="text-caption text-ink-tertiary">Así llega el mensaje a WhatsApp:</p>
+    <p class="mt-2 inline-block max-w-full rounded-2xl rounded-tl-sm bg-[#e7f6ec] px-4 py-2.5 text-caption text-[#141413]" data-preview>{msg(products[0], products[0].colors[0][0])}</p>
+  </div>
+</div>
+
+<script>
+  import { onNear } from "../../scripts/lazy";
+  import { waLink } from "../../config";
+
+  onNear("[data-mini-catalog]", (root) => {
+    const items = [...root.querySelectorAll<HTMLElement>("[data-product]")];
+    const preview = root.querySelector<HTMLElement>("[data-preview]");
+    const count = root.querySelector<HTMLElement>("[data-count]");
+    const message = (li: HTMLElement) => {
+      const color = li.querySelector<HTMLInputElement>("input:checked")?.value ?? "";
+      const { ref, name, price, stock } = li.dataset;
+      return stock === "true"
+        ? `[Demo Filmika] Hola, estoy interesado en la referencia ${ref} (${name}, color ${color}) de ${price}.`
+        : `[Demo Filmika] Hola, ¿me avisan cuando llegue la referencia ${ref} (${name}, color ${color})?`;
+    };
+    const update = (li: HTMLElement) => {
+      const text = message(li);
+      li.querySelector<HTMLAnchorElement>("[data-buy]")!.href = waLink(text);
+      if (preview) preview.textContent = text;
+    };
+    items.forEach((li) => {
+      li.querySelectorAll<HTMLInputElement>("input[type=radio]").forEach((r) =>
+        r.addEventListener("change", () => {
+          li.querySelector<HTMLElement>("[data-frame]")?.style.setProperty("--frame", r.dataset.hex ?? "");
+          update(li);
+        }),
+      );
+      li.addEventListener("pointerenter", () => update(li));
+      li.addEventListener("focusin", () => update(li));
+    });
+    const filters = [...root.querySelectorAll<HTMLButtonElement>("[data-filter]")];
+    filters.forEach((b) =>
+      b.addEventListener("click", () => {
+        const f = b.dataset.filter;
+        filters.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+        let n = 0;
+        items.forEach((li) => {
+          const show = f === "Todas" || li.dataset.cat === f;
+          li.hidden = !show;
+          if (show) n++;
+        });
+        if (count) count.textContent = `${n} ${n === 1 ? "referencia" : "referencias"}`;
+      }),
+    );
+  });
+</script>

@@ -1,0 +1,14 @@
+---
+/**
+ * Filmika logo (owner's wordmark, the "l" is a film strip), vectorized from the original artwork
+ * with potrace: public/logo/filmika-logo-dark.svg (+ white version and PNG fallbacks).
+ * One dark-ink file; on dark and indigo scroll scenes CSS inverts it to light ink (global.css).
+ */
+interface Props { class?: string; size?: "nav" | "footer" }
+const { class: cls = "", size = "nav" } = Astro.props;
+const h = size === "footer" ? 28 : 24;
+const w = Math.round(h * 4.6725);
+---
+<a href="/" class:list={["brand-mark inline-flex items-center", cls]}>
+  <img src="/logo/filmika-logo-dark.svg" alt="Filmika" width={w} height={h} class="brand-logo block" style={`height:${h}px;width:auto`} decoding="async" />
+</a>

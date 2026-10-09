@@ -1,0 +1,23 @@
+---
+/**
+ * Demo interactiva: scroll-driven parallax hero sample. Pure CSS (animation-timeline: view()).
+ * Static in browsers without support and with prefers-reduced-motion.
+ */
+---
+<div class="theme-dark panel-bleed relative isolate overflow-hidden" data-scroll-sample>
+  <div class="relative flex min-h-[78svh] flex-col items-center justify-center px-gutter py-section text-center md:min-h-[88svh]">
+    <!-- Layers: sky glow, far skyline, near skyline -->
+    <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+      <div class="absolute left-1/2 top-[18%] size-[60vmin] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,#3d3ad6_0%,transparent_65%)] opacity-60" data-parallax style="--depth:60"></div>
+      <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" class="absolute inset-x-0 bottom-[12%] h-[45%] w-full" data-parallax style="--depth:90">
+        <path d="M0 400V250h80v-60h70v90h60V170h90v110h50V210h110v-80h70v150h60v-70h90v90h80V150h100v130h70v-60h90v90h70V200h120v200z" fill="#1a1a18"/>
+      </svg>
+      <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" class="absolute inset-x-0 -bottom-[6%] h-[40%] w-full" data-parallax style="--depth:-40">
+        <path d="M0 400V300h120v-90h90v120h140V240h100v90h160V190h120v140h90v-80h150v80h120V230h110v110h130V280h110v120z" fill="#262624"/>
+      </svg>
+    </div>
+    <span class="chip-demo">Demo interactiva · desplácese</span>
+    <p class="mt-6 text-mega text-ink" data-scroll-scale>Tu negocio,<br />en grande.</p>
+    <p class="mx-auto mt-6 max-w-text text-lead text-ink-secondary">Capas que se mueven a distinta velocidad mientras bajas. Hecho solo con CSS, sin librerías, y se desactiva si tu celular pide reducir el movimiento.</p>
+  </div>
+</div>

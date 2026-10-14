@@ -30,6 +30,10 @@ Approved phrasing:
 
 ## Tone of voice
 - **Tú, consistently** (copy direction from Mr market, 2026-10-08; replaces the earlier "usted"). Close, direct, respectful.
+- **Rule from Daniel (2026-10-14): informal Colombian Spanish, "tú" form, on every Filmika site, demo, and prospect mockup.** Applies to all user-facing text: headings, buttons, forms, prefilled WhatsApp messages, alt text, meta titles and descriptions, OG text, and legal pages.
+  - Use: visítanos, escríbenos, cuéntanos, pregúntanos, agenda tu cita, cotiza, conoce, tu negocio, te confirmamos, puedes, tienes.
+  - Never: visítenos, escríbanos, cuéntenos, agende, cotice, conozca, su negocio, le confirmamos, usted, puede/tiene (addressing the reader).
+  - Plural "ustedes" stays only in messages the customer sends to the business (e.g. "¿Qué disponibilidad tienen?"), which is normal in Colombia.
 - Clear and direct. No jargon in client copy.
 - Serious and trustworthy: real work, real contact, clear process.
 - Results-focused: more customers, more calls, more WhatsApp messages, not technology.

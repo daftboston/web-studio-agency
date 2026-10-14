@@ -714,7 +714,7 @@ html:not(.js) [data-scene="warm"] { background: #f5f4f1; }
   23%  { transform: scale(1.55); opacity: 0; }
   100% { transform: scale(1.55); opacity: 0; }
 }
-.fab-label {                        /* "Escríbanos" pill, ≥sm only */
+.fab-label {                        /* "Escríbenos" pill, ≥sm only */
   @apply pointer-events-none absolute right-[calc(100%+0.625rem)] hidden h-9 items-center whitespace-nowrap rounded-full bg-ink px-3.5 text-[0.875rem] font-semibold text-white shadow-float sm:inline-flex;
 }
 

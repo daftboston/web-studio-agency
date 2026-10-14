@@ -88,7 +88,7 @@ export const NAV_LINKS = [
  * null = card shows the screenshot with no link. Fill only after the owner approves publishing them.
  */
 export const DEMO_URLS: Record<"vet" | "dental" | "optica", string | null> = {
-  vet: null,
-  dental: null,
-  optica: null,
+  vet: "https://filmika-demo-vet-457.netlify.app",
+  dental: "https://filmika-demo-dental.netlify.app",
+  optica: "https://filmika-demo-optica.netlify.app",
 };

@@ -15,8 +15,8 @@ const clean = (s: string) => s.replace(" o inmuebles", "");
 
 const works = [
   { name: "TruePhone", line: "Marketplace de iPhones usados con revisión de cada anuncio.", img: truephone, alt: "Página de inicio de TruePhone", url: "https://www.truephone.shop/", domain: "truephone.shop", demo: false },
-  // Tesla Partes CO: screenshot from a local build of daftboston/tesla-partes-co. Live URL pending → no link.
-  { name: "Tesla Partes CO", line: "Tienda en línea de partes compatibles para Model 3 y Model Y.", note: "Tienda independiente, no afiliada a Tesla, Inc.", img: teslaCo, alt: "Página de inicio de Tesla Partes CO: selector de Model 3 y Model Y", url: null, domain: "tesla-partes-co", demo: false, pending: "Enlace disponible pronto" },
+  // Tesla Partes CO: screenshot from a local build of daftboston/tesla-partes-co. No public URL yet → portfolio image only, no link text.
+  { name: "Tesla Partes CO", line: "Tienda en línea de partes compatibles para Model 3 y Model Y.", note: "Tienda independiente, no afiliada a Tesla, Inc.", img: teslaCo, alt: "Página de inicio de Tesla Partes CO: selector de Model 3 y Model Y", url: null, domain: "tesla-partes-co", demo: false },
   { name: "Veterinaria", line: "Servicios, horarios y citas por WhatsApp.", img: vet, alt: "Demo de página web para una veterinaria", url: DEMO_URLS.vet, domain: "demo · veterinaria", demo: true },
   { name: "Clínica dental", line: "Tratamientos, ubicación y agenda por WhatsApp.", img: dental, alt: "Demo de página web para una clínica dental", url: DEMO_URLS.dental, domain: "demo · clínica dental", demo: true },
   { name: "Óptica", line: "Catálogo de monturas con pedido por WhatsApp.", img: optica, alt: "Demo de catálogo en línea para una óptica", url: DEMO_URLS.optica, domain: "demo · óptica", demo: true },
@@ -93,9 +93,9 @@ const sparkle = "M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z
                   </div>
                   <p class="mt-1 text-caption text-ink-secondary">{w.line}</p>
                   {w.note && <p class="mt-1 text-micro text-ink-tertiary">{w.note}</p>}
-                  <div class="mt-4 border-t border-card-border pt-3 text-caption font-medium">
-                    {w.url ? <span class="text-accent">Ver sitio ↗</span> : <span class="text-ink-tertiary">{w.pending ?? "Demo: enlace disponible pronto"}</span>}
-                  </div>
+                  {w.url && <div class="mt-4 border-t border-card-border pt-3 text-caption font-medium">
+                    <span class="text-accent">{w.demo ? "Ver demo ↗" : "Ver sitio ↗"}</span>
+                  </div>}
                 </div>
               </Tag>
             </li>

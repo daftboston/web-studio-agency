@@ -259,7 +259,7 @@ html:not(.js) [data-scene="dark"] {
   .fab-whatsapp {
     @apply fixed z-40 inline-flex size-14 items-center justify-center rounded-full bg-whatsapp text-on-whatsapp shadow-float
            transition-[opacity,transform,background-color] duration-(--duration-ui) ease-standard
-           hover:bg-whatsapp-hover lg:h-12 lg:w-auto lg:gap-2 lg:px-5;
+           hover:bg-whatsapp-hover;
     right: max(1rem, calc(env(safe-area-inset-right) + 1rem));
     bottom: max(1rem, calc(env(safe-area-inset-bottom) + 1rem));
   }
@@ -607,3 +607,122 @@ body.bg-page { background: transparent; }
 html:not(.js) [data-scene="warm"] { background: #f5f4f1; }
 /* Reduced motion: the page colour swaps instantly, no transition at all */
 @media (prefers-reduced-motion: reduce) { html, .brand-logo { transition: none !important; } .scene-aura, .scene-grain { display: none !important; } }
+
+/* ───────────── Home v2 (figma bro, 2026-10-14): filmika-home-v2-tokens-2026-10-14.css, loaded after the base ───────────── */
+/*
+  Filmika Home v2 · token + component ADDITIONS (2026-10-14)
+  Load AFTER filmika-tokens-2026-10-08.css (base: palette, Inter, type scale, motion, .theme-dark).
+  Tailwind v4. [base] = from the 2026-10-08 system · [v2] = new here.
+  No Softing colors or imagery: the only accent stays Filmika indigo #3d3ad6 [base].
+*/
+
+@theme {
+  /* Radii [v2] */
+  --radius-card-v2: 1rem;        /* 16px dark/light cards → rounded-card-v2 */
+  --radius-frame: 0.875rem;      /* 14px browser frame → rounded-frame */
+  --radius-badge: 9999px;
+
+  /* Borders + glow [v2] */
+  --shadow-glow: 0 0 0 1px rgb(61 58 214 / 0.35), 0 14px 40px -14px rgb(61 58 214 / 0.45);          /* hover/featured on light */
+  --shadow-glow-dark: 0 0 0 1px rgb(155 156 255 / 0.35), 0 16px 48px -16px rgb(124 122 255 / 0.40); /* on dark bands */
+  --shadow-frame: 0 1px 2px rgb(20 20 19 / 0.06), 0 18px 40px -20px rgb(20 20 19 / 0.28);
+
+  /* Motion [v2] (base easings reused) */
+  --duration-fade: 600ms;
+  --stagger: 80ms;
+}
+
+/* Card border tokens per surface [v2] */
+:root       { --card-border: rgb(20 20 19 / 0.08); --card-bg: #ffffff; --frame-bar: #ecebe7; --frame-dot: #c9c6bf; --frame-url: #f6f5f3; }
+.theme-dark { --card-border: rgb(255 255 255 / 0.08); --card-bg: #151514; --frame-bar: #1f1f1d; --frame-dot: #3a3a37; --frame-url: #0d0d0c; }
+
+@theme inline {
+  --color-card-border: var(--card-border);
+  --color-card-bg: var(--card-bg);
+}
+
+@layer components {
+  /* Pill badge, e.g. "Páginas web para negocios" with an icon */
+  .badge-pill {
+    @apply inline-flex h-8 items-center gap-2 rounded-full border border-accent/25 bg-accent-tint px-3.5 text-[0.875rem] font-semibold text-accent;
+  }                               /* light: #3d3ad6 on #ecebfb = 6.43:1 */
+  .theme-dark .badge-pill { @apply border-white/12 bg-white/6; } /* text = dark accent #9b9cff ≈ 7.5:1 on the dark band */
+
+  /* Accent word inside a headline */
+  .accent-word { color: var(--accent); }  /* light 7.57 · dark band 7.96 */
+
+  /* Cards */
+  .card-v2 {
+    @apply rounded-card-v2 border border-card-border bg-card-bg p-6 md:p-7
+           transition-[transform,box-shadow] duration-(--duration-ui) ease-(--ease-standard);
+  }
+  .card-v2[data-featured] { @apply shadow-glow border-accent/40; }
+  .theme-dark .card-v2[data-featured] { @apply shadow-glow-dark; }
+
+  /* Browser-frame mockup */
+  .browser-frame {
+    @apply block overflow-hidden rounded-frame border border-card-border bg-(--frame-bar) shadow-frame
+           transition-[transform,box-shadow] duration-(--duration-ui) ease-(--ease-out-soft);
+  }
+  .browser-frame__bar { @apply flex h-8 items-center gap-1.5 px-3; }
+  .browser-frame__dot { @apply size-2.5 rounded-full bg-(--frame-dot); }      /* neutral dots, not traffic-light colors */
+  .browser-frame__url { @apply ml-3 h-5 flex-1 truncate rounded-full bg-(--frame-url) px-3 text-[0.6875rem] leading-5 text-ink-tertiary; }
+  .browser-frame__shot { @apply block aspect-[16/10] w-full bg-surface object-cover object-top; }
+  @media (hover: hover) {
+    a:hover > .browser-frame, .browser-frame:hover { transform: translateY(-4px); box-shadow: var(--shadow-glow); }
+  }
+
+  /* Primary button glow (extends base .btn .btn-primary / accent variant) */
+  .btn-accent {
+    @apply bg-accent text-white hover:bg-accent-hover;
+    transition: transform var(--duration-quick) var(--ease-standard), box-shadow var(--duration-ui) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard);
+  }
+  .btn-accent:hover { box-shadow: 0 8px 24px -8px rgb(61 58 214 / 0.55); transform: translateY(-1px); }
+  .btn-accent:active { transform: scale(0.98); }
+  .btn-dark-secondary { @apply bg-white/8 text-ink ring-1 ring-white/15 ring-inset hover:bg-white/14; } /* on dark band: #f5f4f0 text */
+}
+
+/* Hero glow (static, no image): indigo light pool behind the headline */
+.hero-glow { position: relative; isolation: isolate; }
+.hero-glow::before {
+  content: ""; position: absolute; inset: -10% 0 auto; height: 80%; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(45% 55% at 50% 35%, rgb(61 58 214 / 0.38), transparent 70%),
+    radial-gradient(30% 40% at 70% 20%, rgb(155 156 255 / 0.18), transparent 70%);
+  filter: blur(20px);
+}
+
+/* Scroll fade-in: reuses base [data-reveal] + IO script; v2 timings */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal] {
+    transition-duration: var(--duration-fade);
+    transition-delay: calc(min(var(--reveal-i, 0), 4) * var(--stagger));
+  }
+}
+
+/* Floating WhatsApp bubble: periodic ring pulse, transform/opacity only */
+.fab-whatsapp { position: fixed; isolation: isolate; }
+.fab-whatsapp::after {
+  content: ""; position: absolute; inset: 0; border-radius: 9999px; z-index: -1;
+  background: var(--whatsapp); opacity: 0; pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .fab-whatsapp::after { animation: wa-ring 6s var(--ease-out-soft) 3s infinite; }
+}
+@keyframes wa-ring {               /* ring for ~1.4s, then idle ~4.6s */
+  0%   { transform: scale(1);    opacity: 0.45; }
+  23%  { transform: scale(1.55); opacity: 0; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+.fab-label {                        /* "Escríbanos" pill, ≥sm only */
+  @apply pointer-events-none absolute right-[calc(100%+0.625rem)] hidden h-9 items-center whitespace-nowrap rounded-full bg-ink px-3.5 text-[0.875rem] font-semibold text-white shadow-float sm:inline-flex;
+}
+
+/* Site glue for home v2 */
+.nav-bar[data-on-dark] { background: rgb(13 13 12 / 0.94); border-color: rgb(255 255 255 / 0.08); }
+.nav-bar[data-on-dark] .brand-logo { filter: invert(1); }
+.nav-bar[data-on-dark] .nav-link { color: #a8a69f; }
+.nav-bar[data-on-dark] .nav-link:hover { color: #f5f4f0; }
+.nav-bar[data-on-dark] .menu-btn .bar { background: #f5f4f0; }
+.fab-whatsapp:hover .fab-label, .fab-whatsapp:focus-visible .fab-label { opacity: 1; }
+:where([id]) { scroll-margin-top: 4.5rem; }

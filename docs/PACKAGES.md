@@ -201,3 +201,6 @@ Es mucho más sencillo que montar:
 - Devoluciones
 
 Para muchas empresas locales, esto es suficiente.
+
+## Home v2 (2026-10-14)
+The home page shows the three priced plans as "Planes": Landing + campaña ($600.000 + $90.000/mes), Página web ($900.000 + $90.000/mes, "Más popular") and Catálogo en línea ($1.500.000 + $130.000/mes). Setup includes the domain and the first month of Digital Care. Home plan buttons use the prefilled message "Hola, me interesa el plan <nombre>" (`WA_MESSAGES.plan*` in `src/config.ts`). Growth and Automatización de clientes are "Se cotiza".

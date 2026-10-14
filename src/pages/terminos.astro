@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+import { CONTACT } from "../config";
+---
+<Base title="Términos" description="Condiciones simples para trabajar con Filmika." hideFinalCta>
+  <section class="bg-canvas py-section">
+    <div class="container-text">
+      <h1 class="text-display text-ink">Términos</h1>
+      <div class="mt-8 space-y-5 text-body text-ink-secondary">
+        <p>Antes de empezar acordamos por escrito qué incluye tu página, el precio y los tiempos. Los precios se muestran en pesos colombianos (COP).</p>
+        <p>El pago inicial incluye el dominio y el primer mes de Digital Care. Después, Digital Care se paga cada mes y lo puedes cancelar cuando quieras avisándonos por WhatsApp o correo.</p>
+        <p>El dominio queda a nombre de tu negocio. Los textos, fotos y logos que nos envías siguen siendo tuyos; tú confirmas que tienes derecho a usarlos.</p>
+        <p>Los trabajos marcados como «Demo» son ejemplos de diseño y no corresponden a negocios reales.</p>
+        <p>Si tienes preguntas, escríbenos a <a class="text-accent underline underline-offset-2" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> o al WhatsApp {CONTACT.whatsappDisplay}.</p>
+      </div>
+    </div>
+  </section>
+</Base>

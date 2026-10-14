@@ -59,6 +59,11 @@ export const WA_MESSAGES = {
   profesional: "Hola Filmika, quiero cotizar un sitio Profesional.",
   planes: "Hola Filmika, quiero saber cómo funcionan los planes mensuales.",
   servicios: "Hola Filmika, quiero saber qué servicio le sirve a mi negocio.",
+  /** Home v2 plan buttons (2026-10-14). */
+  planLanding: "Hola, me interesa el plan Landing + campaña",
+  planPaginaWeb: "Hola, me interesa el plan Página web",
+  planCatalogo: "Hola, me interesa el plan Catálogo en línea",
+  aMedida: "Hola, quiero cotizar algo a medida para mi negocio (Growth o Automatización de clientes).",
 } as const;
 
 export type WaMessageKey = keyof typeof WA_MESSAGES;
@@ -69,12 +74,21 @@ export function waLink(message: WaMessageKey | string = "default"): string {
   return `https://wa.me/${CONTACT.whatsappNumber}?text=${encodeURIComponent(text)}`;
 }
 
+/** Home v2 menu (2026-10-14): anchors on the home page. */
 export const NAV_LINKS = [
-  { href: "/servicios/", label: "Servicios" },
-  { href: "/capacidades/", label: "Capacidades" },
-  { href: "/paquetes/", label: "Paquetes" },
-  { href: "/planes/", label: "Planes" },
-  { href: "/portafolio/", label: "Portafolio" },
-  { href: "/proceso/", label: "Proceso" },
-  { href: "/nosotros/", label: "Nosotros" },
+  { href: "/", label: "Inicio" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#planes", label: "Planes" },
+  { href: "/#trabajos", label: "Trabajos" },
+  { href: "/#contacto", label: "Contacto" },
 ] as const;
+
+/**
+ * Demo URLs for the Trabajos grid. PLACEHOLDER: the demos are NOT online yet.
+ * null = card shows the screenshot with no link. Fill only after the owner approves publishing them.
+ */
+export const DEMO_URLS: Record<"vet" | "dental" | "optica", string | null> = {
+  vet: null,
+  dental: null,
+  optica: null,
+};

@@ -19,6 +19,8 @@ interface Props {
   noindex?: boolean;
   /** Scroll-driven page background: sections carry data-scene, see global.css. */
   scenes?: boolean;
+  /** Page starts with a dark band: nav uses the dark tint until it scrolls past [data-dark-hero]. */
+  darkHero?: boolean;
 }
 const {
   title,
@@ -29,6 +31,7 @@ const {
   finalCtaMessage,
   noindex = false,
   scenes = false,
+  darkHero = false,
 } = Astro.props;
 const fullTitle = title === SITE.name ? SITE.tagline : `${title} · ${SITE.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -70,7 +73,7 @@ const ogUrl = new URL(ogImage, Astro.site).href;
   </head>
   <body class:list={["min-h-dvh text-ink", scenes ? "bg-page" : "bg-canvas"]} data-scenes={scenes ? "" : undefined}>
     <a href="#main" class="sr-only z-[60] rounded-full bg-ink px-4 py-2 text-on-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-2">Saltar al contenido</a>
-    <Nav />
+    <Nav onDark={darkHero} />
     <main id="main" data-main>
       <slot />
       {!hideFinalCta && <FinalCta message={finalCtaMessage} scene={scenes ? "light" : undefined} />}
@@ -79,6 +82,12 @@ const ogUrl = new URL(ogImage, Astro.site).href;
     {!hideFab && <FloatingWhatsApp />}
 
     <script>
+      // 0) Nav over a dark hero: dark tint + white logo until the hero leaves
+      const darkHero = document.querySelector("[data-dark-hero]");
+      const navEl = document.querySelector<HTMLElement>("[data-nav]");
+      if (darkHero && navEl) {
+        new IntersectionObserver(([e]) => navEl.toggleAttribute("data-on-dark", e.isIntersecting), { rootMargin: "-56px 0px 0px 0px" }).observe(darkHero);
+      }
       // 1) One-shot scroll reveal (content is visible by default; see global.css)
       const reveal = new IntersectionObserver(
         (entries) => {

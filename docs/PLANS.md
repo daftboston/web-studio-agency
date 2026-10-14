@@ -74,3 +74,6 @@ Sample copy:
 ## Ownership
 - **Mr market:** prices (launch prices approved 2026-10-08) and how the plans are offered in outreach.
 - **Web Studio Dev:** keeps this doc and the site content in sync.
+
+## Home v2 (2026-10-14)
+The home page shows the three priced plans as "Planes": Landing + campaña ($600.000 + $90.000/mes), Página web ($900.000 + $90.000/mes, "Más popular") and Catálogo en línea ($1.500.000 + $130.000/mes). Setup includes the domain and the first month of Digital Care. Home plan buttons use the prefilled message "Hola, me interesa el plan <nombre>" (`WA_MESSAGES.plan*` in `src/config.ts`). Growth and Automatización de clientes are "Se cotiza".

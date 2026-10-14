@@ -13,12 +13,12 @@ export const SITE = {
   locale: "es_CO",
   lang: "es-CO",
   defaultDescription:
-    "Diseñamos páginas web claras, rápidas y conectadas a tu WhatsApp, para que tu negocio reciba más clientes. Filmika tiene más de 3 años construyendo sitios web.",
+    "Diseñamos páginas web claras, rápidas y conectadas a tu WhatsApp, para que tu negocio reciba más clientes. Más de 3 años de experiencia creando sitios web.",
   /**
    * The only number allowed in the copy (docs/BRAND.md), credited to the brand.
    * No personal names anywhere on the site (owner's decision, 2026-10-08).
    */
-  experience: "Filmika tiene más de 3 años construyendo sitios web, como TruePhone y Tesla Partes.",
+  experience: "Más de 3 años de experiencia creando sitios web, como TruePhone y Tesla Partes.",
 } as const;
 
 export const CONTACT = {

@@ -19,14 +19,14 @@ Filmika builds websites that help **any business** get more customers: clear, fa
 Niches are for **outreach only** (prospect mockups, Mr market's lists). Current outreach niches (Mr market, approved 2026-10-09): clínicas dentales, inmobiliarias, veterinarias, servicios para el hogar, estética, talleres especializados, ópticas y oficinas contables/jurídicas. **Constructoras are paused.** The site itself speaks to any business; Capacidades demos stay as fictional examples, framed as "ejemplos para distintos tipos de negocio", using a varied mix (clínica dental, inmobiliaria, veterinaria, tienda/óptica) rather than only cars or construction.
 
 Rules:
-- "más de 3 años" is the only claim we use, and it is credited to the brand: "Filmika tiene más de 3 años construyendo sitios web."
+- "más de 3 años" is the only claim we use, and it is credited to the brand: "Más de 3 años de experiencia creando sitios web."
 - **No personal names anywhere on the site or in the repo** (owner's decision, 2026-10-08). The brand speaks as Filmika. TruePhone and Tesla Partes can be named as portfolio projects.
 - No invented clients, metrics, or prices.
 - Practical facts that answer a client question are fine when they are true (for example the FAQ answer "unos 7 días" for delivery time, from Mr market's copy direction).
 
 Approved phrasing:
-> Filmika tiene más de 3 años construyendo sitios web.
-> Filmika tiene más de 3 años construyendo sitios web, como TruePhone y Tesla Partes.
+> Más de 3 años de experiencia creando sitios web.
+> Más de 3 años de experiencia creando sitios web, como TruePhone y Tesla Partes.
 
 ## Tone of voice
 - **Tú, consistently** (copy direction from Mr market, 2026-10-08; replaces the earlier "usted"). Close, direct, respectful.
@@ -36,7 +36,7 @@ Approved phrasing:
 - Honest: only claims we can back up.
 
 ## Copy direction (Mr market, 2026-10-08, with the owner's overrides)
-Overrides: no personal name anywhere, the brand speaks as Filmika, and the only claim is "Filmika tiene más de 3 años construyendo sitios web".
+Overrides: no personal name anywhere, the brand speaks as Filmika, and the only claim is "Más de 3 años de experiencia creando sitios web".
 
 **Hero (Inicio)**
 > Tu negocio merece una página que trabaje por ti.

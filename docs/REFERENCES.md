@@ -76,7 +76,7 @@ Filmika keeps figma bro's Apple-inspired tokens (accent `#3d3ad6`, warm neutrals
 
 ### What we deliberately did not adopt
 
-- Client logo strips and any count of clients or years beyond "Filmika tiene más de 3 años construyendo sitios web".
+- Client logo strips and any count of clients or years beyond "Más de 3 años de experiencia creando sitios web".
 - Outcome metrics. We have no verified numbers, so none appear.
 - Their English voice and sentence structures.
 - 3D objects, gradient artwork, lifestyle photography, muted video and WebGL canvases.

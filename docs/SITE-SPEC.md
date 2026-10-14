@@ -29,7 +29,7 @@ A floating WhatsApp button appears on every page.
 ### Inicio (home v2, 2026-10-14)
 Structure taken from softingmarketingia.com (structure only, none of its copy). Design and motion: figma bro's `filmika-home-v2-spec-2026-10-14.md` + `filmika-home-v2-tokens-2026-10-14.css` (loaded after the Oct 8 base tokens, appended to `src/styles/global.css`). Light page with two dark bands (hero, final CTA).
 1. **Sticky header:** film-strip logo (white on the dark hero, black on light), menu Inicio · Servicios · Planes · Trabajos · Contacto (anchors on the home), always-visible WhatsApp button. Floating WhatsApp bubble with the tooltip "¡Escríbenos!" (≥640px), ring pulse every 6s, off under reduced motion, hidden while an inline WhatsApp CTA is visible.
-2. **Hero (dark band, static indigo glow):** pill badge "Páginas web para negocios" → H1 "Tu negocio merece una página que **trabaje por ti.**" (last words in the accent) → sub "Diseñamos páginas web claras, rápidas y conectadas a tu WhatsApp, para que tu negocio reciba más clientes." → buttons "Quiero mi página" (WhatsApp) and "Ver planes" (#planes). Then a non-numeric trust row: "Filmika tiene más de 3 años construyendo sitios web" (approved 2026-10-08), "Atención directa por WhatsApp", "Soporte cada mes", "Sitios rápidos y fáciles de usar".
+2. **Hero (dark band, static indigo glow):** pill badge "Páginas web para negocios" → H1 "Tu negocio merece una página que **trabaje por ti.**" (last words in the accent) → sub "Diseñamos páginas web claras, rápidas y conectadas a tu WhatsApp, para que tu negocio reciba más clientes." → buttons "Quiero mi página" (WhatsApp) and "Ver planes" (#planes). Then a non-numeric trust row: "Más de 3 años de experiencia creando sitios web" (approved 2026-10-08), "Atención directa por WhatsApp", "Soporte cada mes", "Sitios rápidos y fáciles de usar".
 3. **Trabajos (#trabajos):** 3-column grid of browser-frame cards with "Ver sitio": TruePhone (https://www.truephone.shop/). Tesla Partes is omitted until its live URL is confirmed. Three demos tagged "Demo" (veterinaria, clínica dental, óptica) use screenshots from the template previews; they are not online, so they show no link until `DEMO_URLS` in `src/config.ts` is filled. Demos are never deployed without the owner's OK.
 4. **Cómo trabajamos (#proceso):** Diagnóstico → Boceto gratis → Construcción → Lanzamiento + Digital Care.
 5. **Planes (#planes):** Landing + campaña $600.000 + $90.000/mes · **Página web** $900.000 + $90.000/mes ("Más popular", featured) · Catálogo en línea $1.500.000 + $130.000/mes. Note: "El pago inicial incluye el dominio y el primer mes de Digital Care." Each button opens wa.me/573214527399 with "Hola, me interesa el plan <nombre>".
@@ -124,14 +124,14 @@ Full copy direction lives in [BRAND.md](BRAND.md#copy-direction-mr-market-2026-1
 **Close**
 > Hablemos. Cuéntanos de tu negocio y te respondemos por WhatsApp con una recomendación clara, sin compromiso.
 
-Rules: "tú", short sentences, no jargon, the only claim is "Filmika tiene más de 3 años construyendo sitios web", and no personal names (see BRAND.md). Motion and imagery references: [REFERENCES.md](REFERENCES.md).
+Rules: "tú", short sentences, no jargon, the only claim is "Más de 3 años de experiencia creando sitios web", and no personal names (see BRAND.md). Motion and imagery references: [REFERENCES.md](REFERENCES.md).
 
 ## 5. Trust elements
 - **Portfolio:** only real, live projects with working links.
 - **Process:** clear 4-step process so the client knows what happens next.
 - **Packages and plans:** clear options and ongoing care after launch.
 - **Real contact:** real WhatsApp number, email, and city; no generic forms only.
-- **Experience:** "Filmika tiene más de 3 años construyendo sitios web" shown in Inicio and Nosotros.
+- **Experience:** "Más de 3 años de experiencia creando sitios web" shown in Inicio and Nosotros.
 - No fake testimonials, logos, or metrics.
 
 ## 6. Primary CTA: WhatsApp

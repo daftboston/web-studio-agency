@@ -1,0 +1,13 @@
+---
+/** Editorial intro for one demo: number + niche label over a hairline, headline, copy, links. */
+interface Props { n: string; niche: string; title: string; text: string; id: string; link?: { href: string; label: string } }
+const { n, niche, title, text, id, link } = Astro.props;
+---
+<header class="mb-stack grid gap-5 lg:grid-cols-12 lg:gap-grid" data-reveal>
+  <p class="label-rule lg:col-span-12"><span>{n} — {niche}</span><span class="chip-demo normal-case tracking-normal">Demo interactiva</span></p>
+  <h2 id={id} class="text-display text-ink lg:col-span-7">{title}</h2>
+  <div class="lg:col-span-5 lg:pt-2">
+    <p class="text-lead text-ink-secondary">{text}</p>
+    {link && <p class="mt-4"><a href={link.href} class="link-more">{link.label}</a></p>}
+  </div>
+</header>

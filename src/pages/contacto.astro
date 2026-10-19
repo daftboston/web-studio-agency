@@ -71,7 +71,11 @@ import { CONTACT, waLink } from "../config";
             <label class="field-label" for="f-mensaje">Mensaje</label>
             <textarea class="field" id="f-mensaje" name="mensaje" rows="4"></textarea>
           </div>
-          <p class="text-caption text-ink-tertiary">Al enviar acepta nuestra <a class="text-accent underline underline-offset-2" href="/privacidad/">política de privacidad</a>.</p>
+          <div class="flex items-start gap-3">
+            <input class="mt-1 size-4 shrink-0 accent-[var(--color-accent)]" id="f-autorizo" name="autorizacion-datos" type="checkbox" value="si" required data-consent />
+            <label class="text-caption text-ink-secondary" for="f-autorizo">Autorizo el tratamiento de mis datos según la <a class="text-accent underline underline-offset-2" href="/privacidad/" target="_blank" rel="noopener">Política de datos</a></label>
+          </div>
+          <input type="hidden" name="autorizacion-fecha" value="" data-consent-at />
           <div>
             <button type="submit" class="btn btn-primary w-full sm:w-auto">Enviar</button>
           </div>
@@ -85,8 +89,13 @@ import { CONTACT, waLink } from "../config";
   <script>
     // Progressive enhancement: submit to Netlify Forms without leaving the page.
     const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
+    // Consent record: ISO timestamp of when the box was checked (refreshed at submit), sent with the form.
+    const consent = form?.querySelector<HTMLInputElement>("[data-consent]");
+    const consentAt = form?.querySelector<HTMLInputElement>("[data-consent-at]");
+    consent?.addEventListener("change", () => { if (consentAt) consentAt.value = consent.checked ? new Date().toISOString() : ""; });
     form?.addEventListener("submit", async (e) => {
       e.preventDefault();
+      if (consent?.checked && consentAt && !consentAt.value) consentAt.value = new Date().toISOString();
       const ok = form.querySelector("[data-form-ok]");
       const err = form.querySelector("[data-form-error]");
       const btn = form.querySelector<HTMLButtonElement>("button[type=submit]");
@@ -96,6 +105,7 @@ import { CONTACT, waLink } from "../config";
         const res = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body });
         if (!res.ok) throw new Error(String(res.status));
         form.reset();
+        if (consentAt) consentAt.value = "";
         err?.classList.add("hidden");
         ok?.classList.remove("hidden");
       } catch {

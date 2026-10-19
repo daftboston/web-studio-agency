@@ -63,7 +63,7 @@ export const WA_MESSAGES = {
   planLanding: "Hola, me interesa el plan Landing + campaña",
   planPaginaWeb: "Hola, me interesa el plan Página web",
   planCatalogo: "Hola, me interesa el plan Catálogo en línea",
-  /** Google Business Profile entry offer (2026-10-19). Price not approved yet: "consulta por WhatsApp". */
+  /** Google Business Profile entry offer (2026-10-19). Price approved 2026-10-19: Desde $350.000 COP, pago único. */
   googleBusiness: "Hola Filmika, quiero aparecer en Google Maps. Me interesa el Perfil de Negocio de Google para mi negocio.",
   aMedida: "Hola, quiero cotizar algo a medida para mi negocio (Growth o Automatización de clientes).",
 } as const;

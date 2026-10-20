@@ -65,6 +65,8 @@ export const WA_MESSAGES = {
   planCatalogo: "Hola, me interesa el plan Catálogo en línea",
   /** Google Business Profile entry offer (2026-10-19). Price approved 2026-10-19: Desde $350.000 COP, pago único. */
   googleBusiness: "Hola Filmika, quiero aparecer en Google Maps. Me interesa el Perfil de Negocio de Google para mi negocio.",
+  /** Home "Soluciones con IA" section (2026-10-20). */
+  ia: "Hola Filmika, quiero automatizar mi negocio con IA. ¿Me cuentan qué opciones tienen?",
   aMedida: "Hola, quiero cotizar algo a medida para mi negocio (Growth o Automatización de clientes).",
 } as const;
 

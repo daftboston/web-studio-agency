@@ -18,7 +18,7 @@ const cards = [
     <header class="text-center" data-reveal>
       <p class="badge-pill">Inteligencia artificial</p>
       <h2 id="h-ia" class="mx-auto mt-4 max-w-[22ch] text-display text-ink">Soluciones con IA para hacer <span class="accent-word">crecer tu negocio</span></h2>
-      <p class="mx-auto mt-4 max-w-text text-lead text-ink-secondary">Automatizamos las tareas repetitivas para que atiendas más clientes sin perder el trato personal.</p>
+      <p class="mx-auto mt-4 max-w-text text-lead text-ink-secondary" data-sweep>Automatizamos las tareas repetitivas para que atiendas más clientes sin perder el trato personal.</p>
     </header>
     <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" role="list">
       {cards.map((c, i) => (
@@ -29,7 +29,7 @@ const cards = [
               {c.b && <span class="glass__badge">Bajo consulta</span>}
             </div>
             <h3 class="mt-5 text-title text-ink">{c.t}</h3>
-            <p class="mt-2 text-body text-ink-secondary">{c.d}</p>
+            <p class="mt-2 text-body text-ink-secondary" data-sweep>{c.d}</p>
           </article>
         </li>
       ))}
@@ -88,10 +88,61 @@ const cards = [
     .ia__blob { width: 22rem; height: 22rem; filter: blur(60px); animation: none !important; }
     .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
   }
+  /* Line-by-line color sweep (JS adds .sweep-on; without JS or with reduced motion the text keeps its normal color) */
+  :global(.sweep-on .sw) { color: var(--sw-c, inherit); }
   @media (prefers-reduced-motion: reduce) { .glass { transition: none; transform: none; } }
 </style>
 
 <script>
+  // Text sweep: muted gray → brand purple → final ink, line by line, tied to scroll progress.
+  // Words are wrapped once; line indexes are recomputed on resize. Off with reduced motion.
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const blocks = [...document.querySelectorAll<HTMLElement>("#ia [data-sweep]")];
+    // Resolve theme colors to rgb via a probe (works whatever format the CSS variables use).
+    const probe = document.createElement("span"); (blocks[0] || document.body).append(probe);
+    const rgb = (c: string) => { probe.style.color = c; return (getComputedStyle(probe).color.match(/[\d.]+/g) || ["0", "0", "0"]).slice(0, 3).map(Number); };
+    const MUTED = rgb("#b3b1aa"), BRAND = rgb("var(--accent)"), FINAL0 = rgb("var(--ink-secondary)");
+    probe.remove();
+    // Final color: body gray with a soft brand-purple tint (still well above AA on the canvas).
+    const FINAL = FINAL0.map((x, i) => Math.round(x + (BRAND[i] - x) * 0.3));
+    const mix = (a: number[], b: number[], t: number) => `rgb(${a.map((x, i) => Math.round(x + (b[i] - x) * t)).join(",")})`;
+    const colorAt = (p: number) => (p <= 0 ? mix(MUTED, MUTED, 0) : p < 0.5 ? mix(MUTED, BRAND, p / 0.5) : mix(BRAND, FINAL, (p - 0.5) / 0.5));
+    type W = { el: HTMLElement; line: number; x: number; last: string };
+    const data = blocks.map((b) => {
+      const words = (b.textContent || "").trim().split(/\s+/);
+      b.textContent = "";
+      const ws: W[] = words.map((w, i) => { const s = document.createElement("span"); s.className = "sw"; s.textContent = w; s.style.setProperty("--sw-c", colorAt(0)); b.append(s); if (i < words.length - 1) b.append(" "); return { el: s, line: 0, x: 0, last: colorAt(0) }; });
+      b.classList.add("sweep-on");
+      return { b, ws, lines: 1 };
+    });
+    const measure = () => data.forEach((d) => {
+      let top = -1, line = -1; const rows: W[][] = [];
+      d.ws.forEach((w) => { const t = w.el.offsetTop; if (Math.abs(t - top) > 2) { top = t; line++; rows.push([]); } w.line = line; rows[line].push(w); });
+      rows.forEach((r) => { const l = r[0].el.offsetLeft, wd = Math.max(1, r[r.length - 1].el.offsetLeft + r[r.length - 1].el.offsetWidth - l); r.forEach((w) => (w.x = (w.el.offsetLeft - l) / wd)); });
+      d.lines = rows.length;
+    });
+    let raf = 0;
+    const paint = () => {
+      raf = 0; const vh = innerHeight;
+      data.forEach((d) => {
+        const r = d.b.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        // 0 when the block's top is at 92% of the viewport, 1 when it reaches 45%.
+        const bp = Math.min(1, Math.max(0, (vh * 0.92 - r.top) / (vh * 0.47)));
+        d.ws.forEach((w) => {
+          const lp = bp * (d.lines + 0.8) - w.line * 0.85;          // staggered per line
+          const p = Math.min(1, Math.max(0, lp * 0.9 - w.x * 0.35)); // sweep left → right inside the line
+          const c = colorAt(p); if (c !== w.last) { w.el.style.setProperty("--sw-c", c); w.last = c; }
+        });
+      });
+    };
+    const req = () => { if (!raf) raf = requestAnimationFrame(paint); };
+    measure(); paint();
+    addEventListener("scroll", req, { passive: true });
+    let rt = 0; addEventListener("resize", () => { clearTimeout(rt); rt = window.setTimeout(() => { measure(); req(); }, 120); });
+    document.fonts?.ready.then(() => { measure(); req(); });
+  }
+
   // Hover tilt + glow: pointer devices only, off with reduced motion.
   if (matchMedia("(hover: hover) and (pointer: fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
     document.querySelectorAll<HTMLElement>("[data-tilt]").forEach((el) => {

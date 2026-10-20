@@ -1,0 +1,51 @@
+---
+/**
+ * Our build standard (not a client metric): every project targets 100 in the four Lighthouse categories.
+ * Rings fill when in view; full by default without JS or with reduced motion.
+ */
+const cats = ["Rendimiento", "Accesibilidad", "Buenas prácticas", "SEO"];
+const standards = [
+  "Imágenes optimizadas al tamaño de cada pantalla",
+  "Muy poco JavaScript: la página carga rápido en datos móviles",
+  "Fuentes propias, sin saltos al cargar",
+  "Contraste, etiquetas y teclado: accesible para todos",
+  "Títulos, descripciones, Open Graph y sitemap en cada página",
+];
+const C = 2 * Math.PI * 26;
+---
+<div class="grid gap-grid rounded-tile bg-canvas p-5 md:p-8 lg:grid-cols-2 lg:items-center" data-speed-card>
+  <ul class="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2" role="list">
+    {cats.map((c, i) => (
+      <li class="flex flex-col items-center gap-2 rounded-card bg-surface p-4 text-center">
+        <div class="relative size-20">
+          <svg viewBox="0 0 64 64" class="size-20 -rotate-90" aria-hidden="true">
+            <circle cx="32" cy="32" r="26" fill="none" stroke="var(--accent-tint)" stroke-width="6"/>
+            <circle class="speed-ring" cx="32" cy="32" r="26" fill="none" stroke="var(--accent)" stroke-width="6" stroke-linecap="round" stroke-dasharray={C} style={`--c:${C};--i:${i}`}/>
+          </svg>
+          <span class="absolute inset-0 flex items-center justify-center text-title font-bold text-accent" aria-hidden="true">100</span>
+        </div>
+        <span class="text-caption font-medium text-ink">{c}<span class="sr-only">: meta 100</span></span>
+      </li>
+    ))}
+  </ul>
+  <div>
+    <p class="text-caption text-ink-tertiary">Nuestro estándar de construcción · Meta en cada proyecto</p>
+    <ul class="check-list mt-4 space-y-3 text-body text-ink" role="list">
+      {standards.map((s) => <li>{s}</li>)}
+    </ul>
+    <p class="mt-5 text-caption text-ink-tertiary">Lighthouse es la herramienta gratuita de Google que mide la calidad de una página. Este sitio se construyó con el mismo estándar.</p>
+  </div>
+</div>
+
+<style>
+  .speed-ring { stroke-dashoffset: 0; }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html.js) [data-speed-card]:not(.is-on) .speed-ring { stroke-dashoffset: var(--c); }
+    .speed-ring { transition: stroke-dashoffset 1200ms var(--ease-out-soft) calc(var(--i) * 120ms); }
+  }
+</style>
+
+<script>
+  import { onNear } from "../../scripts/lazy";
+  onNear("[data-speed-card]", (el) => el.classList.add("is-on"), "0px 0px -15% 0px");
+</script>

@@ -1,0 +1,23 @@
+---
+import { waLink, type WaMessageKey } from "../config";
+import WaIcon from "./WaIcon.astro";
+interface Props {
+  message?: WaMessageKey | string;
+  label?: string;
+  class?: string;
+  small?: boolean;
+  /** Inline CTAs hide the floating button while visible. */
+  inline?: boolean;
+}
+const { message = "default", label = "Hablemos por WhatsApp", class: cls = "", small = false, inline = true } = Astro.props;
+---
+<a
+  href={waLink(message)}
+  target="_blank"
+  rel="noopener"
+  class:list={["btn btn-whatsapp", small && "btn-sm", cls]}
+  data-wa-inline={inline ? "" : undefined}
+>
+  <WaIcon size={small ? 18 : 20} />
+  <span>{label}</span>
+</a>

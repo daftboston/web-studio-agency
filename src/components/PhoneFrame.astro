@@ -1,0 +1,12 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+interface Props { src: ImageMetadata; alt: string; class?: string; sizes?: string; eager?: boolean }
+const { src, alt, class: cls = "", sizes = "(min-width: 1024px) 300px, 40vw", eager = false } = Astro.props;
+---
+<div class:list={["phone-frame", cls]}>
+  <div class="pf-screen">
+    <span class="pf-notch" aria-hidden="true"></span>
+    <Image src={src} alt={alt} widths={[240, 360, 540, 720]} sizes={sizes} format="webp" quality={78} loading={eager ? "eager" : "lazy"} class="block h-auto w-full" />
+  </div>
+</div>

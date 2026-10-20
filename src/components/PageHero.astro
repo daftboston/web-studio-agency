@@ -1,0 +1,12 @@
+---
+interface Props { eyebrow?: string; title: string; lead?: string; tone?: "canvas" | "dark" }
+const { eyebrow, title, lead, tone = "canvas" } = Astro.props;
+---
+<section class:list={["pt-section pb-section-tight", tone === "dark" ? "theme-dark" : "bg-canvas"]}>
+  <div class="mx-auto w-full max-w-[52rem] px-gutter text-center">
+    {eyebrow && <p class="eyebrow mb-4">{eyebrow}</p>}
+    <h1 class="text-display text-ink">{title}</h1>
+    {lead && <p class="mx-auto mt-5 max-w-text text-lead text-ink-secondary">{lead}</p>}
+    <slot />
+  </div>
+</section>

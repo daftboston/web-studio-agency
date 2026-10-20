@@ -1,0 +1,132 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import DemoIntro from "../components/DemoIntro.astro";
+import PhoneCycler from "../components/demos/PhoneCycler.astro";
+import BeforeAfter from "../components/demos/BeforeAfter.astro";
+import MiniCatalog from "../components/demos/MiniCatalog.astro";
+import AgendaForm from "../components/demos/AgendaForm.astro";
+import ScrollSample from "../components/demos/ScrollSample.astro";
+import SpeedCard from "../components/demos/SpeedCard.astro";
+
+const index = [
+  { href: "#demo-celular", label: "Página por negocio" },
+  { href: "#demo-antes-despues", label: "Antes y después" },
+  { href: "#demo-catalogo", label: "Catálogo + WhatsApp" },
+  { href: "#demo-agenda", label: "Agenda en línea" },
+  { href: "#demo-movimiento", label: "Movimiento" },
+  { href: "#demo-velocidad", label: "Velocidad" },
+];
+---
+<Base
+  title="Lo que podemos hacer"
+  scenes
+  description="Demos interactivas de lo que Filmika puede construir para tu negocio: catálogo con pedidos por WhatsApp, antes y después de un trabajo, agenda de citas y páginas rápidas. Ejemplos para distintos tipos de negocio."
+>
+  <!-- Editorial hero -->
+  <section class="overflow-x-clip pt-section-tight md:pt-section" aria-labelledby="h-cap">
+    <div class="container-wide" data-scene="light">
+      <p class="label-rule"><span>Capacidades</span><span>Ejemplos para distintos tipos de negocio</span></p>
+      <h1 id="h-cap" class="mt-6 text-mega text-ink md:mt-10">Lo que podemos hacer.</h1>
+      <div class="mt-8 grid gap-6 lg:grid-cols-12 lg:gap-grid">
+        <p class="text-lead text-ink-secondary lg:col-span-6">Un portafolio muestra lo que ya hicimos. Esta página muestra lo que podemos construir para ti. Todo lo que ves aquí funciona: tócalo, muévelo y pruébalo.</p>
+        <nav class="lg:col-span-5 lg:col-start-8" aria-label="Demos en esta página">
+          <ul class="flex flex-wrap gap-2" role="list">
+            {index.map((l) => <li><a href={l.href} class="chip-toggle">{l.label}</a></li>)}
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 01: full-bleed accent panel with the phone cycler -->
+    <div class="theme-accent panel-bleed mt-section-tight" id="demo-celular-panel" data-scene="accent">
+      <div class="container-wide grid items-center gap-12 py-section lg:grid-cols-12">
+        <div class="lg:col-span-6" data-reveal>
+          <p class="label-rule"><span>01 — Ejemplos para distintos tipos de negocio</span></p>
+          <h2 id="demo-celular" class="mt-6 scroll-mt-24 text-display text-ink">Una página pensada para tu tipo de negocio.</h2>
+          <p class="mt-5 max-w-text text-lead text-ink-secondary">Cada negocio necesita algo distinto: unos muestran su trabajo, otros agendan citas y otros venden por WhatsApp. Estos son ejemplos de cómo se ve eso, empezando por el celular.</p>
+          <p class="mt-6"><span class="chip-demo">Demo interactiva · negocios de ejemplo</span></p>
+        </div>
+        <div class="lg:col-span-6">
+          <PhoneCycler size="lg" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02: Before / after -->
+  <Section scene="light" labelledby="demo-antes-despues" class="scroll-mt-12">
+    <div class="container-wide">
+      <DemoIntro
+        n="02"
+        niche="Ejemplo · Inmobiliarias y negocios que muestran su trabajo"
+        id="demo-antes-despues"
+        title="Antes y después, en un gesto."
+        text="Desliza para comparar. Sirve para mostrar un inmueble antes y después de pintarlo y amoblarlo, o el resultado de cualquier trabajo frente al punto de partida."
+        link={{ href: "/paquetes/#pagina-web", label: "Ver el paquete Página web" }}
+      />
+      <div data-reveal><BeforeAfter /></div>
+      <p class="mt-3 text-caption text-ink-tertiary">Ilustración de ejemplo. En tu página usamos tus fotos reales.</p>
+    </div>
+  </Section>
+
+  <!-- 03: Catalog -->
+  <Section scene="warm" labelledby="demo-catalogo">
+    <div class="container-wide">
+      <DemoIntro
+        n="03"
+        niche="Ejemplo · Tiendas e inmobiliarias · Catálogo en línea"
+        id="demo-catalogo"
+        title="Catálogo que vende por WhatsApp."
+        text="Filtra, elige un color y toca «Comprar por WhatsApp»: el mensaje se escribe solo, con la referencia, el color y el precio. Sin carrito ni pasarela."
+        link={{ href: "/paquetes/#catalogo", label: "Ver Catálogo en línea" }}
+      />
+      <div data-reveal class="[&>div]:bg-canvas [&_li[data-product]]:bg-surface [&_[data-frame]]:bg-canvas"><MiniCatalog /></div>
+      <p class="mt-3 text-caption text-ink-tertiary">Productos, referencias y precios de ejemplo. El mismo catálogo sirve para inmuebles: una inmobiliaria publica sus propiedades con fotos, precio y un botón de WhatsApp. Los botones abren WhatsApp con un mensaje marcado como demo.</p>
+    </div>
+  </Section>
+
+  <!-- 04: Agenda -->
+  <Section scene="light" labelledby="demo-agenda">
+    <div class="container-wide">
+      <DemoIntro
+        n="04"
+        niche="Ejemplo · Veterinarias, clínicas y negocios que agendan citas"
+        id="demo-agenda"
+        title="Agenda una cita, sin llamadas."
+        text="El cliente elige el servicio, el día y la jornada. Tú recibes un mensaje claro y listo para confirmar."
+        link={{ href: "/paquetes/", label: "Ver paquetes" }}
+      />
+      <div data-reveal><AgendaForm /></div>
+    </div>
+  </Section>
+
+  <!-- 05: Scroll-driven sample -->
+  <section class="overflow-x-clip pb-section pt-section-tight" data-scene="dark" aria-labelledby="demo-movimiento">
+    <div class="container-wide">
+      <DemoIntro
+        n="05"
+        niche="Ejemplo · Cualquier negocio"
+        id="demo-movimiento"
+        title="Movimiento con intención."
+        text="Efectos al desplazarse que guían la mirada sin marear. Sigue bajando."
+      />
+    </div>
+    <ScrollSample />
+  </section>
+
+  <!-- 06: Speed -->
+  <Section scene="warm" labelledby="demo-velocidad">
+    <div class="container-wide">
+      <DemoIntro
+        n="06"
+        niche="Todas nuestras páginas"
+        id="demo-velocidad"
+        title="Rápida por defecto."
+        text="Una página lenta pierde clientes antes de cargar. Medimos cada proyecto con Lighthouse de Google y apuntamos a 100 en las cuatro categorías."
+        link={{ href: "/proceso/", label: "Ver cómo trabajamos" }}
+      />
+      <div data-reveal><SpeedCard /></div>
+    </div>
+  </Section>
+</Base>

@@ -1,0 +1,211 @@
+---
+/** Home: "Soluciones con IA" (2026-10-20). Liquid-glass cards. Exact copy approved; no prices, no promised results. */
+import WhatsAppButton from "./WhatsAppButton.astro";
+/** Inline illustrations (viewBox 200×100), one per card, same order. Default = final frame; animations play on hover / once in view on touch. */
+const illus: string[] = ["<rect x=\"38\" y=\"10\" width=\"124\" height=\"80\" rx=\"12\" fill=\"#1b2130\" opacity=\".9\"/>\n<g class=\"a pop\" style=\"--d:0ms\"><rect x=\"50\" y=\"20\" width=\"62\" height=\"16\" rx=\"8\" fill=\"#2f3646\"/><rect x=\"58\" y=\"26\" width=\"40\" height=\"4\" rx=\"2\" fill=\"#6b7385\"/></g>\n<g class=\"a pop pr\" style=\"--d:250ms\"><rect x=\"96\" y=\"42\" width=\"56\" height=\"16\" rx=\"8\" fill=\"#25D366\"/><rect x=\"104\" y=\"48\" width=\"36\" height=\"4\" rx=\"2\" fill=\"#ffffff\"/></g>\n<g class=\"a pop\" style=\"--d:500ms\"><rect x=\"50\" y=\"64\" width=\"72\" height=\"16\" rx=\"8\" fill=\"#2f3646\"/><rect x=\"58\" y=\"70\" width=\"52\" height=\"4\" rx=\"2\" fill=\"#6b7385\"/></g>\n<circle cx=\"146\" cy=\"72\" r=\"9\" fill=\"#25D366\" class=\"a pop\" style=\"--d:750ms\"/><path d=\"m142 72 3 3 5-6\" stroke=\"#ffffff\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" class=\"a draw\" style=\"--d:900ms\"/>", "<g class=\"a ring\" style=\"--d:0ms\"><rect x=\"84\" y=\"18\" width=\"32\" height=\"64\" rx=\"8\" fill=\"#1b2130\" stroke=\"var(--accent)\" stroke-width=\"2.5\"/><rect x=\"90\" y=\"26\" width=\"20\" height=\"40\" rx=\"3\" fill=\"#2c3150\"/><circle cx=\"100\" cy=\"73\" r=\"2.5\" fill=\"var(--accent)\"/></g>\n<path d=\"M126 38a16 16 0 0 1 0 24\" class=\"a wave\" style=\"--d:150ms\" stroke=\"var(--accent)\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\"/>\n<path d=\"M134 30a28 28 0 0 1 0 40\" class=\"a wave\" style=\"--d:350ms\" stroke=\"var(--accent)\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\" opacity=\".6\"/>\n<path d=\"M74 38a16 16 0 0 0 0 24\" class=\"a wave\" style=\"--d:150ms\" stroke=\"var(--accent)\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\"/>\n<path d=\"M66 30a28 28 0 0 0 0 40\" class=\"a wave\" style=\"--d:350ms\" stroke=\"var(--accent)\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\" opacity=\".6\"/>", "<rect x=\"56\" y=\"14\" width=\"88\" height=\"74\" rx=\"10\" fill=\"#1b2130\" stroke=\"#3a4158\" stroke-width=\"2\"/><rect x=\"56\" y=\"14\" width=\"88\" height=\"18\" rx=\"10\" fill=\"var(--accent)\"/><rect x=\"56\" y=\"24\" width=\"88\" height=\"8\" fill=\"var(--accent)\"/>\n<rect x=\"66\" y=\"40\" width=\"14\" height=\"10\" rx=\"3\" fill=\"#2c3150\"/><rect x=\"86\" y=\"40\" width=\"14\" height=\"10\" rx=\"3\" fill=\"#2c3150\"/><rect x=\"106\" y=\"40\" width=\"14\" height=\"10\" rx=\"3\" fill=\"#2c3150\"/><rect x=\"126\" y=\"40\" width=\"14\" height=\"10\" rx=\"3\" fill=\"#2c3150\"/><rect x=\"66\" y=\"56\" width=\"14\" height=\"10\" rx=\"3\" fill=\"#2c3150\"/><rect x=\"86\" y=\"56\" width=\"14\" height=\"10\" rx=\"3\" fill=\"#2c3150\"/><rect x=\"106\" y=\"56\" width=\"14\" height=\"10\" rx=\"3\" fill=\"#2c3150\"/><rect x=\"126\" y=\"56\" width=\"14\" height=\"10\" rx=\"3\" fill=\"#2c3150\"/><rect x=\"66\" y=\"72\" width=\"14\" height=\"10\" rx=\"3\" fill=\"#2c3150\"/><rect x=\"86\" y=\"72\" width=\"14\" height=\"10\" rx=\"3\" fill=\"#2c3150\"/><rect x=\"106\" y=\"72\" width=\"14\" height=\"10\" rx=\"3\" fill=\"#2c3150\"/><rect x=\"126\" y=\"72\" width=\"14\" height=\"10\" rx=\"3\" fill=\"#2c3150\"/>\n<rect x=\"106\" y=\"56\" width=\"14\" height=\"10\" rx=\"3\" fill=\"var(--accent)\" class=\"a pop\" style=\"--d:200ms\"/>\n<circle cx=\"146\" cy=\"78\" r=\"12\" fill=\"var(--accent)\" class=\"a pop\" style=\"--d:550ms\"/><path d=\"m140 78 4 4 8-8\" stroke=\"#ffffff\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"a draw\" style=\"--d:750ms\"/>", "<rect x=\"40\" y=\"26\" width=\"48\" height=\"48\" rx=\"8\" fill=\"#1b2130\" stroke=\"#3a4158\" stroke-width=\"2\"/>\n<path d=\"M47 33h12v12H47zM69 33h12v12H69zM47 55h12v12H47z\" fill=\"var(--accent)\"/><path d=\"M69 55h5v5h-5zM76 62h5v5h-5zM69 64h4v3h-4z\" fill=\"var(--accent)\" opacity=\".7\"/>\n<g transform=\"translate(100 40)\"><path d=\"M8 0l2.4 5 5.6.8-4 3.9.9 5.5L8 12.6 3.1 15.2l.9-5.5-4-3.9L5.6 5z\" fill=\"#f5b400\" class=\"a pop\" style=\"--d:0ms\"/></g><g transform=\"translate(118 40)\"><path d=\"M8 0l2.4 5 5.6.8-4 3.9.9 5.5L8 12.6 3.1 15.2l.9-5.5-4-3.9L5.6 5z\" fill=\"#f5b400\" class=\"a pop\" style=\"--d:120ms\"/></g><g transform=\"translate(136 40)\"><path d=\"M8 0l2.4 5 5.6.8-4 3.9.9 5.5L8 12.6 3.1 15.2l.9-5.5-4-3.9L5.6 5z\" fill=\"#f5b400\" class=\"a pop\" style=\"--d:240ms\"/></g><g transform=\"translate(154 40)\"><path d=\"M8 0l2.4 5 5.6.8-4 3.9.9 5.5L8 12.6 3.1 15.2l.9-5.5-4-3.9L5.6 5z\" fill=\"#f5b400\" class=\"a pop\" style=\"--d:360ms\"/></g><g transform=\"translate(172 40)\"><path d=\"M8 0l2.4 5 5.6.8-4 3.9.9 5.5L8 12.6 3.1 15.2l.9-5.5-4-3.9L5.6 5z\" fill=\"#f5b400\" class=\"a pop\" style=\"--d:480ms\"/></g>\n<rect x=\"100\" y=\"64\" width=\"84\" height=\"6\" rx=\"3\" fill=\"#2c3150\"/><rect x=\"100\" y=\"64\" width=\"60\" height=\"6\" rx=\"3\" fill=\"var(--accent)\" class=\"a grow-x\" style=\"--d:650ms\"/>", "<g class=\"a ring\" style=\"--d:0ms\"><path d=\"M100 24a18 18 0 0 0-18 18v14l-6 8h48l-6-8V42a18 18 0 0 0-18-18z\" fill=\"#2c3150\" stroke=\"var(--accent)\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/><circle cx=\"100\" cy=\"70\" r=\"5\" fill=\"var(--accent)\"/></g>\n<path d=\"M138 30a26 26 0 0 1 8 30\" stroke=\"var(--accent)\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\" class=\"a draw\" style=\"--d:300ms\"/><path d=\"m140 56 6 6 5-7\" stroke=\"var(--accent)\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"a pop\" style=\"--d:650ms\"/>\n<circle cx=\"116\" cy=\"28\" r=\"7\" fill=\"var(--accent)\" class=\"a pop\" style=\"--d:450ms\"/><text x=\"116\" y=\"31\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#ffffff\" font-family=\"sans-serif\" class=\"a pop\" style=\"--d:450ms\">1</text>", "<rect x=\"34\" y=\"12\" width=\"132\" height=\"76\" rx=\"8\" fill=\"#1b2130\" stroke=\"#3a4158\" stroke-width=\"2\"/><path d=\"M34 26h132\" stroke=\"#3a4158\" stroke-width=\"2\"/>\n<circle cx=\"42\" cy=\"19\" r=\"2\" fill=\"#3a4158\"/><circle cx=\"49\" cy=\"19\" r=\"2\" fill=\"#3a4158\"/><circle cx=\"56\" cy=\"19\" r=\"2\" fill=\"#3a4158\"/>\n<rect x=\"44\" y=\"34\" width=\"50\" height=\"6\" rx=\"3\" fill=\"#2c3150\"/><rect x=\"44\" y=\"45\" width=\"36\" height=\"5\" rx=\"2.5\" fill=\"#2c3150\"/><rect x=\"44\" y=\"56\" width=\"44\" height=\"5\" rx=\"2.5\" fill=\"#2c3150\"/>\n<g class=\"a pop pr\" style=\"--d:150ms\"><rect x=\"104\" y=\"40\" width=\"54\" height=\"40\" rx=\"8\" fill=\"#2c3150\" stroke=\"var(--accent)\" stroke-width=\"1.5\"/><rect x=\"104\" y=\"40\" width=\"54\" height=\"10\" rx=\"5\" fill=\"var(--accent)\"/></g>\n<circle cx=\"118\" cy=\"64\" r=\"3\" fill=\"var(--accent)\" class=\"a blink\" style=\"--d:450ms\"/><circle cx=\"131\" cy=\"64\" r=\"3\" fill=\"var(--accent)\" class=\"a blink\" style=\"--d:600ms\"/><circle cx=\"144\" cy=\"64\" r=\"3\" fill=\"var(--accent)\" class=\"a blink\" style=\"--d:750ms\"/>", "<g class=\"a pop\" style=\"--d:0ms\"><rect x=\"36\" y=\"14\" width=\"22\" height=\"32\" rx=\"4\" fill=\"#1b2130\" stroke=\"#3a4158\" stroke-width=\"1.5\"/><rect x=\"39\" y=\"17\" width=\"16\" height=\"14\" rx=\"2\" fill=\"#2c3150\"/><rect x=\"39\" y=\"35\" width=\"12\" height=\"3\" rx=\"1.5\" fill=\"#3a4158\"/></g><g class=\"a pop\" style=\"--d:70ms\"><rect x=\"62\" y=\"14\" width=\"22\" height=\"32\" rx=\"4\" fill=\"#1b2130\" stroke=\"#3a4158\" stroke-width=\"1.5\"/><rect x=\"65\" y=\"17\" width=\"16\" height=\"14\" rx=\"2\" fill=\"#2c3150\"/><rect x=\"65\" y=\"35\" width=\"12\" height=\"3\" rx=\"1.5\" fill=\"#3a4158\"/></g><g class=\"a pop\" style=\"--d:140ms\"><rect x=\"88\" y=\"14\" width=\"22\" height=\"32\" rx=\"4\" fill=\"#1b2130\" stroke=\"#3a4158\" stroke-width=\"1.5\"/><rect x=\"91\" y=\"17\" width=\"16\" height=\"14\" rx=\"2\" fill=\"#2c3150\"/><rect x=\"91\" y=\"35\" width=\"12\" height=\"3\" rx=\"1.5\" fill=\"#3a4158\"/></g><g class=\"a pop\" style=\"--d:210ms\"><rect x=\"36\" y=\"52\" width=\"22\" height=\"32\" rx=\"4\" fill=\"#1b2130\" stroke=\"#3a4158\" stroke-width=\"1.5\"/><rect x=\"39\" y=\"55\" width=\"16\" height=\"14\" rx=\"2\" fill=\"#2c3150\"/><rect x=\"39\" y=\"73\" width=\"12\" height=\"3\" rx=\"1.5\" fill=\"#3a4158\"/></g><g class=\"a pop\" style=\"--d:280ms\"><rect x=\"62\" y=\"52\" width=\"22\" height=\"32\" rx=\"4\" fill=\"#1b2130\" stroke=\"#3a4158\" stroke-width=\"1.5\"/><rect x=\"65\" y=\"55\" width=\"16\" height=\"14\" rx=\"2\" fill=\"#2c3150\"/><rect x=\"65\" y=\"73\" width=\"12\" height=\"3\" rx=\"1.5\" fill=\"#3a4158\"/></g><g class=\"a pop\" style=\"--d:350ms\"><rect x=\"88\" y=\"52\" width=\"22\" height=\"32\" rx=\"4\" fill=\"#1b2130\" stroke=\"#3a4158\" stroke-width=\"1.5\"/><rect x=\"91\" y=\"55\" width=\"16\" height=\"14\" rx=\"2\" fill=\"#2c3150\"/><rect x=\"91\" y=\"73\" width=\"12\" height=\"3\" rx=\"1.5\" fill=\"#3a4158\"/></g>\n<g class=\"a slide\" style=\"--d:450ms\"><rect x=\"122\" y=\"30\" width=\"56\" height=\"36\" rx=\"6\" fill=\"var(--accent)\"/><rect x=\"122\" y=\"38\" width=\"56\" height=\"7\" fill=\"#2b28a8\"/><rect x=\"128\" y=\"52\" width=\"20\" height=\"4\" rx=\"2\" fill=\"#ffffff\" opacity=\".8\"/></g>\n<circle cx=\"174\" cy=\"68\" r=\"10\" fill=\"#1b2130\" stroke=\"var(--accent)\" stroke-width=\"2\" class=\"a pop\" style=\"--d:800ms\"/><path d=\"m169 68 4 4 6-7\" stroke=\"var(--accent)\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"a draw\" style=\"--d:950ms\"/>", "<path d=\"M44 84h120\" stroke=\"#3a4158\" stroke-width=\"2\"/><rect x=\"56\" y=\"62\" width=\"14\" height=\"22\" rx=\"3\" fill=\"#2c3150\" class=\"a grow\" style=\"--d:0ms\"/><rect x=\"80\" y=\"50\" width=\"14\" height=\"34\" rx=\"3\" fill=\"#2c3150\" class=\"a grow\" style=\"--d:110ms\"/><rect x=\"104\" y=\"56\" width=\"14\" height=\"28\" rx=\"3\" fill=\"#2c3150\" class=\"a grow\" style=\"--d:220ms\"/><rect x=\"128\" y=\"36\" width=\"14\" height=\"48\" rx=\"3\" fill=\"#2c3150\" class=\"a grow\" style=\"--d:330ms\"/><rect x=\"152\" y=\"22\" width=\"14\" height=\"62\" rx=\"3\" fill=\"var(--accent)\" class=\"a grow\" style=\"--d:440ms\"/>\n<path d=\"M63 58l24-12 24 6 24-20 24-14\" stroke=\"var(--accent)\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"a draw\" style=\"--d:500ms\"/>"];
+const cards = [
+  { t: "Asistente de WhatsApp con IA", d: "Responde preguntas frecuentes, horarios y precios las 24 horas, y te pasa la conversación cuando el cliente lo necesita.", i: "M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z" },
+  { t: "Contestador de llamadas con voz IA", d: "Atiende llamadas, toma el mensaje o resuelve lo básico cuando no puedes contestar.", b: true, i: "M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" },
+  { t: "Agendamiento automático", d: "Tus clientes reservan citas desde WhatsApp o tu página, con recordatorios para reducir inasistencias.", b: true, i: "M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" },
+  { t: "Reseñas en Google con IA", d: "QR para pedir reseñas a clientes satisfechos y respuestas sugeridas con IA.", i: "m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9L12 3z" },
+  { t: "Seguimiento automático de clientes", d: "Recordatorios a contactos que no agendaron.", i: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0" },
+  { t: "Chatbot para tu página web", d: "Entrenado con la información de tu negocio.", i: "M12 8V4H8M4 8h16v12H4zM2 14h2M20 14h2M9 13v2M15 13v2" },
+  { t: "Catálogo conectado a WhatsApp", d: "Con enlaces de pago (Wompi/Bold).", b: true, i: "M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0" },
+  { t: "Reporte mensual simple", d: "Leads, llamadas y citas.", i: "M3 3v18h18M7 16v-4M12 16V8M17 16v-7" },
+];
+---
+<section id="ia" class="ia theme-dark py-section" aria-labelledby="h-ia">
+  <div class="ia__bg" aria-hidden="true"><span class="ia__blob ia__blob--1"></span><span class="ia__blob ia__blob--2"></span><span class="ia__blob ia__blob--3"></span></div>
+  <div class="container-wide relative">
+    <header class="text-center" data-reveal>
+      <p class="badge-pill">Inteligencia artificial</p>
+      <h2 id="h-ia" class="mx-auto mt-4 max-w-[22ch] text-display text-ink">Soluciones con IA para hacer <span class="accent-word">crecer tu negocio</span></h2>
+      <p class="mx-auto mt-4 max-w-text text-lead text-ink-secondary" data-sweep>Automatizamos las tareas repetitivas para que atiendas más clientes sin perder el trato personal.</p>
+    </header>
+    <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" role="list">
+      {cards.map((c, i) => (
+        <li data-reveal style={`--reveal-i:${i % 4}`}>
+          <article class="glass" data-tilt>
+            <div class="flex items-start justify-between gap-3">
+              <span class="glass__icon"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={c.i} /></svg></span>
+              {c.b && <span class="glass__badge">Bajo consulta</span>}
+            </div>
+            <div class="illus" aria-hidden="true"><svg viewBox="0 0 200 100" set:html={illus[i]} /></div>
+            <h3 class="mt-4 text-title text-ink">{c.t}</h3>
+            <p class="mt-2 text-body text-ink-secondary" data-sweep>{c.d}</p>
+          </article>
+        </li>
+      ))}
+    </ul>
+    <div class="mt-12 flex justify-center" data-reveal>
+      <WhatsAppButton message="ia" label="Quiero automatizar mi negocio" />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Dark glass look modeled on @astroanimate/core GlassCard (container #111722, card #232933), rebuilt here because GlassCard has no slot. */
+  .ia { position: relative; overflow: hidden; isolation: isolate; background: #111722; }
+  .ia__bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+  .ia__blob { position: absolute; width: 38rem; height: 38rem; border-radius: 50%; filter: blur(80px); opacity: .32; }
+  .ia__blob--1 { background: radial-gradient(circle, #6366f1 0%, transparent 65%); top: -10rem; left: -8rem; }
+  .ia__blob--2 { background: radial-gradient(circle, #8b5cf6 0%, transparent 65%); top: 30%; right: -12rem; opacity: .25; }
+  .ia__blob--3 { background: radial-gradient(circle, #22d3ee 0%, transparent 65%); bottom: -14rem; left: 30%; opacity: .12; }
+
+  .glass {
+    --mx: 50%; --my: 0%; --rx: 0deg; --ry: 0deg;
+    position: relative; height: 100%; padding: 1.5rem; border-radius: 1.5rem;
+    background: linear-gradient(160deg, rgb(35 41 51 / .78), rgb(35 41 51 / .5));
+    backdrop-filter: blur(20px) saturate(140%); -webkit-backdrop-filter: blur(20px) saturate(140%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / .08), 0 25px 50px -12px rgb(0 0 0 / .45);
+    transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--sc, 1));
+    transition: transform .15s ease-out, box-shadow .4s ease;
+  }
+  /* Refraction-like gradient border */
+  .glass::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+    background: linear-gradient(135deg, rgb(255 255 255 / .28), rgb(139 92 246 / .3) 35%, rgb(255 255 255 / .08) 65%, rgb(165 180 252 / .25));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+  }
+  /* Soft specular highlight that follows the pointer */
+  .glass::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+    background: radial-gradient(circle at var(--mx) var(--my), rgb(255 255 255 / .15) 0%, transparent 50%);
+  }
+  .glass > * { position: relative; z-index: 1; }
+  .glass__icon { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; color: #fff;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); box-shadow: 0 10px 15px -3px rgb(99 102 241 / .4); }
+  .glass__badge { font-size: .75rem; font-weight: 600; line-height: 1; padding: .45rem .7rem; border-radius: 999px; color: #c7d2fe; white-space: nowrap;
+    background: rgb(99 102 241 / .16); box-shadow: inset 0 0 0 1px rgb(165 180 252 / .3); }
+
+  @media (hover: hover) and (pointer: fine) {
+    .glass:hover { box-shadow: inset 0 1px 0 rgb(255 255 255 / .12), 0 0 0 1px rgb(165 180 252 / .25), 0 25px 50px -12px rgb(0 0 0 / .5), 0 0 40px -10px rgb(99 102 241 / .45); }
+    .glass:hover::after { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .ia__blob--1 { animation: ia-drift 22s ease-in-out infinite alternate; }
+    .ia__blob--2 { animation: ia-drift 26s ease-in-out -8s infinite alternate-reverse; }
+    .ia__blob--3 { animation: ia-drift 30s ease-in-out -4s infinite alternate; }
+  }
+  @keyframes ia-drift { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(6rem,4rem,0) scale(1.15); } }
+  @media (max-width: 767px) {
+    .ia__blob { width: 22rem; height: 22rem; filter: blur(60px); animation: none !important; }
+    .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  }
+
+  /* Card illustrations: final frame by default; .glass:hover (pointer) or .glass.play (touch, once in view) replays them. */
+  .illus { margin-top: 1rem; height: 6.25rem; border-radius: 1rem; display: grid; place-items: center;
+    background: linear-gradient(160deg, rgb(17 23 34 / .55), rgb(99 102 241 / .10)); box-shadow: inset 0 1px 0 rgb(255 255 255 / .06), inset 0 0 0 1px rgb(165 180 252 / .12); }
+  .illus svg { width: 100%; height: 100%; }
+  .illus :global(.a) { transform-box: fill-box; transform-origin: center; }
+  .illus :global(.pr) { transform-origin: right bottom; }
+  .illus :global(.grow) { transform-origin: bottom; }
+  .illus :global(.grow-x) { transform-origin: left; }
+  .illus :global(.draw) { stroke-dasharray: 120; stroke-dashoffset: 0; }
+  @media (prefers-reduced-motion: no-preference) {
+    @media (hover: hover) and (pointer: fine) {
+      .glass:hover .illus :global(.pop) { animation: il-pop .5s cubic-bezier(.3,1.5,.5,1) var(--d,0ms) both; }
+      .glass:hover .illus :global(.draw) { animation: il-draw .6s ease var(--d,0ms) both; }
+      .glass:hover .illus :global(.grow) { animation: il-grow .6s cubic-bezier(.2,.8,.2,1) var(--d,0ms) both; }
+      .glass:hover .illus :global(.grow-x) { animation: il-grow-x .7s cubic-bezier(.2,.8,.2,1) var(--d,0ms) both; }
+      .glass:hover .illus :global(.ring) { animation: il-ring .9s ease-in-out var(--d,0ms) both; }
+      .glass:hover .illus :global(.wave) { animation: il-wave 1s ease-out var(--d,0ms) both; }
+      .glass:hover .illus :global(.blink) { animation: il-blink 1s ease-in-out var(--d,0ms) 2 both; }
+      .glass:hover .illus :global(.slide) { animation: il-slide .6s cubic-bezier(.2,.8,.2,1) var(--d,0ms) both; }
+    }
+    .glass.play .illus :global(.pop) { animation: il-pop .5s cubic-bezier(.3,1.5,.5,1) var(--d,0ms) both; }
+    .glass.play .illus :global(.draw) { animation: il-draw .6s ease var(--d,0ms) both; }
+    .glass.play .illus :global(.grow) { animation: il-grow .6s cubic-bezier(.2,.8,.2,1) var(--d,0ms) both; }
+    .glass.play .illus :global(.grow-x) { animation: il-grow-x .7s cubic-bezier(.2,.8,.2,1) var(--d,0ms) both; }
+    .glass.play .illus :global(.ring) { animation: il-ring .9s ease-in-out var(--d,0ms) both; }
+    .glass.play .illus :global(.wave) { animation: il-wave 1s ease-out var(--d,0ms) both; }
+    .glass.play .illus :global(.blink) { animation: il-blink 1s ease-in-out var(--d,0ms) 2 both; }
+    .glass.play .illus :global(.slide) { animation: il-slide .6s cubic-bezier(.2,.8,.2,1) var(--d,0ms) both; }
+  }
+  @keyframes il-pop { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: none; } }
+  @keyframes il-draw { from { stroke-dashoffset: 120; } to { stroke-dashoffset: 0; } }
+  @keyframes il-grow { from { transform: scaleY(0); } to { transform: none; } }
+  @keyframes il-grow-x { from { transform: scaleX(0); } to { transform: none; } }
+  @keyframes il-ring { 0%,100% { transform: none; } 15% { transform: rotate(-12deg); } 30% { transform: rotate(10deg); } 45% { transform: rotate(-8deg); } 60% { transform: rotate(6deg); } 75% { transform: rotate(-3deg); } }
+  @keyframes il-wave { from { opacity: 0; transform: scale(.6); } 60% { opacity: 1; } to { opacity: 1; transform: none; } }
+  @keyframes il-blink { 0%,100% { opacity: 1; transform: none; } 50% { opacity: .3; transform: translateY(-3px); } }
+  @keyframes il-slide { from { opacity: 0; transform: translateX(24px) rotate(6deg); } to { opacity: 1; transform: none; } }
+
+  /* Line-by-line color sweep (JS adds .sweep-on; without JS or with reduced motion the text keeps its normal color) */
+  :global(.sweep-on .sw) { color: var(--sw-c, inherit); }
+  @media (prefers-reduced-motion: reduce) { .glass { transition: none; transform: none; } }
+</style>
+
+<script>
+  // Touch devices: play each card's illustration once when it scrolls into view.
+  if (!matchMedia("(hover: hover) and (pointer: fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("play"); io.unobserve(e.target); } }), { threshold: 0.5 });
+    document.querySelectorAll("#ia .glass").forEach((el) => io.observe(el));
+  }
+
+  // Text sweep: muted gray → brand purple → final ink, line by line, tied to scroll progress.
+  // Words are wrapped once; line indexes are recomputed on resize. Off with reduced motion.
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const blocks = [...document.querySelectorAll<HTMLElement>("#ia [data-sweep]")];
+    // Resolve theme colors to rgb via a probe (works whatever format the CSS variables use).
+    const probe = document.createElement("span"); (blocks[0] || document.body).append(probe);
+    const rgb = (c: string) => { probe.style.color = c; return (getComputedStyle(probe).color.match(/[\d.]+/g) || ["0", "0", "0"]).slice(0, 3).map(Number); };
+    const MUTED = rgb("#4b5263"), BRAND = rgb("var(--accent)"), FINAL0 = rgb("var(--ink-secondary)");
+    probe.remove();
+    // Final color: body gray with a soft brand-purple tint (still well above AA on the canvas).
+    const FINAL = FINAL0.map((x, i) => Math.round(x + (BRAND[i] - x) * 0.3));
+    const mix = (a: number[], b: number[], t: number) => `rgb(${a.map((x, i) => Math.round(x + (b[i] - x) * t)).join(",")})`;
+    const colorAt = (p: number) => (p <= 0 ? mix(MUTED, MUTED, 0) : p < 0.5 ? mix(MUTED, BRAND, p / 0.5) : mix(BRAND, FINAL, (p - 0.5) / 0.5));
+    type W = { el: HTMLElement; line: number; x: number; last: string };
+    const data = blocks.map((b) => {
+      const words = (b.textContent || "").trim().split(/\s+/);
+      b.textContent = "";
+      const ws: W[] = words.map((w, i) => { const s = document.createElement("span"); s.className = "sw"; s.textContent = w; s.style.setProperty("--sw-c", colorAt(0)); b.append(s); if (i < words.length - 1) b.append(" "); return { el: s, line: 0, x: 0, last: colorAt(0) }; });
+      b.classList.add("sweep-on");
+      return { b, ws, lines: 1 };
+    });
+    const measure = () => data.forEach((d) => {
+      let top = -1, line = -1; const rows: W[][] = [];
+      d.ws.forEach((w) => { const t = w.el.offsetTop; if (Math.abs(t - top) > 2) { top = t; line++; rows.push([]); } w.line = line; rows[line].push(w); });
+      rows.forEach((r) => { const l = r[0].el.offsetLeft, wd = Math.max(1, r[r.length - 1].el.offsetLeft + r[r.length - 1].el.offsetWidth - l); r.forEach((w) => (w.x = (w.el.offsetLeft - l) / wd)); });
+      d.lines = rows.length;
+    });
+    let raf = 0;
+    const paint = () => {
+      raf = 0; const vh = innerHeight;
+      data.forEach((d) => {
+        const r = d.b.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        // 0 when the block's top is at 92% of the viewport, 1 when it reaches 45%.
+        const bp = Math.min(1, Math.max(0, (vh * 0.92 - r.top) / (vh * 0.47)));
+        d.ws.forEach((w) => {
+          const lp = bp * (d.lines + 0.8) - w.line * 0.85;          // staggered per line
+          const p = Math.min(1, Math.max(0, lp * 0.9 - w.x * 0.35)); // sweep left → right inside the line
+          const c = colorAt(p); if (c !== w.last) { w.el.style.setProperty("--sw-c", c); w.last = c; }
+        });
+      });
+    };
+    const req = () => { if (!raf) raf = requestAnimationFrame(paint); };
+    measure(); paint();
+    addEventListener("scroll", req, { passive: true });
+    let rt = 0; addEventListener("resize", () => { clearTimeout(rt); rt = window.setTimeout(() => { measure(); req(); }, 120); });
+    document.fonts?.ready.then(() => { measure(); req(); });
+  }
+
+  // Hover tilt + glow: pointer devices only, off with reduced motion.
+  if (matchMedia("(hover: hover) and (pointer: fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll<HTMLElement>("[data-tilt]").forEach((el) => {
+      let raf = 0;
+      el.addEventListener("pointermove", (e) => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const r = el.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+          el.style.setProperty("--sc", "1.02"); el.style.setProperty("--mx", `${x * 100}%`); el.style.setProperty("--my", `${y * 100}%`);
+          el.style.setProperty("--ry", `${(x - 0.5) * 20}deg`); el.style.setProperty("--rx", `${(0.5 - y) * 20}deg`);
+        });
+      });
+      el.addEventListener("pointerleave", () => { cancelAnimationFrame(raf); el.style.setProperty("--rx", "0deg"); el.style.setProperty("--ry", "0deg"); el.style.setProperty("--sc", "1"); });
+    });
+  }
+</script>

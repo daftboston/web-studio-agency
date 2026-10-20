@@ -1,0 +1,15 @@
+---
+/** Headline that rises out of masks (Clay-style). Each word is its own mask so lines wrap
+ * naturally on phones; words keep their source line's delay, so it still reads line by line.
+ * Desktop line breaks follow `lines`. Pure CSS: plays without JS and is static with reduced motion. */
+interface Props { lines: string[]; id?: string; class?: string; tag?: "h1" | "h2" }
+const { lines, id, class: cls = "", tag: Tag = "h1" } = Astro.props;
+---
+<Tag id={id} class={cls}>
+  {lines.map((line, li) => (
+    <>
+      {line.split(" ").map((w) => <><span class="word-mask"><span style={`--line:${li}`}>{w}</span></span>{" "}</>)}
+      {li < lines.length - 1 && <br class="max-md:hidden" />}
+    </>
+  ))}
+</Tag>

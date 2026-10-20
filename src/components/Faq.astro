@@ -1,0 +1,18 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+interface Props { items: readonly { q: string; a: string }[]; title?: string; id?: string; openFirst?: boolean }
+const { items, title = "Preguntas frecuentes.", id = "h-faq", openFirst = true } = Astro.props;
+---
+<div class="grid gap-stack lg:grid-cols-12 lg:gap-grid">
+  <div class="lg:col-span-4">
+    <SectionHeader id={id} title={title} align="left" class="lg:sticky lg:top-24" />
+  </div>
+  <div class="divide-y divide-line border-y border-line lg:col-span-8" data-reveal>
+    {items.map((f, i) => (
+      <details class="details-row" open={openFirst && i === 0}>
+        <summary>{f.q}</summary>
+        <p class="max-w-text pb-6 text-body text-ink-secondary">{f.a}</p>
+      </details>
+    ))}
+  </div>
+</div>

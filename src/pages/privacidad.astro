@@ -1,0 +1,85 @@
+---
+import Base from "../layouts/Base.astro";
+/** Lawyer's text, verbatim (2026-10-19). Keep "usted" wording; do not edit without legal review. */
+const email = "dsantoyop@gmail.com";
+---
+<Base title="Política de tratamiento de datos personales" description="Política de tratamiento de datos personales de Filmika (Ley 1581 de 2012)." hideFinalCta>
+  <section class="bg-canvas pt-section pb-section">
+    <article class="container-text legal">
+      <p class="eyebrow mb-4">Legal</p>
+      <h1 class="text-display text-ink">POLÍTICA DE TRATAMIENTO DE DATOS PERSONALES – FILMIKA</h1>
+
+      <h2>1. Responsable del tratamiento</h2>
+      <p>Daniel Santoyo Panche, persona natural, que opera bajo el nombre comercial Filmika. NIT 1019013998. Domicilio: Calle 134 # 41A-51, Bogotá D.C., Colombia. Correo: <a href={`mailto:${email}`}>{email}</a>. Sitio web: filmika.netlify.app.</p>
+
+      <h2>2. Marco legal</h2>
+      <p>Esta política se rige por la Ley 1581 de 2012, el Decreto 1377 de 2013 (compilado en el Decreto 1074 de 2015) y las demás normas que los modifiquen o complementen.</p>
+
+      <h2>3. Datos que tratamos</h2>
+      <ol class="alpha">
+        <li>Datos de contacto comercial publicados por empresas y negocios en sus propios canales (sitio web, Instagram, Facebook, Google Maps): nombre del negocio, nombre de la persona de contacto, correo, teléfono y ciudad.</li>
+        <li>Datos que usted nos entrega al responder, cotizar o contratar: nombre, cargo, correo, teléfono o WhatsApp, y datos de facturación.</li>
+        <li>Registro de comunicaciones: fecha, canal, respuesta, autorización o solicitud de no contacto.</li>
+      </ol>
+      <p>No tratamos datos sensibles ni datos de niños, niñas o adolescentes.</p>
+
+      <h2>4. Finalidades</h2>
+      <ol class="alpha">
+        <li>Presentar nuestros servicios de diseño y desarrollo web a negocios, en un solo mensaje y con un seguimiento como máximo.</li>
+        <li>Responder solicitudes, enviar cotizaciones y ejecutar los servicios contratados.</li>
+        <li>Contactarlo por WhatsApp solo después de que usted lo autorice expresamente.</li>
+        <li>Facturar y cumplir obligaciones legales y contables.</li>
+        <li>Llevar el registro de autorizaciones y de solicitudes de no contacto, para respetarlas.</li>
+      </ol>
+
+      <h2>5. Autorización</h2>
+      <p>Cuando el dato sea personal y no sea público, solicitaremos su autorización previa, expresa e informada, por un medio que permita consultarla después. Conservamos prueba de la autorización y de la fuente de cada dato.</p>
+
+      <h2>6. Derechos del titular</h2>
+      <p>Usted puede:</p>
+      <ol class="alpha">
+        <li>conocer, actualizar y rectificar sus datos;</li>
+        <li>solicitar prueba de la autorización;</li>
+        <li>ser informado del uso que damos a sus datos;</li>
+        <li>revocar la autorización o pedir la supresión de sus datos cuando no exista un deber legal de conservarlos;</li>
+        <li>acceder gratuitamente a sus datos;</li>
+        <li>presentar quejas ante la Superintendencia de Industria y Comercio, después de agotar el trámite ante nosotros.</li>
+      </ol>
+
+      <h2>7. Procedimiento para consultas y reclamos</h2>
+      <p>Escriba a <a href={`mailto:${email}?subject=Datos%20personales`}>{email}</a> con el asunto «Datos personales». Indique su nombre, el dato o negocio de que se trata, su solicitud y un medio de respuesta.</p>
+      <ul>
+        <li>Consultas: responderemos en máximo 10 días hábiles. Si necesitamos más tiempo, le avisaremos el motivo y responderemos en máximo 5 días hábiles adicionales.</li>
+        <li>Reclamos (corregir, suprimir o revocar): responderemos en máximo 15 días hábiles. Si necesitamos más tiempo, le avisaremos el motivo y responderemos en máximo 8 días hábiles adicionales.</li>
+        <li>Si el reclamo está incompleto, le pediremos completarlo dentro de los 5 días siguientes. Si pasan 2 meses sin respuesta, se entenderá desistido.</li>
+        <li>La solicitud de no recibir más mensajes se aplica de inmediato, sin trámite adicional.</li>
+      </ul>
+
+      <h2>8. Encargados y transferencias</h2>
+      <p>Podemos usar proveedores tecnológicos (correo electrónico, hojas de cálculo, alojamiento web y WhatsApp) que pueden almacenar datos fuera de Colombia. Exigimos que traten los datos solo para las finalidades aquí descritas y con medidas de seguridad adecuadas. No vendemos ni cedemos sus datos a terceros.</p>
+
+      <h2>9. Seguridad y conservación</h2>
+      <p>Aplicamos medidas razonables de acceso restringido y de protección.</p>
+      <ul>
+        <li>Datos de prospectos que no respondan: los conservamos máximo 12 meses.</li>
+        <li>Datos de clientes: mientras dure la relación y por el tiempo que exijan las normas contables y tributarias.</li>
+        <li>Solicitudes de no contacto: las conservamos para poder respetarlas.</li>
+      </ul>
+
+      <h2>10. Vigencia y cambios</h2>
+      <p>Vigente desde 19 de octubre de 2026. Los cambios sustanciales se publicarán en este sitio antes de aplicarse.</p>
+    </article>
+  </section>
+</Base>
+
+<style>
+  .legal h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.15; overflow-wrap: anywhere; }
+  .legal h2 { margin-top: 2.5rem; font-size: 1.25rem; font-weight: 600; line-height: 1.3; color: var(--color-ink, inherit); }
+  .legal p, .legal li { font-size: 1rem; line-height: 1.7; color: var(--color-ink-secondary, inherit); }
+  .legal p { margin-top: 0.875rem; }
+  .legal ol, .legal ul { margin-top: 0.875rem; padding-left: 1.5rem; display: grid; gap: 0.5rem; }
+  .legal ol.alpha { list-style: lower-alpha; }
+  .legal ul { list-style: disc; }
+  .legal li::marker { color: var(--color-accent, currentColor); }
+  .legal a { color: var(--color-accent, inherit); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+</style>
